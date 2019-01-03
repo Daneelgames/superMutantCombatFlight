@@ -1,0 +1,412 @@
+fileFormatVersion: 2
+guid: a42bb11b278c1454a85f09263fc7db34
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: body
+    100002: Bone
+    100004: Bone_end
+    100006: handLeft1
+    100008: HandLeft2
+    100010: HandLeft3
+    100012: HandLeft3_end
+    100014: handRight1
+    100016: handRight2
+    100018: handRight3
+    100020: handRight3_end
+    100022: leftArm
+    100024: leftTail
+    100026: leftTail_end
+    100028: leftTurbine
+    100030: leftWing
+    100032: leftWing 1
+    100034: leftWing_end
+    100036: playerPlaneSkeleton
+    100038: //RootNode
+    100040: rightArm
+    100042: rightTail
+    100044: rightTail_end
+    100046: rightTurbine
+    100048: rightWing
+    100050: rightWing 1
+    100052: rightWing_end
+    100054: Armature
+    100056: hand1.L
+    100058: hand1.R
+    100060: hand2.L
+    100062: hand2.L_end
+    100064: hand2.R
+    100066: hand2.R_end
+    100068: hand3.L
+    100070: hand3.L_end
+    100072: hand3.R
+    100074: hand3.R_end
+    100076: IK.L
+    100078: IK.R
+    100080: PlayerShip
+    100082: tail.L
+    100084: tail.L_end
+    100086: tail.R
+    100088: tail.R_end
+    100090: wing.L
+    100092: wing.L_end
+    100094: wing.R
+    100096: wing.R_end
+    100098: head
+    100100: head_end
+    100102: leg.2L
+    100104: leg.2L_end
+    100106: leg.2R
+    100108: leg.2R_end
+    100110: leg.L
+    100112: leg.L_end
+    100114: leg.R
+    100116: leg.R_end
+    100118: leg1.L
+    100120: leg1.R
+    400000: body
+    400002: Bone
+    400004: Bone_end
+    400006: handLeft1
+    400008: HandLeft2
+    400010: HandLeft3
+    400012: HandLeft3_end
+    400014: handRight1
+    400016: handRight2
+    400018: handRight3
+    400020: handRight3_end
+    400022: leftArm
+    400024: leftTail
+    400026: leftTail_end
+    400028: leftTurbine
+    400030: leftWing
+    400032: leftWing 1
+    400034: leftWing_end
+    400036: playerPlaneSkeleton
+    400038: //RootNode
+    400040: rightArm
+    400042: rightTail
+    400044: rightTail_end
+    400046: rightTurbine
+    400048: rightWing
+    400050: rightWing 1
+    400052: rightWing_end
+    400054: Armature
+    400056: hand1.L
+    400058: hand1.R
+    400060: hand2.L
+    400062: hand2.L_end
+    400064: hand2.R
+    400066: hand2.R_end
+    400068: hand3.L
+    400070: hand3.L_end
+    400072: hand3.R
+    400074: hand3.R_end
+    400076: IK.L
+    400078: IK.R
+    400080: PlayerShip
+    400082: tail.L
+    400084: tail.L_end
+    400086: tail.R
+    400088: tail.R_end
+    400090: wing.L
+    400092: wing.L_end
+    400094: wing.R
+    400096: wing.R_end
+    400098: head
+    400100: head_end
+    400102: leg.2L
+    400104: leg.2L_end
+    400106: leg.2R
+    400108: leg.2R_end
+    400110: leg.L
+    400112: leg.L_end
+    400114: leg.R
+    400116: leg.R_end
+    400118: leg1.L
+    400120: leg1.R
+    2100000: No Name
+    2300000: body
+    2300002: leftArm
+    2300004: leftTurbine
+    2300006: leftWing
+    2300008: rightArm
+    2300010: rightTurbine
+    2300012: rightWing
+    2300014: PlayerShip
+    3300000: body
+    3300002: leftArm
+    3300004: leftTurbine
+    3300006: leftWing
+    3300008: rightArm
+    3300010: rightTurbine
+    3300012: rightWing
+    3300014: PlayerShip
+    4300000: rightWing
+    4300002: rightTurbine
+    4300004: rightArm
+    4300006: leftArm
+    4300008: leftTurbine
+    4300010: leftWing
+    4300012: body
+    4300014: PlayerShip
+    7400000: Armature|ArmatureAction
+    9500000: //RootNode
+    13700000: PlayerShip
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.005
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: playerShip_1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: playerShip_1(Clone)
+      position: {x: -6.6264566e-18, y: 0.029842908, z: -0.35513064}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bone
+      parentName: Armature
+      position: {x: -0.00029639917, y: 0.002405707, z: 0.001959527}
+      rotation: {x: 0.99946296, y: 0.00009067461, z: 0.00283315, w: -0.032645483}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999771}
+    - name: hand1.L
+      parentName: Bone
+      position: {x: -0.0025088096, y: 0.0062219803, z: 0.0037221317}
+      rotation: {x: -0.21552604, y: 0.69227624, z: 0.66785955, w: 0.1681247}
+      scale: {x: 0.9999982, y: 1.0000066, z: 1.0000006}
+    - name: hand2.L
+      parentName: hand1.L
+      position: {x: -0.0000000010337681, y: 0.00378431, z: -3.0733643e-10}
+      rotation: {x: 0.049810734, y: 0.6755639, z: 0.31574374, w: 0.6644082}
+      scale: {x: 0.99999845, y: 1.000007, z: 0.9999884}
+    - name: hand2.L_end
+      parentName: hand2.L
+      position: {x: -0, y: 0.004748444, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hand1.R
+      parentName: Bone
+      position: {x: 0.0031318723, y: 0.006445821, z: 0.003715657}
+      rotation: {x: 0.22117768, y: 0.6621997, z: 0.696126, w: -0.1672742}
+      scale: {x: 0.9999984, y: 1.0000061, z: 1.0000005}
+    - name: hand2.R
+      parentName: hand1.R
+      position: {x: -2.8871e-10, y: 0.00378431, z: 5.9604643e-10}
+      rotation: {x: 0.025813937, y: -0.64930665, z: -0.40797788, w: 0.64131784}
+      scale: {x: 1.000002, y: 1.0000063, z: 0.99998426}
+    - name: hand2.R_end
+      parentName: hand2.R
+      position: {x: -0, y: 0.004748444, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: Bone
+      position: {x: 0.00009171628, y: 0.004746426, z: -0.0014113701}
+      rotation: {x: -0.7298143, y: 0.0000012225535, z: 0.0000013050593, w: 0.6836455}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.005, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg.L
+      parentName: Bone
+      position: {x: -0.000993453, y: 0.006418254, z: 0.0068583842}
+      rotation: {x: -0.010220659, y: 0.72974265, z: 0.6835785, w: 0.009575742}
+      scale: {x: 1, y: 1.0000005, z: 1}
+    - name: leg1.L
+      parentName: leg.L
+      position: {x: -7.045969e-11, y: 0.0029593364, z: 3.1176058e-11}
+      rotation: {x: -0.012457696, y: 0.7069995, z: 0.012457852, w: 0.7069946}
+      scale: {x: 0.99999994, y: 0.99999976, z: 0.99999994}
+    - name: leg.2L
+      parentName: leg1.L
+      position: {x: -6.7706197e-12, y: 0.0031676488, z: 1.1937004e-10}
+      rotation: {x: 0.00000020895676, y: 0.99977297, z: 0.021307487, w: 0.000011858211}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: leg.2L_end
+      parentName: leg.2L
+      position: {x: -0, y: 0.0032656868, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg.R
+      parentName: Bone
+      position: {x: 0.002195593, y: 0.0064128446, z: 0.0067756516}
+      rotation: {x: 0.57866085, y: 0.38070717, z: 0.40526384, w: 0.5966363}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: leg1.R
+      parentName: leg.R
+      position: {x: -2.2351741e-10, y: 0.0031310564, z: 3.7252902e-11}
+      rotation: {x: 0.034077555, y: 0.9800776, z: 0.008753953, w: -0.1954737}
+      scale: {x: 1, y: 0.9999997, z: 0.99999994}
+    - name: leg.2R
+      parentName: leg1.R
+      position: {x: 4.0522577e-10, y: 0.0031056365, z: 9.325163e-11}
+      rotation: {x: -0.011271298, y: 0.993744, z: -0.0053551085, w: -0.110982664}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: leg.2R_end
+      parentName: leg.2R
+      position: {x: -0, y: 0.0032030686, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: tail.L
+      parentName: Bone
+      position: {x: -0.0039324816, y: -0.0028389066, z: 0.0009963446}
+      rotation: {x: -0.7018958, y: 0.29879728, z: 0.32985598, w: 0.5561093}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: tail.L_end
+      parentName: tail.L
+      position: {x: -0, y: 0.010019428, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: tail.R
+      parentName: Bone
+      position: {x: 0.0045252866, y: -0.0028389066, z: 0.0009963143}
+      rotation: {x: -0.701897, y: -0.29879534, z: -0.3298536, w: 0.5561102}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: tail.R_end
+      parentName: tail.R
+      position: {x: -0, y: 0.010019428, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wing.L
+      parentName: Bone
+      position: {x: -0.005170045, y: 0.0067761675, z: -0.0005541717}
+      rotation: {x: -0.5084806, y: 0.52352387, z: 0.49040368, w: 0.47631344}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: wing.L_end
+      parentName: wing.L
+      position: {x: -0, y: 0.014230372, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: wing.R
+      parentName: Bone
+      position: {x: 0.00576284, y: 0.006776168, z: -0.0005542109}
+      rotation: {x: 0.5084827, y: 0.52352184, z: 0.49040222, w: -0.47631508}
+      scale: {x: 0.9999998, y: 0.99999976, z: 0.99999994}
+    - name: wing.R_end
+      parentName: wing.R
+      position: {x: -0, y: 0.014230372, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK.L
+      parentName: Armature
+      position: {x: -0.005401301, y: -0.005655741, z: -0.009537491}
+      rotation: {x: -0.70098835, y: 0.09344021, z: 0.011039742, w: 0.7069388}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: hand3.L
+      parentName: IK.L
+      position: {x: -3.72529e-10, y: 2.7008354e-10, z: 4.7439244e-11}
+      rotation: {x: -0.09128435, y: 0.7028458, z: -0.15244389, w: 0.688793}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: hand3.L_end
+      parentName: hand3.L
+      position: {x: -0, y: 0.0059265057, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: IK.R
+      parentName: Armature
+      position: {x: 0.004815502, y: -0.0056462646, z: -0.00946517}
+      rotation: {x: -0.70314986, y: -0.05328158, z: 0.01922824, w: 0.7087818}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: hand3.R
+      parentName: IK.R
+      position: {x: 2.9802322e-10, y: -3.72529e-10, z: 7.45058e-10}
+      rotation: {x: -0.09128435, y: -0.7028458, z: 0.15244389, w: 0.688793}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: hand3.R_end
+      parentName: hand3.R
+      position: {x: -0, y: 0.0059265057, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PlayerShip
+      parentName: playerShip_1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

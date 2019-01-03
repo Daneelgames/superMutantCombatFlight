@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3733115137785061496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3733115137785061498}
+  - component: {fileID: 3733115137785061499}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3733115137785061498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733115137785061496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3733115137785061499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733115137785061496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb6a8680b756994caba41fabeea499d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testStartWave: 0
+  solidsMinDelay: 1
+  solidsMaxDelay: 10
+  rangeX: 7
+  groundLevel: -6
+  solids:
+  - {fileID: 9057418614488918462, guid: f7c4930c47b136a4bb8e1549fe55fc8c, type: 3}
+  - {fileID: 1036510551203372796, guid: 2e23c401fba8da2448d393d632dff459, type: 3}
+  - {fileID: 1036510551203372796, guid: f77bcdc4cfef32c49b32e5478c47d32d, type: 3}
+  - {fileID: 4364389085534052855, guid: 08c7be3de5c9f2240a5a11160ca5b54a, type: 3}
+  - {fileID: 1036510551203372796, guid: 51dabab55daee4040b68325ac6069048, type: 3}
+  - {fileID: 1036510551203372796, guid: a5c96584aa971ad458efa120792e45af, type: 3}
+  - {fileID: 1036510551203372796, guid: 2f78d0b5f2b4af04893e9b2e9ae0b6b9, type: 3}
+  solidsOnScene: []
+  waves:
+  - {fileID: 7543689485446871723, guid: fe35066793458f142971ff1f3a742bc2, type: 3}
+  - {fileID: 7543689485446871723, guid: d7e43793c19aac94295881045ac655b3, type: 3}
+  - {fileID: 7543689485446871723, guid: b2cc904bcfa1f3f4db847bd48ba44390, type: 3}
+  - {fileID: 7543689485446871723, guid: 2d6118d22c242474f8eb66bcb4061b0b, type: 3}
+  - {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421, type: 3}
+  - {fileID: 7543689485446871723, guid: 341929a0bb014a946b26594d50d328dd, type: 3}
+  - {fileID: 7543689485446871723, guid: b2cc904bcfa1f3f4db847bd48ba44390, type: 3}
+  - {fileID: 7543689485446871723, guid: 2d6118d22c242474f8eb66bcb4061b0b, type: 3}
+  - {fileID: 7543689485446871723, guid: 0435dd366e1d4284f9b1abbff11a0282, type: 3}
+  - {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421, type: 3}
+  solidsParent: {fileID: 0}
+  boss: {fileID: 9078731143076396796, guid: 3620d2e6d91611341aa1421c8e64b5bf, type: 3}
+  bossState: 0
+  currentWaveController: {fileID: 0}
