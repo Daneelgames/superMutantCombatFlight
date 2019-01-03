@@ -15,6 +15,7 @@ public class SpawnerController : MonoBehaviour
     public List<GameObject> solids = new List<GameObject>();
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
+    public List<GameObject> wavesInGame = new List<GameObject>();
     int currentWave = 0;
     public GameObject solidsParent;
 
@@ -29,7 +30,24 @@ public class SpawnerController : MonoBehaviour
         currentWave = testStartWave;
         GetSolids();
         if (!bossState)
+        {
+            GenerateSpawnList();
             Invoke("SpawnWave", 2f);
+        }
+    }
+
+    void GenerateSpawnList()
+    {
+        List<GameObject> tempList = new List<GameObject>(waves);
+        wavesInGame.Add(tempList[0]);
+        tempList.RemoveAt(0);
+
+        for (int i = 0; i < 9; i++)
+        {
+            int random = Random.Range(0, tempList.Count);
+            wavesInGame.Add(tempList[random]);
+            tempList.RemoveAt(random);
+        }
     }
 
     void GetSolids()
@@ -77,7 +95,7 @@ public class SpawnerController : MonoBehaviour
     public void WaveDestroyed(WaveController wave)
     {
         int newWaveIndex = currentWave + 1;
-        if (waves.Count > newWaveIndex)
+        if (wavesInGame.Count > newWaveIndex)
         {
             currentWave = newWaveIndex;
             SpawnWave();
@@ -105,7 +123,7 @@ public class SpawnerController : MonoBehaviour
 
     void SpawnWave()
     {
-        GameObject newWave = GameObject.Instantiate(waves[currentWave], Vector3.zero, Quaternion.identity);
+        GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
         currentWaveController = newWave.GetComponent<WaveController>();
     }
 }

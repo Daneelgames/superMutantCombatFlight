@@ -98,13 +98,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator HurtTimer()
     {
-        animator.SetBool("Hurt", true);
+       // animator.SetBool("Hurt", true);
         hurt = true;
         for (float t = 1; t>0; t -= Time.deltaTime)
         {
             yield return null;
         }
-        animator.SetBool("Hurt", false);
+       // animator.SetBool("Hurt", false);
         hurt = false;
     }
 
@@ -344,6 +344,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShotBulletBurst()
     {
+        animator.SetBool("Shoot", true);
         foreach (GameObject go in bulletBurst)
         {
             GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
@@ -353,6 +354,7 @@ public class PlayerController : MonoBehaviour
             shotDelay = _bulletController.delayNextShotTime;
             yield return new WaitForSeconds(bulletBurstDelay);
         }
+        animator.SetBool("Shoot", false);
     }
 
     public void SetCharge(bool active)

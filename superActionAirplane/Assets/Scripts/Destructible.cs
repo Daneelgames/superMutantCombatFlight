@@ -24,9 +24,7 @@ public class Destructible : MonoBehaviour
         {
             if (gameObject.layer == 11) //if enemy crashes
             {
-                if (other.gameObject.tag == "Player" && other.gameObject.layer == 10)
-                    Damage(1);
-                else if (canBeDamagedBySolids && other.gameObject.tag == "Solids" && other.gameObject.layer == 9)
+                if (canBeDamagedBySolids && other.gameObject.tag == "Solids" && other.gameObject.layer == 9)
                     Damage(1);
             }
         }

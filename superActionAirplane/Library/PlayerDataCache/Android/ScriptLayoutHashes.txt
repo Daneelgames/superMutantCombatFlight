@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/@daneelgames/superActionAirplaneBuild12.apk
+C:/@daneelgames/superActionAirplaneBuild13.apk
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
@@ -91,7 +91,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-6e08d6eef30f2992c094069cdda8c33e Assembly-CSharp.dll:.BossFaceAnimationEventController
+0ffae93066712702382aff711c79d625 Assembly-CSharp.dll:.BossFaceAnimationEventController
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.ExplosionController
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -138,8 +138,8 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 8442124e1dfc86825423c4e556cf554a Assembly-CSharp.dll:.BuildingController
 1a39ca33a993776ff84d3408327f3cea Assembly-CSharp.dll:.PlayerCanvasController
-d2ad2fa06f4cfaa8354f9c1e52982695 Assembly-CSharp.dll:.BossController
-c79e5492b41d28e0b00ce1cb77621a3e Assembly-CSharp.dll:.SpawnerController
+6b52ded0f7355cce0beff2fc43ee5e49 Assembly-CSharp.dll:.BossController
+b59d8b5f1930cdceb9c5a71c3d459adf Assembly-CSharp.dll:.SpawnerController
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -156,7 +156,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
-e7624462ab1d689d4ac3cf5f15f1ec77 Assembly-CSharp.dll:.Drone_1Controller
+0714e3ddf68ccc0af81b57d3c5969f82 Assembly-CSharp.dll:.Drone_1Controller
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 2619a4b2748e1bb4de6ad51cc7eff2a2 Assembly-CSharp.dll:.GameManager
