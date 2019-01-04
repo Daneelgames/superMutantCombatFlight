@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &122485665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 122485666}
+  m_Layer: 10
+  m_Name: Spot_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &122485666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122485665}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1112796393}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &417457060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417457061}
+  m_Layer: 10
+  m_Name: Spot_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417457061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417457060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1112796393}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561180974
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +233,7 @@ CapsuleCollider:
   m_Height: 50
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 25}
---- !u!1 &1167760779
+--- !u!1 &1112796392
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,25 +241,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1167760780}
+  - component: {fileID: 1112796393}
   m_Layer: 10
-  m_Name: ArmsTargetIK
+  m_Name: AdditionalWeaponsSpots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1167760780
+--- !u!4 &1112796393
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167760779}
+  m_GameObject: {fileID: 1112796392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 417457061}
+  - {fileID: 1588550191}
+  - {fileID: 122485666}
   m_Father: {fileID: 156902412648423692}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,6 +339,36 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &1588550190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588550191}
+  m_Layer: 10
+  m_Name: Spot_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1588550191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588550190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.75, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1112796393}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789090256
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +548,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCrosshair: {fileID: 1402966027}
   speed: 15
-  chargeMarker: {fileID: 8862310950963989270}
 --- !u!1 &3892910135872948552
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +595,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCrosshair: {fileID: 6539603136329563044}
   speed: 6
-  chargeMarker: {fileID: 0}
 --- !u!1 &5271714850488857730
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +836,6 @@ GameObject:
   - component: {fileID: 9129881597683822455}
   - component: {fileID: 9074308174040042435}
   - component: {fileID: 40718675030496345}
-  - component: {fileID: 1808930207}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -769,7 +859,7 @@ Transform:
   - {fileID: 7813201771232694229}
   - {fileID: 1499104082073200386}
   - {fileID: 1047668614}
-  - {fileID: 1167760780}
+  - {fileID: 1112796393}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -785,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c5a260f3f8e34a9ebeb846ba52dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invinsible: 1
+  invinsible: 0
   lives: 3
   movementSpeed: 10
   target: {fileID: 7165788225807763246}
@@ -794,17 +884,17 @@ MonoBehaviour:
   explosion: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,
     type: 3}
   bullet: {fileID: 0}
-  bulletCharged: {fileID: 2215745776762814028, guid: e5431615ab0861f44bb3dce52608c5af,
-    type: 3}
   bulletBurst:
   - {fileID: 2215745776762814028, guid: 810c2a61d6a9ee94a8d66383b6c943da, type: 3}
   - {fileID: 2215745776762814028, guid: 810c2a61d6a9ee94a8d66383b6c943da, type: 3}
   - {fileID: 2215745776762814028, guid: 810c2a61d6a9ee94a8d66383b6c943da, type: 3}
+  additionalWeapons: []
+  additionalWeaponSpots:
+  - {fileID: 417457061}
+  - {fileID: 1588550191}
+  - {fileID: 122485666}
   bulletBurstDelay: 0.1
-  chargeTime: 1
-  currentChargeTime: 0
   animator: {fileID: 3933979342327177557}
-  chargeAnimator: {fileID: 3411862669030411117}
   rb: {fileID: 9129881597683822455}
 --- !u!54 &9129881597683822455
 Rigidbody:
@@ -848,21 +938,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.62, y: 0.035895377, z: 0.3303219}
   m_Center: {x: 0, y: 0.16168375, z: -0.10294217}
---- !u!114 &1808930207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7645704738641186474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bafd4d7be6636d4fac6c0dbcb5291ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1167760780}
-  offset: {x: 0, y: 0, z: 0}
-  anim: {fileID: 3933979342327177557}
 --- !u!1 &7974725617597013879
 GameObject:
   m_ObjectHideFlags: 0

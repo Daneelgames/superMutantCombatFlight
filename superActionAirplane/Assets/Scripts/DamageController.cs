@@ -14,7 +14,7 @@ public class DamageController : MonoBehaviour
         {
             if (gameObject.layer == 10) // player's bullet
             {
-                if (other.gameObject.tag == "Solids" || other.gameObject.tag == "Enemies")
+                if (other.gameObject.tag == "Solids" || other.gameObject.tag == "Enemies" || (other.gameObject.tag == "Drop" && other.gameObject.layer == 12))
                 {
                     DamageOther(other);
                     DestroyBullet();

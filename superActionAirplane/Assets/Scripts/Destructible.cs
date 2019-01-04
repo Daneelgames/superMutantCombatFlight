@@ -9,9 +9,12 @@ public class Destructible : MonoBehaviour
     public GameObject explosion;
     public WaveController waveController;
     public BossController bossController;
+    
+    public DropBoxController dropBox; // if dropbox != null, GO is dropBox
 
     public bool canBeDamagedBySolids = true;
     bool invincible = false;
+
     private void Start()
     {
         if (waveController)
@@ -52,13 +55,18 @@ public class Destructible : MonoBehaviour
                     bossController.PieceDestroyed(this);
                     Destroyed();
                 }
-                else
+                else // dropBox
+                {
+                    Drop();
+                    GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
                     Destroy(gameObject);
+                }
             }
         }
     }
     void Destroyed()
     {
+        Drop();
         GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
         gameObject.SetActive(false);
     }
@@ -66,5 +74,44 @@ public class Destructible : MonoBehaviour
     public void SetInvincible(bool _true)
     {
         invincible = _true;
+    }
+
+    void Drop()
+    {
+        if (dropBox == null) // drop from enemy
+        {
+            float randomDrop = Random.Range(0f, 100f);
+            if (randomDrop > 75f)
+            {
+
+                DropDropBox();
+            }
+        }
+        else // drop from dropBox
+        {
+            if (dropBox.type == 0)
+            {
+                dropBox.DropHealth();
+            }
+            else if (dropBox.type == 1)
+            {
+                dropBox.DropWeapon();
+            }
+        }
+    }
+
+    void DropDropBox()
+    {
+        GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
+
+        float random = Random.Range(0f, 100f);
+        if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+        {
+            drop.GetComponent<DropBoxController>().SetType(0); // health
+        }
+        else
+        {
+            drop.GetComponent<DropBoxController>().SetType(1); // weapon
+        }
     }
 }

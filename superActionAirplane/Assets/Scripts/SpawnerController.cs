@@ -12,12 +12,14 @@ public class SpawnerController : MonoBehaviour
     float currentDelay = 1;
     public float groundLevel = -6;
 
+    public List<AdditionalWeaponController> additionalWeapons;
     public List<GameObject> solids = new List<GameObject>();
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
     int currentWave = 0;
     public GameObject solidsParent;
+    public GameObject dropBox;
 
     public GameObject boss;
     public bool bossState = false;

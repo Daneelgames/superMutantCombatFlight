@@ -48,6 +48,11 @@ MonoBehaviour:
   solidsMaxDelay: 10
   rangeX: 7
   groundLevel: -6
+  additionalWeapons:
+  - {fileID: 2229493408721876351, guid: 120cc958207186b4e9842a012ee0537b, type: 3}
+  - {fileID: 2229493408721876351, guid: e8fda1f6d98b3324b8f82940896e9a23, type: 3}
+  - {fileID: 2229493408721876351, guid: 44dec9dd737eaff4d8822cab52bbac39, type: 3}
+  - {fileID: 2229493408721876351, guid: b35e8625c23e33f4e821f02810bfb452, type: 3}
   solids:
   - {fileID: 9057418614488918462, guid: f7c4930c47b136a4bb8e1549fe55fc8c, type: 3}
   - {fileID: 1036510551203372796, guid: 2e23c401fba8da2448d393d632dff459, type: 3}
@@ -59,16 +64,21 @@ MonoBehaviour:
   solidsOnScene: []
   waves:
   - {fileID: 7543689485446871723, guid: fe35066793458f142971ff1f3a742bc2, type: 3}
+  - {fileID: 7543689485446871723, guid: b2cc904bcfa1f3f4db847bd48ba44390, type: 3}
+  - {fileID: 7543689485446871723, guid: 80a7e92d57ecf3540a444f17dc80baa5, type: 3}
+  - {fileID: 7543689485446871723, guid: 6f9f65eb28d5a9347b0bd1851741cb94, type: 3}
+  - {fileID: 7543689485446871723, guid: 8f122c12acf605a45b5d50659ecc7326, type: 3}
+  - {fileID: 7543689485446871723, guid: 2d6118d22c242474f8eb66bcb4061b0b, type: 3}
+  - {fileID: 4001569752474844438, guid: cb027772592ecf640aa162e4dae76c67, type: 3}
   - {fileID: 7543689485446871723, guid: d7e43793c19aac94295881045ac655b3, type: 3}
-  - {fileID: 7543689485446871723, guid: b2cc904bcfa1f3f4db847bd48ba44390, type: 3}
-  - {fileID: 7543689485446871723, guid: 2d6118d22c242474f8eb66bcb4061b0b, type: 3}
-  - {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421, type: 3}
-  - {fileID: 7543689485446871723, guid: 341929a0bb014a946b26594d50d328dd, type: 3}
-  - {fileID: 7543689485446871723, guid: b2cc904bcfa1f3f4db847bd48ba44390, type: 3}
-  - {fileID: 7543689485446871723, guid: 2d6118d22c242474f8eb66bcb4061b0b, type: 3}
   - {fileID: 7543689485446871723, guid: 0435dd366e1d4284f9b1abbff11a0282, type: 3}
+  - {fileID: 7543689485446871723, guid: 341929a0bb014a946b26594d50d328dd, type: 3}
+  - {fileID: 7543689485446871723, guid: 9f79e7ee664391244a7fbda1ddaacef1, type: 3}
   - {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421, type: 3}
+  - {fileID: 7543689485446871723, guid: 7bd7c44188a1bdc4abaca130e64029fe, type: 3}
+  wavesInGame: []
   solidsParent: {fileID: 0}
+  dropBox: {fileID: 1111331158389035792, guid: d2b78b884e23fc745a1b8bf533055f8a, type: 3}
   boss: {fileID: 9078731143076396796, guid: 3620d2e6d91611341aa1421c8e64b5bf, type: 3}
   bossState: 0
   currentWaveController: {fileID: 0}

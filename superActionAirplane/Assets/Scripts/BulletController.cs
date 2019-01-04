@@ -10,15 +10,17 @@ public class BulletController : MonoBehaviour
     public Rigidbody rb;
 
     Transform target = null;
-    bool charge = false;
+    public bool rocket = false;
+    bool autoAim = false;
 
-    public void SetCharge(bool active)
+    public void SetRocket(bool active)
     {
-        charge = active;
+        rocket = active;
     }
 
-    public void SetTarget(Transform _target, Vector3 offset)
+    public void SetTarget(Transform _target, Vector3 offset, bool _autoAim)
     {
+        autoAim = _autoAim;
         Vector3 newShotTarget = Vector3.zero;
         if (offset != Vector3.zero)
         {
@@ -39,9 +41,14 @@ public class BulletController : MonoBehaviour
 
     private void Update()
     {
-        if (charge && target)
+        if (target == null)
         {
-            transform.LookAt(target.position);
+            target = GameManager.instance.pc.target.transform;
+        }
+        if (rocket && target)
+        {
+            if (autoAim && target.gameObject.activeInHierarchy)
+                transform.LookAt(target.position);
             rb.velocity = transform.forward * speed;
         }
     }

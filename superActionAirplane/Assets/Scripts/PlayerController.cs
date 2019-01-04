@@ -21,16 +21,12 @@ public class PlayerController : MonoBehaviour
 
     float shotDelay = 0;
     public GameObject bullet;
-    public GameObject bulletCharged;
     public List<GameObject> bulletBurst = new List<GameObject>();
+    public List<AdditionalWeaponController> additionalWeapons = new List<AdditionalWeaponController>();
+    public List<Transform> additionalWeaponSpots = new List<Transform>();
     public float bulletBurstDelay = 0.1f;
 
-    bool charge = false;
-    public float chargeTime = 1;
-    public float currentChargeTime = 0;
-
     public Animator animator;
-    public Animator chargeAnimator;
 
     //bool canRollLeft = false;
     //bool canRollRight = false;
@@ -59,16 +55,18 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
         GetMoveRotation();
         Shoot();
-        Charge();
-
-        //charge animate
-        chargeAnimator.SetFloat("Charge",currentChargeTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if ((other.tag == "Solids" && other.gameObject.layer == 9) || (other.gameObject.tag == "Enemies" && other.gameObject.layer == 11))
         Damage();
+    }
+
+    public void GetLive()
+    {
+        lives += 1;
+        GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
     }
 
     public void Damage()
@@ -79,7 +77,7 @@ public class PlayerController : MonoBehaviour
             if (!invinsible)
             {
                 lives -= 1;
-                GameManager.instance.uiLivesController.PlayerDamaged();
+                GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
             }
 
             if (lives > 0)
@@ -300,37 +298,21 @@ public class PlayerController : MonoBehaviour
 
         if (!touchInput)
         {
-            if (Input.GetButtonDown("Fire1") && shotDelay <= 0)
+            if (Input.GetButton("Fire1") && shotDelay <= 0)
             {
                 if (bullet)
                     ShotBullet();
                 else
                     StartCoroutine("ShotBulletBurst");
-            }
-            if (Input.GetButton("Fire1")) // charge
-            {
-                charge = true;
-            }
 
-            if (Input.GetButtonUp("Fire1")  && currentChargeTime > 0) // charged shot
-            {
-                ChargedShot();
+                if (additionalWeapons.Count > 0)
+                {
+                    foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
+                    {
+                        additionalWeapon.Shot();
+                    }
+                }
             }
-        }
-    }
-
-    void ChargedShot()
-    {
-        if (charge)
-            charge = false;
-        currentChargeTime = 0;
-        if (target.chargeMarker.gameObject.activeInHierarchy)
-        {
-            GameObject newBullet = GameObject.Instantiate(bulletCharged, transform.position, Quaternion.identity);
-            BulletController bc = newBullet.GetComponent<BulletController>();
-            bc.SetCharge(true);
-            bc.SetTarget(target.chargeMarker.enemyTarget, Vector3.zero);
-            target.chargeMarker.Shot();
         }
     }
 
@@ -338,7 +320,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
         BulletController _bulletController = newBullet.GetComponent<BulletController>();
-        _bulletController.SetTarget(target.transform, Vector3.zero);
+        _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;
     }
 
@@ -350,12 +332,14 @@ public class PlayerController : MonoBehaviour
             GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
             BulletController _bulletController = newBullet.GetComponent<BulletController>();
             //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
-            _bulletController.SetTarget(target.transform, Vector3.zero);
+            _bulletController.SetTarget(target.transform, Vector3.zero, false);
             shotDelay = _bulletController.delayNextShotTime;
             yield return new WaitForSeconds(bulletBurstDelay);
         }
         animator.SetBool("Shoot", false);
     }
+
+    /*
 
     public void SetCharge(bool active)
     {
@@ -377,6 +361,7 @@ public class PlayerController : MonoBehaviour
             currentChargeTime = 0;
     }
 
+    */
 
     public void ShootByTouch()
     {

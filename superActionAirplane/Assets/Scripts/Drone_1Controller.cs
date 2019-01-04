@@ -7,8 +7,10 @@ public class Drone_1Controller : MonoBehaviour
     public Vector2 shotRandomOffset;
     public bool canShoot = true;
     public GameObject bullet;
+    public List<GameObject> bulletBurst;
     public float shotDelay = 1;
     public float betweenShotsDelay = 1.5f;
+    public float bulletBurstDelay = 0.1f;
 
     public LayerMask layerMask;
 
@@ -48,8 +50,15 @@ public class Drone_1Controller : MonoBehaviour
 
     void Shot()
     {
-        GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
-        newBullet.GetComponent<BulletController>().SetTarget(GameManager.instance.pc.transform,shotRandomOffset);
+        if (bullet) // single bullet
+        {
+            GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
+            newBullet.GetComponent<BulletController>().SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+        }
+        else if (bulletBurst.Count > 0) // bullet burst
+        {
+            StartCoroutine(ShotBulletBurst());
+        }
 
         /*
         Transform playerTransform = GameManager.instance.pc.transform;
@@ -71,6 +80,19 @@ public class Drone_1Controller : MonoBehaviour
             newBullet.GetComponent<BulletController>().SetTarget(playerTransform);
         }
         */
+    }
+
+
+    IEnumerator ShotBulletBurst()
+    {
+        foreach (GameObject go in bulletBurst)
+        {
+            GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
+            BulletController _bulletController = newBullet.GetComponent<BulletController>();
+            //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
+            _bulletController.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+            yield return new WaitForSeconds(bulletBurstDelay);
+        }
     }
 
 }

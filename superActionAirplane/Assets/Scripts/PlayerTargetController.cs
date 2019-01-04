@@ -7,7 +7,6 @@ public class PlayerTargetController : MonoBehaviour
     public GameObject targetCrosshair;
     public float speed = 1;
     float groundLevel = -6;
-    public ChargeMarkerController chargeMarker;
 
     private void Awake()
     {
@@ -25,14 +24,6 @@ public class PlayerTargetController : MonoBehaviour
         if ( GameManager.instance.pc.aimAssist.currentTargetTransform != null) // if enemy is in range
         {
             newPos = Vector3.Lerp(transform.position, GameManager.instance.pc.aimAssist.currentTargetTransform.position, 0.9f * Time.deltaTime * speed);
-            if (GameManager.instance.pc.currentChargeTime >= GameManager.instance.pc.chargeTime) // if charge is ready
-            {
-                if (!chargeMarker.gameObject.activeInHierarchy)
-                {
-                    chargeMarker.gameObject.SetActive(true);
-                    chargeMarker.SetTarget(GameManager.instance.pc.aimAssist.currentTargetTransform);
-                }
-            }
         }
         else
         {

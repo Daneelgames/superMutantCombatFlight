@@ -593,10 +593,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb102a88d791044a6b8aed779d87c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotRandomOffset: {x: 0, y: 0}
   canShoot: 1
   bullet: {fileID: 2215745776762814028, guid: 6d67e2983c8772d4c8fb91d8150017d1, type: 3}
+  bulletBurst: []
   shotDelay: 1.5
   betweenShotsDelay: 1.5
+  bulletBurstDelay: 0.1
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -747,10 +750,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb102a88d791044a6b8aed779d87c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotRandomOffset: {x: 0, y: 0}
   canShoot: 1
   bullet: {fileID: 2215745776762814028, guid: 6d67e2983c8772d4c8fb91d8150017d1, type: 3}
+  bulletBurst: []
   shotDelay: 1.5
   betweenShotsDelay: 1.5
+  bulletBurstDelay: 0.1
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -1662,10 +1668,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cb102a88d791044a6b8aed779d87c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotRandomOffset: {x: 1, y: 1}
   canShoot: 1
   bullet: {fileID: 2215745776762814028, guid: 6d67e2983c8772d4c8fb91d8150017d1, type: 3}
+  bulletBurst: []
   shotDelay: 1
   betweenShotsDelay: 0.1
+  bulletBurstDelay: 0.1
   layerMask:
     serializedVersion: 2
     m_Bits: 0

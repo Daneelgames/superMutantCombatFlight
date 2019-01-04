@@ -162,6 +162,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8071139308801820651, guid: 96f3e6d394309224f9377133daedf629,
+        type: 3}
+      propertyPath: waveController
+      value: 
+      objectReference: {fileID: 2096821587062041186}
+    - target: {fileID: 8071139308801820651, guid: 96f3e6d394309224f9377133daedf629,
+        type: 3}
+      propertyPath: health
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5970029358301380396, guid: 96f3e6d394309224f9377133daedf629,
         type: 3}
       propertyPath: betweenShotsDelay
@@ -172,15 +182,15 @@ PrefabInstance:
       propertyPath: shotDelay
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8071139308801820651, guid: 96f3e6d394309224f9377133daedf629,
+    - target: {fileID: 5970029358301380396, guid: 96f3e6d394309224f9377133daedf629,
         type: 3}
-      propertyPath: waveController
-      value: 
-      objectReference: {fileID: 2096821587062041186}
-    - target: {fileID: 8071139308801820651, guid: 96f3e6d394309224f9377133daedf629,
+      propertyPath: shotRandomOffset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970029358301380396, guid: 96f3e6d394309224f9377133daedf629,
         type: 3}
-      propertyPath: health
-      value: 9
+      propertyPath: shotRandomOffset.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f3e6d394309224f9377133daedf629, type: 3}

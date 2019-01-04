@@ -7,13 +7,16 @@ public class UiLivesController : MonoBehaviour
 {
     public List<Image> hearts = new List<Image>();
 
-    public void PlayerDamaged()
+    public void UpdateLivesUI()
     {
         int playerLives = GameManager.instance.pc.lives;
-        foreach(Image i in hearts)
+
+        for (int i = 0; i < hearts.Count; i ++)
         {
-            if (hearts.IndexOf(i) + 1 > playerLives)
-                i.enabled = false;
+            if (i + 1 > playerLives)
+                hearts[i].enabled = false;
+            else if (i + 1 == playerLives)
+                hearts[i].enabled = true;
         }
     }
 }
