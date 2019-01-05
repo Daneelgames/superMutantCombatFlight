@@ -1202,6 +1202,7 @@ ModelImporter:
     401194: WGT-rig_VIS_upper_arm_ik_pole.R
     401196: WGTS_rig
     2100000: No Name
+    2100002: Material
     2300000: body
     2300002: leftArm
     2300004: leftTurbine

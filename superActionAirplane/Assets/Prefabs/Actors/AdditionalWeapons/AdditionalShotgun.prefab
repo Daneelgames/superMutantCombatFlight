@@ -134,7 +134,17 @@ MonoBehaviour:
   - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
   - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
   - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
-  delay: 2
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  - {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d, type: 3}
+  delay: 1
 --- !u!1 &7190729620391352616
 GameObject:
   m_ObjectHideFlags: 0

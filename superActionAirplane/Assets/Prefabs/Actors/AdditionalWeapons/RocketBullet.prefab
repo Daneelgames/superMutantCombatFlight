@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bd9db331ad54e428bcb256573929d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayNextShotTime: 0.75
+  delayNextShotTime: 1
   speed: 10
   lifeTime: 5
   rb: {fileID: 4959465482014204621}

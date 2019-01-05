@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour
     public Rigidbody rb;
 
     Transform target = null;
+    Vector3 targetPosition = Vector3.zero;
     public bool rocket = false;
     bool autoAim = false;
 
@@ -41,14 +42,14 @@ public class BulletController : MonoBehaviour
 
     private void Update()
     {
-        if (target == null)
-        {
-            target = GameManager.instance.pc.target.transform;
-        }
         if (rocket && target)
         {
             if (autoAim && target.gameObject.activeInHierarchy)
-                transform.LookAt(target.position);
+            {
+                if (target != null)
+                    transform.LookAt(target.position);
+
+            }
             rb.velocity = transform.forward * speed;
         }
     }

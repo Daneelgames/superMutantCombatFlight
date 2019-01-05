@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public List<AdditionalWeaponController> additionalWeapons = new List<AdditionalWeaponController>();
     public List<Transform> additionalWeaponSpots = new List<Transform>();
     public float bulletBurstDelay = 0.1f;
+    public Transform shotHolder;
 
     public Animator animator;
 
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     bool hurt = false;
 
     bool touchInput = false;
+
+    public float touchMovementScaler = 1.5f;
 
     private void Start()
     {
@@ -112,118 +115,15 @@ public class PlayerController : MonoBehaviour
         if (!touchInput)
             _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         else
-            _move = new Vector2(GameManager.instance.touchInputController.joystick.Horizontal, GameManager.instance.touchInputController.joystick.Vertical);
-        //movementVector = new Vector2(_x, _y);
-
-        /*
-        if (rolling == 0 && !touchInput)
-        {
-            if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0)
-            {
-                canRollRight = false;
-
-                if (!canRollLeft)
-                {
-                    rollInputDelay = rollInputDelayMax;
-                    canRollLeft = true;
-                }
-                else if (rollInputDelay > 0)
-                {
-                    canRollLeft = false;
-                    rolling = -1;
-                    StartCoroutine(Roll());
-                }
-            }
-
-            if (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0)
-            {
-                canRollLeft = false;
-
-                if (!canRollRight)
-                {
-                    rollInputDelay = rollInputDelayMax;
-                    canRollRight = true;
-                }
-                else if (rollInputDelay > 0)
-                {
-                    canRollRight = false;
-                    rolling = 1;
-                    StartCoroutine(Roll());
-                }
-            }
-        }
-
-        if (rollInputDelay > 0)
-            rollInputDelay -= Time.deltaTime;
-        else
-        {
-            rollInputDelay = 0;
-            canRollLeft = false;
-            canRollRight = false;
-        }
-        */
+            _move = new Vector2(GameManager.instance.touchInputController.joystick.Horizontal, GameManager.instance.touchInputController.joystick.Vertical) * touchMovementScaler;
     }
 
-    /*
-    public void RollByTouch()
-    {
-        if (touchInput)
-        {
-            if (_move.x >0)
-            {
-                rolling = 1;
-                StartCoroutine(Roll());
-            }
-            else if (_move.x < 0)
-            {
-                rolling = -1;
-                StartCoroutine(Roll());
-            }
-        }
-    }
-
-    IEnumerator Roll()
-    {
-        for (float t = 0.15f; t > 0; t -= Time.deltaTime)
-        {
-            yield return null;
-        }
-        rolling = 0;
-    }
-
-    */
 
     void GetMoveRotation()
     {
         _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, _move.y * -30, 0.9f * Time.deltaTime * 10f);
         _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, _move.x * 50, 0.9f * Time.deltaTime * 10f);
         _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, _move.x * -50, 0.9f * Time.deltaTime * 10f);
-
-        /*
-        if (rolling == 0)
-        {
-            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, _move.y * -30, 0.9f * Time.deltaTime * 10f);
-            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, _move.x * 50, 0.9f * Time.deltaTime * 10f);
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, _move.x * -50, 0.9f * Time.deltaTime * 10f);
-        }
-        else
-        {
-            _moveRotation.z += 1200 * -rolling * Time.deltaTime;
-        }
-
-        if (_move.x < 0)
-        {
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 50, 0.9f * Time.deltaTime*10f);
-        }
-        else if (_move.x == 0)
-        {
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
-        }
-        else if (_move.x > 0)
-        {
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, -50, 0.9f * Time.deltaTime * 10f);
-        }
-        */
     }
 
     void FixedUpdate()
@@ -232,21 +132,6 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         RotatePlayer();
     }
-
-    /*
-    IEnumerator Roll(Vector3 byAngles, float inTime)
-    {
-        var fromAngle = transform.rotation;
-        //var toAngle = Quaternion.Euler(transform.eulerAngles + byAngles);
-        var toAngle = Quaternion.Euler(0,0,-360);
-        for (var t = 0f; t < 0.5f; t += Time.deltaTime / inTime)
-        {
-            transform.rotation = Quaternion.Lerp(fromAngle, toAngle, t);
-            yield return null;
-        }
-        rolling = 0;
-    }
-    */
 
     Vector2 ClampMovement(Vector2 move)
     {
@@ -301,7 +186,10 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Fire1") && shotDelay <= 0)
             {
                 if (bullet)
+                {
+                    animator.SetBool("Shoot", true);
                     ShotBullet();
+                }
                 else
                     StartCoroutine("ShotBulletBurst");
 
@@ -313,12 +201,17 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+            if (!Input.GetButton("Fire1") && bullet)
+            {
+                animator.SetBool("Shoot", false);
+            }
         }
     }
 
     void ShotBullet()
     {
-        GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
         BulletController _bulletController = newBullet.GetComponent<BulletController>();
         _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;
@@ -365,12 +258,23 @@ public class PlayerController : MonoBehaviour
 
     public void ShootByTouch()
     {
-        if (touchInput && shotDelay <= 0)
+        if (touchInput)
         {
-            if (bullet)
-                ShotBullet();
-            else
-                StartCoroutine("ShotBulletBurst");
+            if (shotDelay <= 0)
+            {
+                if (bullet)
+                    ShotBullet();
+                else
+                    StartCoroutine("ShotBulletBurst");
+            }
+            
+            if (additionalWeapons.Count > 0)
+            {
+                foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
+                {
+                    additionalWeapon.Shot();
+                }
+            }
         }
     }
 }

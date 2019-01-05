@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropBoxController : MonoBehaviour
 {
     public int type = 0;
+    public float lifeTime = 5;
     public Destructible destructibleController;
     public Animator anim;
 
@@ -13,7 +14,7 @@ public class DropBoxController : MonoBehaviour
 
     private void Start()
     {
-      //  Invoke("DestroyDropBox", 5);
+        Invoke("DestroyDropBox", lifeTime);
     }
 
     void DestroyDropBox()

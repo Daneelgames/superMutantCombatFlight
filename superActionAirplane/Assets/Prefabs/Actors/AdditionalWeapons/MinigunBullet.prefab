@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4959465482014204621}
   - component: {fileID: 6728837602618380694}
   m_Layer: 10
-  m_Name: BulletSmall
+  m_Name: MinigunBullet
   m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayNextShotTime: 0.1
-  speed: 100
+  speed: 80
   lifeTime: 1
   rb: {fileID: 4959465482014204621}
   rocket: 0
@@ -93,8 +93,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.07
-  m_Height: 1
+  m_Radius: 0.1
+  m_Height: 0.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2215745777121052868
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 2215745777121052868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2215745776762814030}
   m_RootOrder: 0
