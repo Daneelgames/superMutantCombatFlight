@@ -157,6 +157,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640591588437409764}
     m_Modifications:
+    - target: {fileID: 8071139308801820650, guid: 96f3e6d394309224f9377133daedf629,
+        type: 3}
+      propertyPath: m_Name
+      value: Drone_1
+      objectReference: {fileID: 0}
     - target: {fileID: 2730747398978791342, guid: 96f3e6d394309224f9377133daedf629,
         type: 3}
       propertyPath: m_LocalRotation.x

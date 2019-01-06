@@ -23,11 +23,6 @@ public class DropBoxController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void SetUninvincible()
-    {
-        destructibleController.SetInvincible(false);
-    }
-
     public void SetType(int _type) // 0 = health; 1 = weapon
     {
         foreach(GameObject go in sprites)
@@ -40,9 +35,6 @@ public class DropBoxController : MonoBehaviour
 
         anim.SetInteger("State", type);
         anim.SetTrigger("Play");
-
-        destructibleController.SetInvincible(true);
-        Invoke("SetUninvincible", 1); // this is needed for dropbox don't die in first moment
     }
 
     public void DropHealth()

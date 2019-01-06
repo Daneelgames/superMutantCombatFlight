@@ -5,13 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public bool invinsible = false;
-
     public int lives = 3;
-
     public float movementSpeed = 1;
-    //public int rolling = 0; //-1 roll left; 1 roll right
-    //public float rollInputDelayMax = 0.2f;
-    //float rollInputDelay = 0.3f;
 
     public PlayerTargetController target;
     public PlayerTargetController target_2;
@@ -29,20 +24,17 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    //bool canRollLeft = false;
-    //bool canRollRight = false;
-
     Vector2 movementVector;
     public Rigidbody rb; 
     Vector2 _move;
     Vector3 _moveRotation = Vector3.zero;
-
 
     bool hurt = false;
 
     bool touchInput = false;
 
     public float touchMovementScaler = 1.5f;
+    public SkinnedMeshRenderer mesh;
 
     private void Start()
     {
@@ -81,6 +73,11 @@ public class PlayerController : MonoBehaviour
             {
                 lives -= 1;
                 GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
+                foreach (AdditionalWeaponController w in additionalWeapons)
+                {
+                    w.Remove();
+                }
+                additionalWeapons.Clear();
             }
 
             if (lives > 0)
@@ -101,11 +98,34 @@ public class PlayerController : MonoBehaviour
     {
        // animator.SetBool("Hurt", true);
         hurt = true;
-        for (float t = 1; t>0; t -= Time.deltaTime)
+        mesh.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        mesh.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+
+        /*
+        for (float t = 1; t>0; t -= 0.1f)
         {
-            yield return null;
         }
-       // animator.SetBool("Hurt", false);
+        */
+        // animator.SetBool("Hurt", false);
+        mesh.enabled = true;
         hurt = false;
     }
 
@@ -160,13 +180,6 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        /*
-        if (rolling != 0)
-        {
-            movementVector.x = 2 * rolling;
-        }
-        */
-
         Vector3 force = new Vector3(movementVector.x, movementVector.y, 0);
         rb.velocity = force * movementSpeed;
     }
@@ -231,30 +244,6 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetBool("Shoot", false);
     }
-
-    /*
-
-    public void SetCharge(bool active)
-    {
-        charge = active;
-        if(currentChargeTime >= chargeTime)
-        {
-            ChargedShot();
-        }
-    }
-
-    public void Charge()
-    {
-        if (charge)
-        {
-            if (currentChargeTime < chargeTime)
-                currentChargeTime += Time.deltaTime;
-        }
-        else
-            currentChargeTime = 0;
-    }
-
-    */
 
     public void ShootByTouch()
     {

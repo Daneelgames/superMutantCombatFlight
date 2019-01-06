@@ -17,7 +17,7 @@ public class SpawnerController : MonoBehaviour
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
-    int currentWave = 0;
+    public int currentWave = 0;
     public GameObject solidsParent;
     public GameObject dropBox;
 

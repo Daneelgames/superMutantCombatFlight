@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  lifeTime: 10
   destructibleController: {fileID: 1111331158389035793}
   anim: {fileID: 1330575999}
   sprites:

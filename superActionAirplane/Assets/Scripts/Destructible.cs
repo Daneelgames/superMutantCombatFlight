@@ -18,7 +18,7 @@ public class Destructible : MonoBehaviour
     private void Start()
     {
         if (waveController)
-        waveController.AddEnemy(gameObject);
+            waveController.AddEnemy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,6 +47,7 @@ public class Destructible : MonoBehaviour
 
                 if (waveController) //if gameObject is an enemy
                 {
+                    Drop();
                     waveController.EnemyDestroyed(gameObject);
                     Destroyed();
                 }
@@ -66,7 +67,6 @@ public class Destructible : MonoBehaviour
     }
     void Destroyed()
     {
-        Drop();
         GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
         gameObject.SetActive(false);
     }
@@ -80,11 +80,17 @@ public class Destructible : MonoBehaviour
     {
         if (dropBox == null) // drop from enemy
         {
-            float randomDrop = Random.Range(0f, 100f);
-            if (randomDrop > 75f)
+            if (GameManager.instance.spawnerController.currentWave == 0)
             {
-
                 DropDropBox();
+            }
+            else
+            {
+                float randomDrop = Random.Range(0f, 100f);
+                if (randomDrop > 75f)
+                {
+                    DropDropBox();
+                }
             }
         }
         else // drop from dropBox
@@ -104,14 +110,21 @@ public class Destructible : MonoBehaviour
     {
         GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
 
-        float random = Random.Range(0f, 100f);
-        if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+        if (GameManager.instance.spawnerController.currentWave == 0)
         {
-            drop.GetComponent<DropBoxController>().SetType(0); // health
+            drop.GetComponent<DropBoxController>().SetType(1); // weapon
         }
         else
         {
-            drop.GetComponent<DropBoxController>().SetType(1); // weapon
+            float random = Random.Range(0f, 100f);
+            if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+            {
+                drop.GetComponent<DropBoxController>().SetType(0); // health
+            }
+            else
+            {
+                drop.GetComponent<DropBoxController>().SetType(1); // weapon
+            }
         }
     }
 }

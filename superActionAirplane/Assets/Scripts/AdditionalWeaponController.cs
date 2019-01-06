@@ -9,6 +9,9 @@ public class AdditionalWeaponController : MonoBehaviour
     public List<GameObject> bulletBurst;
     public float delay = 1;
     float currentDelay = 0;
+    public GameObject smallExplosion;
+    public Transform shotHolder;
+    public Animator anim;
 
     Transform weaponSpot; // spot for weapon parented by player
 
@@ -42,7 +45,9 @@ public class AdditionalWeaponController : MonoBehaviour
         {
             if (bullet != null)
             {
-                GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
+                if (anim)
+                    anim.SetTrigger("Shoot");
+                GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
                 BulletController bc = newBullet.GetComponent<BulletController>();
                 Transform newTarget;
                 bool autoAim = false;
@@ -83,7 +88,10 @@ public class AdditionalWeaponController : MonoBehaviour
         currentDelay = delay;
         foreach (GameObject go in bulletBurst)
         {
-            GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
+            if (anim)
+                anim.SetTrigger("Shoot");
+
+            GameObject newBullet = GameObject.Instantiate(go, shotHolder.position, Quaternion.identity);
             BulletController _bulletController = newBullet.GetComponent<BulletController>();
             if (_newTarget != null)
             {
@@ -96,6 +104,7 @@ public class AdditionalWeaponController : MonoBehaviour
 
     public void Remove()
     {
-        Destroy(gameObject, 1);
+        Instantiate(smallExplosion, shotHolder.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

@@ -14,6 +14,9 @@ public class Drone_1Controller : MonoBehaviour
 
     public LayerMask layerMask;
 
+    public GameObject shotHolder;
+    public Animator anim;
+
     void Start()
     {
         InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
@@ -52,42 +55,31 @@ public class Drone_1Controller : MonoBehaviour
     {
         if (bullet) // single bullet
         {
-            GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
+            if (anim)
+                anim.SetTrigger("Shot");
+
+            Vector3 shotOrigintPos = transform.position;
+            if (shotHolder)
+                shotOrigintPos = shotHolder.transform.position;
+
+            GameObject newBullet = GameObject.Instantiate(bullet, shotOrigintPos, Quaternion.identity);
             newBullet.GetComponent<BulletController>().SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
         }
         else if (bulletBurst.Count > 0) // bullet burst
         {
             StartCoroutine(ShotBulletBurst());
         }
-
-        /*
-        Transform playerTransform = GameManager.instance.pc.transform;
-        RaycastHit hit;
-
-        bool playerIsOnSight = true;
-        if (Physics.Raycast(transform.position, GameManager.instance.pc.transform.position, out hit, Vector3.Distance(transform.position, playerTransform.position), layerMask))
-        {
-            if (hit.collider.tag == "Enemies" || hit.collider.tag == "Solids")
-            {
-                if (Vector3.Distance(transform.position, playerTransform.position) > Vector3.Distance(transform.position, hit.collider.transform.position)) // if hit is closer than player
-                    playerIsOnSight = false;
-            }
-        }
-
-        if (playerIsOnSight)
-        {
-            GameObject newBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.identity);
-            newBullet.GetComponent<BulletController>().SetTarget(playerTransform);
-        }
-        */
     }
-
 
     IEnumerator ShotBulletBurst()
     {
         foreach (GameObject go in bulletBurst)
         {
-            GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
+            Vector3 shotOrigintPos = transform.position;
+            if (shotHolder)
+                shotOrigintPos = shotHolder.transform.position;
+
+            GameObject newBullet = GameObject.Instantiate(go, shotOrigintPos, Quaternion.identity);
             BulletController _bulletController = newBullet.GetComponent<BulletController>();
             //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
             _bulletController.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
@@ -95,4 +87,9 @@ public class Drone_1Controller : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (GameManager.instance.pc)
+            transform.LookAt(GameManager.instance.pc.transform);
+    }
 }
