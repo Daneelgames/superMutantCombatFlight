@@ -4,41 +4,75 @@ using UnityEngine;
 
 public class HideSolidController : MonoBehaviour
 {
-    bool hide = false;
-    float spritesAlpha = 1;
-   
     public List<Collider> colliders;
-    public List<SpriteRenderer> sprites;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            HideSolid();
-        }
-
-        if (hide)
-        {
-            if (spritesAlpha > 0)
-            {
-                spritesAlpha -= Time.deltaTime;
-
-                foreach (SpriteRenderer spr in sprites)
-                {
-                    spr.color = new Color(spr.color.r, spr.color.b, spr.color.g, spritesAlpha);
-                }
-            }
-        }
-    }
+    public List<GameObject> art;
 
     public void HideSolid()
     {
         foreach(Collider coll in colliders)
             coll.enabled = false;
 
-        foreach (SpriteRenderer spr in sprites)
+        if (art.Count > 0)
         {
-            hide = true;
+            StartCoroutine("Hide");
+        }
+    }
+
+    IEnumerator Hide()
+    {
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject obj in art)
+        {
+            obj.SetActive(false);
         }
     }
 }

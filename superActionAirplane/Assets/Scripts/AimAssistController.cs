@@ -22,6 +22,8 @@ public class AimAssistController : MonoBehaviour
 
     void CheckClosestTarget()
     {
+        DeleteMissings();
+
         if (targetsInRange.Count > 0)
         {
             float minDistance = 100;
@@ -42,26 +44,40 @@ public class AimAssistController : MonoBehaviour
             currentTargetTransform = null;
     }
 
+    void DeleteMissings()
+    {
+        for (var i = targetsInRange.Count - 1; i > -1; i--)
+        {
+            if (targetsInRange[i] == null)
+                targetsInRange.RemoveAt(i);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 11 && other.gameObject.tag == "Enemies" || (other.gameObject.layer == 12 && other.gameObject.tag == "Drop"))
+        if (other.gameObject.activeInHierarchy)
         {
-            targetsInRange.Add(other.gameObject.transform);
+            if (other.gameObject.layer == 11 && other.gameObject.tag == "Enemies" || (other.gameObject.layer == 12 && other.gameObject.tag == "Drop"))
+            {
+                targetsInRange.Add(other.gameObject.transform);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 11 && other.gameObject.tag == "Enemies" || (other.gameObject.layer == 12 && other.gameObject.tag == "Drop"))
+         if (other.gameObject.layer == 11 && other.gameObject.tag == "Enemies" || (other.gameObject.layer == 12 && other.gameObject.tag == "Drop"))
         {
-            if (targetsInRange.Contains(other.transform))
+            //if (targetsInRange.Contains(other.transform))
                 targetsInRange.Remove(other.gameObject.transform);
         }
     }
 
     public void RemoveDeadEnemy(GameObject enemy)
     {
-        foreach(Transform targetTransform in targetsInRange)
+        targetsInRange.Remove(enemy.transform);
+        /*
+        foreach (Transform targetTransform in targetsInRange)
         {
             if (enemy.transform == targetTransform)
             {
@@ -69,5 +85,6 @@ public class AimAssistController : MonoBehaviour
                 break;
             }
         }
+        */
     }
 }

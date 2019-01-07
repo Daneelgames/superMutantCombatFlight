@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
-    public float speed = 10;
+    public float speed = 100;
     public HideSolidController hideSolidController;
 
     private void Start()

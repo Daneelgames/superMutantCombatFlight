@@ -86,10 +86,10 @@ public class AdditionalWeaponController : MonoBehaviour
     IEnumerator ShotBulletBurst(Transform _newTarget)
     {
         currentDelay = delay;
+        if (anim)
+            anim.SetTrigger("Shoot");
         foreach (GameObject go in bulletBurst)
         {
-            if (anim)
-                anim.SetTrigger("Shoot");
 
             GameObject newBullet = GameObject.Instantiate(go, shotHolder.position, Quaternion.identity);
             BulletController _bulletController = newBullet.GetComponent<BulletController>();

@@ -8,6 +8,10 @@ public class DropBoxController : MonoBehaviour
     public float lifeTime = 5;
     public Destructible destructibleController;
     public Animator anim;
+    public Rigidbody rb;
+    public float speed = 1;
+
+    bool moveUp = true;
 
     [Header("0 is medpack, 1 is weapon")]
     public List<GameObject> sprites;
@@ -15,6 +19,26 @@ public class DropBoxController : MonoBehaviour
     private void Start()
     {
         Invoke("DestroyDropBox", lifeTime);
+        InvokeRepeating("SetVelocity", 0.1f, 0.1f);
+
+        StartCoroutine(SetMovementDirection(true));
+    }
+
+    IEnumerator SetMovementDirection(bool _moveUp)
+    {
+        moveUp = _moveUp;
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(SetMovementDirection(!_moveUp));
+    }
+
+    private void SetVelocity()
+    {
+        if (moveUp)
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.up, 0.9f * Time.deltaTime * speed);
+        else
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.down, 0.9f * Time.deltaTime * speed);
     }
 
     void DestroyDropBox()
@@ -63,7 +87,7 @@ public class DropBoxController : MonoBehaviour
                 if (canBeAdded)
                 {
                     tempList.Add(weaponInSpawner);
-                    print(weaponInSpawner); // PRINT HERE
+                    //print(weaponInSpawner); // PRINT HERE
                 }
             }
             weaponIndex = Random.Range(0, tempList.Count);

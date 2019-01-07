@@ -84,7 +84,6 @@ public class BossFaceAnimationEventController : MonoBehaviour
 
     public void SetMouthInactive()
     {
-        print("mouthDronesInactive");
         foreach (Drone_1Controller drone in mouthDrone_1Controllers)
         {
             drone.gameObject.SetActive(false);
@@ -93,7 +92,6 @@ public class BossFaceAnimationEventController : MonoBehaviour
 
     public void SetMouthActive()
     {
-        print("mouthDronesActive");
         foreach (Drone_1Controller drone in mouthDrone_1Controllers)
         {
             drone.gameObject.SetActive(true);

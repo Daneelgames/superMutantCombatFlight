@@ -274,6 +274,8 @@ MonoBehaviour:
   lifeTime: 10
   destructibleController: {fileID: 1111331158389035793}
   anim: {fileID: 1330575999}
+  rb: {fileID: 2955163955971591287}
+  speed: 20
   sprites:
   - {fileID: 235008603264685287}
   - {fileID: 661329790935866397}

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     bool touchInput = false;
 
-    public float touchMovementScaler = 1.5f;
+    public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
 
     private void Start()
@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (bullet)
                 {
-                    animator.SetBool("Shoot", true);
+                    ShotAnim(true);
                     ShotBullet();
                 }
                 else
@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
 
             if (!Input.GetButton("Fire1") && bullet)
             {
-                animator.SetBool("Shoot", false);
+                ShotAnim(false);
             }
         }
     }
@@ -265,5 +265,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ShotAnim(bool _true)
+    {
+        animator.SetBool("Shoot", _true);
     }
 }

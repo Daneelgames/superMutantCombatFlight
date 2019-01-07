@@ -24,6 +24,8 @@ public class SpawnerController : MonoBehaviour
     public GameObject boss;
     public bool bossState = false;
 
+    public Animator skyAnim;
+
     [HideInInspector]
     public WaveController currentWaveController;
 
@@ -111,6 +113,7 @@ public class SpawnerController : MonoBehaviour
     void SpawnBoss()
     {
         bossState = true;
+        skyAnim.SetBool("Boss", true);
         GameObject.Instantiate(boss, Vector3.zero, Quaternion.identity);
         Invoke("HideSolids", 1);
     }
