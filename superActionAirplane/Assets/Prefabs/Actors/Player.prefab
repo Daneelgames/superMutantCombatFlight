@@ -436,7 +436,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 9ac8e7ff84fd469439c0286e245286c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_FlipX: 0
@@ -10301,7 +10301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c5a260f3f8e34a9ebeb846ba52dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invinsible: 0
+  invinsible: 1
   lives: 3
   movementSpeed: 10
   target: {fileID: 7165788225807763246}
@@ -10320,7 +10320,7 @@ MonoBehaviour:
   shotHolder: {fileID: 384672077776141691}
   animator: {fileID: 3933979342327177557}
   rb: {fileID: 9129881597683822455}
-  touchMovementScaler: 1.5
+  touchMovementScaler: 1.2
   mesh: {fileID: 7300593451248520043}
 --- !u!54 &9129881597683822455
 Rigidbody:

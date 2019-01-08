@@ -82,7 +82,11 @@ public class DropBoxController : MonoBehaviour
                 bool canBeAdded = true;
                 foreach (AdditionalWeaponController weaponOnPlayer in GameManager.instance.pc.additionalWeapons)
                 {
-                    if (weaponInSpawner.name == weaponOnPlayer.name) canBeAdded = false;
+                    if (weaponInSpawner.name == weaponOnPlayer.name)
+                    {
+                        canBeAdded = false;
+                        print(weaponOnPlayer.name + " and " + weaponInSpawner.name);
+                    }
                 }
                 if (canBeAdded)
                 {
@@ -91,6 +95,7 @@ public class DropBoxController : MonoBehaviour
                 }
             }
             weaponIndex = Random.Range(0, tempList.Count);
+            print(weaponIndex);
             newWeapon = Instantiate(tempList[weaponIndex].gameObject, transform.position, Quaternion.identity);
         }
         else

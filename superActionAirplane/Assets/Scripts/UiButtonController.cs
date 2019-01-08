@@ -4,22 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UiButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UiButtonController : MonoBehaviour, IPointerDownHandler //, IPointerUpHandler
 {
     public string buttonName = "Roll";
-    bool shoot = false;
+    //bool shoot = false;
     public Text speedText;
     public Text invincibleText;
     public Animator skyAnim;
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        /*
         if (buttonName == "Fire_1")
         {
             shoot = true;
             GameManager.instance.pc.ShotAnim(true);
         }
-        else if (buttonName == "Invinsible")
+        */
+
+        if (buttonName == "Invinsible")
         {
             GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
         }
@@ -38,6 +41,7 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler, IPointerUp
         }
     }
 
+    /*
     public void OnPointerUp(PointerEventData eventData)
     {
         if (buttonName == "Fire_1")
@@ -46,10 +50,11 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler, IPointerUp
             GameManager.instance.pc.ShotAnim(false);
         }
     }
-
+    */
+    
     private void Update()
     {
-        if (shoot) GameManager.instance.pc.ShootByTouch();
+        //if (shoot) GameManager.instance.pc.ShootByTouch();
         if (speedText) speedText.text = "Player speed is " + GameManager.instance.pc.touchMovementScaler;
         if (invincibleText) invincibleText.text = "Player invincible: " + GameManager.instance.pc.invinsible;
     }

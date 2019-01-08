@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         PlayerInput();
         GetMoveRotation();
         Shoot();
+        ShootByTouch();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -193,14 +194,12 @@ public class PlayerController : MonoBehaviour
     {
         if (shotDelay > 0)
             shotDelay -= Time.deltaTime;
-
-        if (!touchInput)
+        else
         {
-            if (Input.GetButton("Fire1") && shotDelay <= 0)
+            if (!touchInput)
             {
                 if (bullet)
                 {
-                    ShotAnim(true);
                     ShotBullet();
                 }
                 else
@@ -213,11 +212,6 @@ public class PlayerController : MonoBehaviour
                         additionalWeapon.Shot();
                     }
                 }
-            }
-
-            if (!Input.GetButton("Fire1") && bullet)
-            {
-                ShotAnim(false);
             }
         }
     }
@@ -232,7 +226,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShotBulletBurst()
     {
-        animator.SetBool("Shoot", true);
         foreach (GameObject go in bulletBurst)
         {
             GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
@@ -242,7 +235,6 @@ public class PlayerController : MonoBehaviour
             shotDelay = _bulletController.delayNextShotTime;
             yield return new WaitForSeconds(bulletBurstDelay);
         }
-        animator.SetBool("Shoot", false);
     }
 
     public void ShootByTouch()
@@ -265,10 +257,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void ShotAnim(bool _true)
-    {
-        animator.SetBool("Shoot", _true);
     }
 }
