@@ -10301,7 +10301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c5a260f3f8e34a9ebeb846ba52dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invinsible: 1
+  invinsible: 0
   lives: 3
   movementSpeed: 10
   target: {fileID: 7165788225807763246}

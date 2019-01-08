@@ -12,23 +12,34 @@ public class AdditionalWeaponController : MonoBehaviour
     public GameObject smallExplosion;
     public Transform shotHolder;
     public Animator anim;
+    PlayerController pc;
 
     Transform weaponSpot; // spot for weapon parented by player
 
+    private void Awake()
+    {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
     private void Start()
     {
-        if (GameManager.instance.pc.additionalWeapons.Count < 3) // if there is a free spot
+        if (pc.additionalWeapons.Count < 3) // if there is a free spot
         {
-            weaponSpot = GameManager.instance.pc.additionalWeaponSpots[GameManager.instance.pc.additionalWeapons.Count]; // take free spot 
-            GameManager.instance.pc.additionalWeapons.Add(this); // add weapon
+            weaponSpot = pc.additionalWeaponSpots[pc.additionalWeapons.Count]; // take free spot 
+            pc.additionalWeapons.Add(this); // add weapon
         }
         else // if there is no free spot
         {
-            int index = Random.Range(0,3); // take random spot
-            GameManager.instance.pc.additionalWeapons[index].Remove();
-            GameManager.instance.pc.additionalWeapons[index] = this; // replace existing weapon
-            weaponSpot = GameManager.instance.pc.additionalWeaponSpots[index]; 
+            GetWeaponSpot();
         }
+    }
+
+    void GetWeaponSpot()
+    {
+        int index = Random.Range(0, 3); // take random spot
+        pc.additionalWeapons[index].Remove();
+        pc.additionalWeapons[index] = this; // replace existing weapon
+        weaponSpot = pc.additionalWeaponSpots[index];
     }
 
     private void Update()
@@ -37,6 +48,7 @@ public class AdditionalWeaponController : MonoBehaviour
             currentDelay -= Time.deltaTime;
 
         transform.position = Vector3.Lerp(transform.position, weaponSpot.position, 0.7f * Time.deltaTime * 10);
+
     }
     
     public void Shot()
@@ -51,16 +63,16 @@ public class AdditionalWeaponController : MonoBehaviour
                 BulletController bc = newBullet.GetComponent<BulletController>();
                 Transform newTarget;
                 bool autoAim = false;
-                if (GameManager.instance.pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
+                if (pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
                 {
                     if (bc.rocket)
                         autoAim = true;
 
-                    newTarget = GameManager.instance.pc.aimAssist.currentTargetTransform;
+                    newTarget = pc.aimAssist.currentTargetTransform;
                 }
                 else
                 {
-                    newTarget = GameManager.instance.pc.target.transform;
+                    newTarget = pc.target.transform;
                 }
 
                 bc.SetTarget(newTarget, new Vector3(offset.x, offset.y, 0), autoAim);
@@ -70,13 +82,13 @@ public class AdditionalWeaponController : MonoBehaviour
             else if (bulletBurst.Count > 0) // bullet burst
             {
                 Transform newTarget;
-                if (GameManager.instance.pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
+                if (pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
                 {
-                    newTarget = GameManager.instance.pc.aimAssist.currentTargetTransform;
+                    newTarget = pc.aimAssist.currentTargetTransform;
                 }
                 else
                 {
-                    newTarget = GameManager.instance.pc.target.transform;
+                    newTarget = pc.target.transform;
                 }
                 StartCoroutine(ShotBulletBurst(newTarget));
             }
@@ -95,7 +107,7 @@ public class AdditionalWeaponController : MonoBehaviour
             BulletController _bulletController = newBullet.GetComponent<BulletController>();
             if (_newTarget != null)
             {
-                _newTarget = GameManager.instance.pc.target.transform;
+                _newTarget = pc.target.transform;
             }
             _bulletController.SetTarget(_newTarget, offset, false);
             yield return new WaitForSeconds(_bulletController.delayNextShotTime);
@@ -106,5 +118,10 @@ public class AdditionalWeaponController : MonoBehaviour
     {
         Instantiate(smallExplosion, shotHolder.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+    public void Reparent(int index)
+    {
+        weaponSpot = pc.additionalWeaponSpots[index].transform;
+        transform.SetParent(weaponSpot);
     }
 }

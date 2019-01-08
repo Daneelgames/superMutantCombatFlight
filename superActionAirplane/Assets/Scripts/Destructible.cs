@@ -108,22 +108,25 @@ public class Destructible : MonoBehaviour
 
     void DropDropBox()
     {
-        GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
+        if (GameManager.instance.pc.isActiveAndEnabled)
+        {
+            GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
 
-        if (GameManager.instance.spawnerController.currentWave == 0)
-        {
-            drop.GetComponent<DropBoxController>().SetType(1); // weapon
-        }
-        else
-        {
-            float random = Random.Range(0f, 100f);
-            if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+            if (GameManager.instance.spawnerController.currentWave == 0)
             {
-                drop.GetComponent<DropBoxController>().SetType(0); // health
+                drop.GetComponent<DropBoxController>().SetType(1); // weapon
             }
             else
             {
-                drop.GetComponent<DropBoxController>().SetType(1); // weapon
+                float random = Random.Range(0f, 100f);
+                if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+                {
+                    drop.GetComponent<DropBoxController>().SetType(0); // health
+                }
+                else
+                {
+                    drop.GetComponent<DropBoxController>().SetType(1); // weapon
+                }
             }
         }
     }

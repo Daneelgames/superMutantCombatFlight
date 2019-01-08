@@ -38,11 +38,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.GetLinks();
+        GameManager.instance.GetLinks(this);
 
         if (Application.platform == RuntimePlatform.Android)
             touchInput = true;
-
     }
 
     void Update()
@@ -74,11 +73,31 @@ public class PlayerController : MonoBehaviour
             {
                 lives -= 1;
                 GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
+
+                // lost weapon
+                if (additionalWeapons.Count > 0)
+                {
+                    int random = Random.Range(0, additionalWeapons.Count);
+                    additionalWeapons[random].Remove();
+                    additionalWeapons.RemoveAt(random);
+                    if (additionalWeapons.Count > 0)
+                    {
+                        foreach (AdditionalWeaponController wpn in additionalWeapons)
+                        {
+                            wpn.Reparent(additionalWeapons.IndexOf(wpn));
+                        }
+                    }
+                }
+
+                // lost all weapons
+                /*
                 foreach (AdditionalWeaponController w in additionalWeapons)
                 {
                     w.Remove();
+                    additionalWeapons.Remove(w);
                 }
                 additionalWeapons.Clear();
+                */
             }
 
             if (lives > 0)

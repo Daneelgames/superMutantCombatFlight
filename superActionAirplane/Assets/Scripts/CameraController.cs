@@ -17,12 +17,9 @@ public class CameraController : MonoBehaviour
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         GetRotation();
-    }
-    private void FixedUpdate()
-    {
         transform.localEulerAngles = newEulerAngles;
     }
 
@@ -66,6 +63,5 @@ public class CameraController : MonoBehaviour
             float newX = Mathf.LerpAngle(newEulerAngles.x, -13, 0.9f * Time.deltaTime * cameraSpeed);
             newEulerAngles = new Vector3(newX, newEulerAngles.y, newEulerAngles.z);
         }
-
     }
 }

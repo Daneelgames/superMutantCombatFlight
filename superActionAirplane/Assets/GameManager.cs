@@ -5,7 +5,6 @@ using System.Collections.Generic;       //Allows us to use Lists.
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager instance = null;
     public PlayerController pc;
     public SpawnerController spawnerController;
@@ -36,17 +35,18 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GetLinks();
+        GetLinks(null);
     }
 
     private void Start()
     {
-        GetLinks();
+  //      GetLinks(null);
     }
 
-    public void GetLinks()
+    public void GetLinks(PlayerController _pc)
     {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        if (_pc)
+            pc = _pc;
         spawnerController = GameObject.Find("Spawner").GetComponent<SpawnerController>();
         uiLivesController = GameObject.Find("HeartsController").GetComponent<UiLivesController>();
     }
