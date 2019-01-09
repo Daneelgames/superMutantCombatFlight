@@ -175,25 +175,25 @@ public class PlayerController : MonoBehaviour
 
     Vector2 ClampMovement(Vector2 move)
     {
-        if (transform.position.x < -7 && move.x < 0)
+        if (transform.localPosition.x < -7 && move.x < 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -7, 0.9f), transform.position.y, transform.position.z);
+            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, -7, 0.9f), transform.localPosition.y, transform.localPosition.z);
         }
-        if (transform.position.x > 7 && move.x > 0)
+        if (transform.localPosition.x > 7 && move.x > 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 7, 0.9f), transform.position.y, transform.position.z);
+            transform.localPosition = new Vector3(Mathf.Lerp(transform.localPosition.x, 7, 0.9f), transform.localPosition.y, transform.localPosition.z);
         }
-        if (transform.position.y < -4 && move.y < 0)
+        if (transform.localPosition.y < -4 && move.y < 0)
         {
             move.y = Mathf.Lerp(move.y, 0, 0.9f);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, -4, 0.9f), transform.position.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, -4, 0.9f), transform.localPosition.z);
         }
-        if (transform.position.y > 4 && move.y > 0)
+        if (transform.localPosition.y > 4 && move.y > 0)
         {
             move.y = Mathf.Lerp(move.y, 0, 0.9f);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 4, 0.9f), transform.position.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(transform.localPosition.y, 4, 0.9f), transform.localPosition.z);
         }
         return move;
     }

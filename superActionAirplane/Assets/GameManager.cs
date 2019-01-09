@@ -6,6 +6,9 @@ using System.Collections.Generic;       //Allows us to use Lists.
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+
+    public bool test = false;
+
     public PlayerController pc;
     public SpawnerController spawnerController;
     public TouchInputController touchInputController;
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         if (_pc)
             pc = _pc;
+        if (!test)
         spawnerController = GameObject.Find("Spawner").GetComponent<SpawnerController>();
         uiLivesController = GameObject.Find("HeartsController").GetComponent<UiLivesController>();
     }

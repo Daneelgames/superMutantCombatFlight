@@ -25,8 +25,8 @@ public class CameraController : MonoBehaviour
 
     void GetRotation()
     {
-        float x = pc.transform.position.x;
-        float y = pc.transform.position.y;
+        float x = pc.transform.localPosition.x;
+        float y = pc.transform.localPosition.y;
 
         //Camera's horizontal turn
         if (x < -cameraZoneX)
