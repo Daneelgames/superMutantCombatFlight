@@ -111,6 +111,7 @@ public class Destructible : MonoBehaviour
         if (GameManager.instance.pc.isActiveAndEnabled)
         {
             GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
+            drop.transform.SetParent(GameManager.instance.spawnerController.playground);
 
             if (GameManager.instance.spawnerController.currentWave == 0)
             {

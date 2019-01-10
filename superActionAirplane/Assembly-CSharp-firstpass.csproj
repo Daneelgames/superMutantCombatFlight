@@ -60,12 +60,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\BezierSolution\BezierPoint.cs" />
+    <Compile Include="Assets\Plugins\BezierSolution\BezierSpline.cs" />
+    <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithSpeed.cs" />
+    <Compile Include="Assets\Plugins\BezierSolution\Utilities\BezierWalkerWithTime.cs" />
+    <Compile Include="Assets\Plugins\BezierSolution\Utilities\ParticlesFollowBezier.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Examples\2D Example\Player2DExample.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Examples\3D Example\Player3DExample.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <None Include="Assets\Plugins\BezierSolution\README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/@daneelgames/superMutantCombatFlight/superActionAirplane/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

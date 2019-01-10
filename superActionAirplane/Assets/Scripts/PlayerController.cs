@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
 
+    float zPosition = 0;
+
     private void Start()
     {
         GameManager.instance.GetLinks(this);
@@ -173,6 +175,11 @@ public class PlayerController : MonoBehaviour
         RotatePlayer();
     }
 
+    private void LateUpdate()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, zPosition);
+    }
+
     Vector2 ClampMovement(Vector2 move)
     {
         if (transform.localPosition.x < -7 && move.x < 0)
@@ -201,7 +208,7 @@ public class PlayerController : MonoBehaviour
     void MovePlayer()
     {
         Vector3 force = new Vector3(movementVector.x, movementVector.y, 0);
-        rb.velocity = force * movementSpeed;
+        rb.transform.localPosition += force * movementSpeed / 10;    
     }
 
     void RotatePlayer()

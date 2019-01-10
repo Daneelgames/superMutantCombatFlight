@@ -32,6 +32,8 @@ public class AdditionalWeaponController : MonoBehaviour
         {
             GetWeaponSpot();
         }
+        transform.SetParent(GameManager.instance.spawnerController.playground);
+        transform.localRotation = Quaternion.identity;
     }
 
     void GetWeaponSpot()
@@ -47,7 +49,7 @@ public class AdditionalWeaponController : MonoBehaviour
         if (currentDelay > 0)
             currentDelay -= Time.deltaTime;
 
-        transform.position = Vector3.Lerp(transform.position, weaponSpot.position, 0.7f * Time.deltaTime * 10);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, weaponSpot.localPosition + pc.transform.localPosition, 0.7f * Time.deltaTime * 10);
 
     }
     

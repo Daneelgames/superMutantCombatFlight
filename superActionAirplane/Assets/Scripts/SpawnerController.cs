@@ -19,6 +19,7 @@ public class SpawnerController : MonoBehaviour
     public List<GameObject> wavesInGame = new List<GameObject>();
     public int currentWave = 0;
     public GameObject solidsParent;
+    public Transform playground;
     public GameObject dropBox;
 
     public GameObject boss;
@@ -114,7 +115,10 @@ public class SpawnerController : MonoBehaviour
     {
         bossState = true;
         skyAnim.SetBool("Boss", true);
-        GameObject.Instantiate(boss, Vector3.zero, Quaternion.identity);
+        GameObject newBoss = GameObject.Instantiate(boss, Vector3.zero, Quaternion.identity);
+        newBoss.transform.SetParent(playground);
+        newBoss.transform.localPosition = Vector3.zero;
+        newBoss.transform.localRotation = Quaternion.identity;
         Invoke("HideSolids", 1);
     }
 
@@ -129,6 +133,9 @@ public class SpawnerController : MonoBehaviour
     void SpawnWave()
     {
         GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
+        newWave.transform.SetParent(playground);
+        newWave.transform.localPosition = Vector3.zero;
+        newWave.transform.localRotation = Quaternion.identity;
         currentWaveController = newWave.GetComponent<WaveController>();
     }
 }

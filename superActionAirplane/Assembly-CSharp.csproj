@@ -65,14 +65,6 @@
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />
     <Compile Include="Assets\Scripts\AimAssistController.cs" />
     <Compile Include="Assets\Scripts\AnimationEventReciever.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\BezierBase.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\BezierMaster.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\BezierSpline.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\MeshCreators\CreateCylinder.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\MeshCreators\CreateLine.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\MeshCreators\CreateMeshBase.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\MeshCreators\CreateTube.cs" />
-    <Compile Include="Assets\Scripts\BezierMaster\Scripts\MovePointExample.cs" />
     <Compile Include="Assets\Scripts\BossController.cs" />
     <Compile Include="Assets\Scripts\BossFaceAnimationEventController.cs" />
     <Compile Include="Assets\Scripts\BuildingController.cs" />
@@ -94,7 +86,6 @@
     <Compile Include="Assets\Scripts\UiButtonController.cs" />
     <Compile Include="Assets\Scripts\UiLivesController.cs" />
     <Compile Include="Assets\Scripts\WaveController.cs" />
-    <None Include="Assets\Scripts\BezierMaster\readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/@daneelgames/superMutantCombatFlight/superActionAirplane/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

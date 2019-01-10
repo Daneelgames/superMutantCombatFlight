@@ -13,6 +13,12 @@ public class BulletController : MonoBehaviour
     Vector3 targetPosition = Vector3.zero;
     public bool rocket = false;
     bool autoAim = false;
+    Vector3 newShotTarget;
+
+    private void Start()
+    {
+        transform.SetParent(GameManager.instance.projectileContainer);
+    }
 
     public void SetRocket(bool active)
     {
@@ -22,21 +28,15 @@ public class BulletController : MonoBehaviour
     public void SetTarget(Transform _target, Vector3 offset, bool _autoAim)
     {
         autoAim = _autoAim;
-        Vector3 newShotTarget = Vector3.zero;
+        newShotTarget = _target.localPosition;
         if (offset != Vector3.zero)
         {
-             newShotTarget = new Vector3(_target.position.x + Random.Range(-offset.x, offset.x),
-                                         _target.position.y + Random.Range(-offset.y, offset.y),
-                                         _target.position.z);
-
-            transform.LookAt(newShotTarget);
+             newShotTarget = new Vector3(_target.localPosition.x + Random.Range(-offset.x, offset.x),
+                                         _target.localPosition.y + Random.Range(-offset.y, offset.y),
+                                         _target.localPosition.z);
         }
-        else
-        {
-            transform.LookAt(_target);
-        }
+        transform.LookAt(newShotTarget);
         target = _target;
-        rb.velocity = transform.forward * speed;
         Destroy(gameObject, lifeTime);
     }
 
@@ -46,11 +46,14 @@ public class BulletController : MonoBehaviour
         {
             if (autoAim && target.gameObject.activeInHierarchy)
             {
-                if (target != null)
-                    transform.LookAt(target.position);
-
+                rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, target.localPosition, Time.deltaTime * speed);
             }
-            rb.velocity = transform.forward * speed;
+            else
+                rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, newShotTarget, Time.deltaTime * speed);
+        }
+        else
+        {
+            rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, newShotTarget, Time.deltaTime * speed);
         }
     }
 }

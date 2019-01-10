@@ -25,11 +25,11 @@ public class Drone_1Controller : MonoBehaviour
     {
         if (gameObject.activeInHierarchy && canShoot)
         {
-            if (gameObject.transform.position.z > 3 && GameManager.instance.pc.lives > 0)
+            if (gameObject.transform.localPosition.z > 3 && GameManager.instance.pc.lives > 0)
             {
                 if (!GameManager.instance.spawnerController.bossState)
                 {
-                    if (gameObject.transform.position.y < 7) // if noBossState, but y is < 7
+                    if (gameObject.transform.localPosition.y < 7) // if noBossState, but y is < 7
                     {
                         Shot();
                     }

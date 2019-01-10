@@ -29,7 +29,7 @@ public class AimAssistController : MonoBehaviour
             float minDistance = 100;
             for (int i = targetsInRange.Count - 1; i >= 0; i--)
             {
-                if (targetsInRange[i] != null && targetsInRange[i].gameObject.activeSelf && targetsInRange[i].position.z > 0)
+                if (targetsInRange[i] != null && targetsInRange[i].gameObject.activeSelf && targetsInRange[i].localPosition.z > 0)
                 {
                     float newDistance = Vector3.Distance(targetsInRange[i].transform.position, GameManager.instance.pc.transform.position);
                     if (newDistance < minDistance)
@@ -43,20 +43,6 @@ public class AimAssistController : MonoBehaviour
                     targetsInRange.RemoveAt(i);
                 }
             }
-            /*
-            foreach (Transform target in targetsInRange)
-            {
-                if (target != null && target.gameObject.activeSelf)
-                {
-                    float newDistance = Vector3.Distance(target.transform.position, GameManager.instance.pc.transform.position);
-                    if (newDistance < minDistance && target.position.z > 0)
-                    {
-                        minDistance = newDistance;
-                        currentTargetTransform = target;
-                    }
-                }
-            }
-            */
         }
         else
             currentTargetTransform = null;

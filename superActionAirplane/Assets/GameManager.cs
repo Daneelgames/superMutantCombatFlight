@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public SpawnerController spawnerController;
     public TouchInputController touchInputController;
     public UiLivesController uiLivesController;
+    public Transform projectileContainer;
 
     void Awake()
     {
@@ -53,5 +54,6 @@ public class GameManager : MonoBehaviour
         if (!test)
         spawnerController = GameObject.Find("Spawner").GetComponent<SpawnerController>();
         uiLivesController = GameObject.Find("HeartsController").GetComponent<UiLivesController>();
+        projectileContainer = GameObject.Find("ProjectilesContainer").transform;
     }
 }

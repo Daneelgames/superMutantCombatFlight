@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1111e98a2fd57db4292e0535809b5c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 0
   pc: {fileID: 0}
   spawnerController: {fileID: 0}
   touchInputController: {fileID: 0}
   uiLivesController: {fileID: 0}
+  projectileContainer: {fileID: 0}

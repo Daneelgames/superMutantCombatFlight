@@ -7,10 +7,13 @@ public class PlayerTargetController : MonoBehaviour
     public GameObject targetCrosshair;
     public float speed = 1;
     float groundLevel = -6;
+    public Transform playground;
+
+    public Transform playerTransform;
 
     private void Awake()
     {
-        transform.SetParent(null);
+        transform.SetParent(playground);
     }
 
     private void Start()
@@ -32,7 +35,10 @@ public class PlayerTargetController : MonoBehaviour
             
         transform.position = newPos;
 
+        transform.LookAt(playerTransform);
+        /*
         if (transform.position.y < groundLevel)
             transform.position = new Vector3(transform.position.x, groundLevel, transform.position.z);
+            */
     }
 }
