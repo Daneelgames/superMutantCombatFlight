@@ -546,7 +546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCrosshair: {fileID: 1402966027}
-  speed: 50
+  speed: 40
+  playground: {fileID: 0}
   playerTransform: {fileID: 156902412648423692}
 --- !u!1 &3892910135872948552
 GameObject:
@@ -595,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCrosshair: {fileID: 6539603136329563044}
   speed: 6
+  playground: {fileID: 0}
   playerTransform: {fileID: 0}
 --- !u!1 &4724286873975262650
 GameObject:

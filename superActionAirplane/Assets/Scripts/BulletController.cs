@@ -35,7 +35,8 @@ public class BulletController : MonoBehaviour
                                          _target.localPosition.y + Random.Range(-offset.y, offset.y),
                                          _target.localPosition.z);
         }
-        transform.LookAt(newShotTarget);
+        //transform.LookAt(newShotTarget);
+        transform.LookAt(_target.position);
         target = _target;
         Destroy(gameObject, lifeTime);
     }
@@ -49,11 +50,12 @@ public class BulletController : MonoBehaviour
                 rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, target.localPosition, Time.deltaTime * speed);
             }
             else
-                rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, newShotTarget, Time.deltaTime * speed);
+                rb.transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
         }
         else
         {
-            rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, newShotTarget, Time.deltaTime * speed);
+            rb.transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
+            //rb.transform.localPosition = Vector3.MoveTowards(transform.localPosition, newShotTarget, Time.deltaTime * speed);
         }
     }
 }

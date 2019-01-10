@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30a4c4314cf8e9439dc7efb1fd29123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
 --- !u!1 &3227737084343776666
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,8 +213,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 0.1
+      scalar: 5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -330,7 +330,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 0.1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1028,29 +1028,29 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: 4.201515
+          outSlope: 4.201515
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.15193412
         - serializedVersion: 3
-          time: 0.6176093
-          value: 0.56679046
-          inSlope: 1.0963275
-          outSlope: 1.0963275
+          time: 0.3718531
+          value: 0.91527504
+          inSlope: -0.042485856
+          outSlope: -0.042485856
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0.24792607
+          outWeight: 0.28762338
         - serializedVersion: 3
-          time: 0.9842224
+          time: 1
           value: 0
-          inSlope: -7.1399117
-          outSlope: -7.1399117
+          inSlope: -2.4043882
+          outSlope: -2.4043882
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.3355682
+          inWeight: 0.13041683
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2

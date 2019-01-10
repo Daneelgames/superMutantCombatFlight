@@ -40,10 +40,14 @@ public class Destructible : MonoBehaviour
 
             health -= damage;
             if (health > 0)
-                Instantiate(smallExplosion, transform.position, Quaternion.identity);
+            {
+                GameObject _explosion = Instantiate(smallExplosion, transform.position, Quaternion.identity);
+                _explosion.transform.SetParent(GameManager.instance.spawnerController.playground.transform);
+            }
             else // if object has no health
             {
-                Instantiate(explosion, transform.position, Quaternion.identity);
+                GameObject _explosion = Instantiate(explosion, transform.position, Quaternion.identity);
+                _explosion.transform.SetParent(GameManager.instance.spawnerController.playground.transform);
 
                 if (waveController) //if gameObject is an enemy
                 {
