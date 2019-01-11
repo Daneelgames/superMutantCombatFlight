@@ -806,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1000
+      value: -135.5
       objectReference: {fileID: 0}
     - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
         type: 3}
@@ -848,6 +848,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 980
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 140
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb235834f1fac074d8c412fbae0fff8c, type: 3}
 --- !u!4 &5688977979946699553 stripped
@@ -880,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 4777963095997841280, guid: 9daa51094c0dd52488feb98616004cf8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1000
+      value: -133.4
       objectReference: {fileID: 0}
     - target: {fileID: 4777963095997841280, guid: 9daa51094c0dd52488feb98616004cf8,
         type: 3}
@@ -927,6 +937,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4777963095997841280, guid: 9daa51094c0dd52488feb98616004cf8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194731365, guid: 9daa51094c0dd52488feb98616004cf8, type: 3}
+      propertyPath: resetOn
+      value: -100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daa51094c0dd52488feb98616004cf8, type: 3}
 --- !u!4 &2712262223813262008 stripped
@@ -949,24 +968,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: trash.Array.size
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
       propertyPath: solids.Array.size
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: solidsParent
-      value: 
-      objectReference: {fileID: 5688977980558302034}
+      propertyPath: trash.Array.size
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: trashParent
+      propertyPath: additionalWeapons.Array.data[0]
       value: 
-      objectReference: {fileID: 5688977979535900382}
+      objectReference: {fileID: 2229493408721876351, guid: b35e8625c23e33f4e821f02810bfb452,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: additionalWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2229493408721876351, guid: 6ad0c330cbbbef643af52a0f22a4f20d,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: additionalWeapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 2229493408721876351, guid: 120cc958207186b4e9842a012ee0537b,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: additionalWeapons.Array.data[3]
+      value: 
+      objectReference: {fileID: 2229493408721876351, guid: 6ad0c330cbbbef643af52a0f22a4f20d,
+        type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
       propertyPath: trash.Array.data[0]
@@ -1080,6 +1113,16 @@ PrefabInstance:
       propertyPath: trash.Array.data[18]
       value: 
       objectReference: {fileID: 556, guid: ca980455fc26f3e48bd6d99188f942bf, type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: solidsParent
+      value: 
+      objectReference: {fileID: 5688977980558302034}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: trashParent
+      value: 
+      objectReference: {fileID: 5688977979535900382}
     - target: {fileID: 3733115137785061498, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
       propertyPath: m_LocalPosition.x

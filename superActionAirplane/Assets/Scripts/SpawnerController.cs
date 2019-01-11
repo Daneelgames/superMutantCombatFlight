@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
+    public float movementSpeed = 100;
+
     public int testStartWave = 0;
     public float spawnZ = 200;
 

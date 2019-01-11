@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
-    public float speed = 100;
     public HideSolidController hideSolidController;
     float newZ;
 
@@ -15,7 +14,7 @@ public class BuildingController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        newZ = transform.position.z - speed * Time.deltaTime;
+        newZ = transform.position.z - GameManager.instance.spawnerController.movementSpeed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
 
     }

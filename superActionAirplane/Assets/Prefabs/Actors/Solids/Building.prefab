@@ -255,8 +255,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8137271, y: 7.504204, z: 1}
-  m_Center: {x: -0.13831913, y: 3.8071017, z: 0}
+  m_Size: {x: 2.1740103, y: 7.1014194, z: 1}
+  m_Center: {x: -0.15016583, y: 3.6057096, z: 0}
 --- !u!114 &5072010820805363788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15204f760c16194895d51925c6d85be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
   hideSolidController: {fileID: 5378967289444692457}
 --- !u!114 &5378967289444692457
 MonoBehaviour:

@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78cfd4b2ff36d844bb7017a0d6161132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 3, y: 3}
+  offset: {x: 0, y: 0}
   bullet: {fileID: 2215745776762814028, guid: b52fe05ccdd018c45a1dc13b08463db7, type: 3}
   bulletBurst: []
-  delay: 0.1
+  delay: 0.01
   smallExplosion: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
     type: 3}
   shotHolder: {fileID: 439971862706466857}
+  anim: {fileID: 0}
 --- !u!1 &5612052615490139798
 GameObject:
   m_ObjectHideFlags: 0

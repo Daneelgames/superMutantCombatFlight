@@ -55,9 +55,12 @@ public class BulletController : MonoBehaviour
             rb.velocity = transform.forward * speed;
         }
 
-        if (transform.position.z < GameManager.instance.pc.transform.position.z - 1)
+        if (art && gameObject.layer!=10)
         {
-            art.material.color = new Color(art.material.color.r, art.material.color.g, art.material.color.b, art.material.color.a - Time.deltaTime * 3);
+            if (transform.position.z < GameManager.instance.pc.transform.position.z)
+            {
+                art.material.color = new Color(art.material.color.r, art.material.color.g, art.material.color.b, art.material.color.a - Time.deltaTime * 3);
+            }
         }
     }
 }
