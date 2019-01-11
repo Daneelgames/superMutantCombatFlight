@@ -7,21 +7,11 @@ using UnityEngine.EventSystems;
 public class UiButtonController : MonoBehaviour, IPointerDownHandler //, IPointerUpHandler
 {
     public string buttonName = "Roll";
-    //bool shoot = false;
     public Text speedText;
     public Text invincibleText;
-    public Animator skyAnim;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        /*
-        if (buttonName == "Fire_1")
-        {
-            shoot = true;
-            GameManager.instance.pc.ShotAnim(true);
-        }
-        */
-
         if (buttonName == "Invinsible")
         {
             GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
@@ -34,24 +24,8 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler //, IPointe
         {
             GameManager.instance.pc.touchMovementScaler -= 0.1f;
         }
-        else if (buttonName == "Sky")
-        {
-            if (skyAnim.speed < 1) skyAnim.speed = 1;
-            else if (skyAnim.speed > 0) skyAnim.speed = 0;
-        }
     }
 
-    /*
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (buttonName == "Fire_1")
-        {
-            shoot = false;
-            GameManager.instance.pc.ShotAnim(false);
-        }
-    }
-    */
-    
     private void Update()
     {
         //if (shoot) GameManager.instance.pc.ShootByTouch();

@@ -122,6 +122,6 @@ public class AdditionalWeaponController : MonoBehaviour
     public void Reparent(int index)
     {
         weaponSpot = pc.additionalWeaponSpots[index].transform;
-        transform.SetParent(weaponSpot);
+        //transform.SetParent(weaponSpot);
     }
 }

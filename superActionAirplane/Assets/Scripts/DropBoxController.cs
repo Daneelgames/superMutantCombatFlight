@@ -59,18 +59,24 @@ public class DropBoxController : MonoBehaviour
 
         anim.SetInteger("State", type);
         anim.SetTrigger("Play");
+
+        if (_type == 0)
+            GameManager.instance.spawnerController.SetHealthOnScene(true);
     }
 
     public void DropHealth()
     {
         print("drop health");
         GameManager.instance.pc.GetLive();
+        GameManager.instance.spawnerController.SetHealthOnScene(false);
     }
 
     public void DropWeapon()
     {
         // choose weapon
         int weaponIndex = Random.Range(0, GameManager.instance.spawnerController.additionalWeapons.Count);
+
+        /*
         GameObject newWeapon;
 
         if (GameManager.instance.pc.additionalWeapons.Count > 0)
@@ -91,7 +97,6 @@ public class DropBoxController : MonoBehaviour
                 if (canBeAdded)
                 {
                     tempList.Add(weaponInSpawner);
-                    //print(weaponInSpawner); // PRINT HERE
                 }
             }
             weaponIndex = Random.Range(0, tempList.Count);
@@ -102,6 +107,9 @@ public class DropBoxController : MonoBehaviour
         {
             newWeapon = Instantiate(GameManager.instance.spawnerController.additionalWeapons[weaponIndex].gameObject, transform.position, Quaternion.identity);
         }
+        */
+
+        GameObject newWeapon = Instantiate(GameManager.instance.spawnerController.additionalWeapons[weaponIndex].gameObject, transform.position, Quaternion.identity);
         newWeapon.name = newWeapon.name.Substring(0, newWeapon.name.Length - 7);
     }
 }

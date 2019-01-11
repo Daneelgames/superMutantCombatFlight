@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public int testStartWave = 0;
+    public float spawnZ = 200;
 
     public float solidsMinDelay = 1;
     public float solidsMaxDelay = 10;
@@ -14,17 +15,20 @@ public class SpawnerController : MonoBehaviour
 
     public List<AdditionalWeaponController> additionalWeapons;
     public List<GameObject> solids = new List<GameObject>();
+    public List<GameObject> trash = new List<GameObject>();
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
+    public bool healthDropOnScene;
     public int currentWave = 0;
     public GameObject solidsParent;
+    public GameObject trashParent;
+    int trashSide = -1;
     public GameObject dropBox;
 
     public GameObject boss;
     public bool bossState = false;
 
-    public Animator skyAnim;
 
     [HideInInspector]
     public WaveController currentWaveController;
@@ -37,6 +41,7 @@ public class SpawnerController : MonoBehaviour
         {
             GenerateSpawnList();
             Invoke("SpawnWave", 2f);
+            Invoke("SpawnTrash", 0.1f);
         }
     }
 
@@ -88,12 +93,30 @@ public class SpawnerController : MonoBehaviour
                 if (!solidsParent)
                     GetSolids();
 
-                Vector3 newSolidPosition = new Vector3(Random.Range(-rangeX, rangeX), groundLevel, 2000);
+                Vector3 newSolidPosition = new Vector3(Random.Range(-rangeX, rangeX), groundLevel, spawnZ);
                 GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
                 go.transform.SetParent(solidsParent.transform);
                 currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
             }
         }
+    }
+
+    void SpawnTrash()
+    {
+        Vector3 newSolidPosition;
+        if (trashSide == -1)
+        {
+            newSolidPosition = new Vector3(Random.Range(-30f, -15f), -6.5f, spawnZ);
+        }
+        else
+        {
+            newSolidPosition = new Vector3(Random.Range(30f, 15f), -6.5f, spawnZ);
+        }
+
+        GameObject go = GameObject.Instantiate(trash[Random.Range(0, trash.Count)], newSolidPosition, Quaternion.identity);
+        go.transform.SetParent(trashParent.transform);
+        trashSide *= -1;
+        Invoke("SpawnTrash", .1f);
     }
 
     public void WaveDestroyed(WaveController wave)
@@ -113,7 +136,6 @@ public class SpawnerController : MonoBehaviour
     void SpawnBoss()
     {
         bossState = true;
-        skyAnim.SetBool("Boss", true);
         GameObject.Instantiate(boss, Vector3.zero, Quaternion.identity);
         Invoke("HideSolids", 1);
     }
@@ -122,7 +144,8 @@ public class SpawnerController : MonoBehaviour
     {
         foreach (BuildingController solid in solidsOnScene)
         {
-            solid.hideSolidController.HideSolid();
+            if (solid.hideSolidController)
+                solid.hideSolidController.HideSolid();
         }
     }
 
@@ -130,5 +153,10 @@ public class SpawnerController : MonoBehaviour
     {
         GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
         currentWaveController = newWave.GetComponent<WaveController>();
+    }
+
+    public void SetHealthOnScene(bool _bool)
+    {
+        healthDropOnScene = _bool;
     }
 }

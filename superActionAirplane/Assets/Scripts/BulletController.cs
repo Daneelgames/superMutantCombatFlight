@@ -14,6 +14,8 @@ public class BulletController : MonoBehaviour
     public bool rocket = false;
     bool autoAim = false;
 
+    public MeshRenderer art;
+
     public void SetRocket(bool active)
     {
         rocket = active;
@@ -51,6 +53,11 @@ public class BulletController : MonoBehaviour
 
             }
             rb.velocity = transform.forward * speed;
+        }
+
+        if (transform.position.z < GameManager.instance.pc.transform.position.z - 1)
+        {
+            art.material.color = new Color(art.material.color.r, art.material.color.g, art.material.color.b, art.material.color.a - Time.deltaTime * 3);
         }
     }
 }

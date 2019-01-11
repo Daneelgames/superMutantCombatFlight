@@ -53,6 +53,7 @@ MonoBehaviour:
   lifeTime: 5
   rb: {fileID: 4959465482014204621}
   rocket: 1
+  art: {fileID: 2215745777121052870}
 --- !u!114 &7366631211162132029
 MonoBehaviour:
   m_ObjectHideFlags: 0

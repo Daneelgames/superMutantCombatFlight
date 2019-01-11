@@ -6,6 +6,7 @@ public class BuildingController : MonoBehaviour
 {
     public float speed = 100;
     public HideSolidController hideSolidController;
+    float newZ;
 
     private void Start()
     {
@@ -14,8 +15,9 @@ public class BuildingController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float newZ = transform.position.z - speed * Time.deltaTime;
+        newZ = transform.position.z - speed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
+
     }
 
     private void Update()

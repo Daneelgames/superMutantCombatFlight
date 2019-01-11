@@ -119,7 +119,7 @@ public class Destructible : MonoBehaviour
             else
             {
                 float random = Random.Range(0f, 100f);
-                if (random > 35 * GameManager.instance.pc.lives) // if player are low on health
+                if (!GameManager.instance.spawnerController.healthDropOnScene && random > 35 * GameManager.instance.pc.lives) // if player are low on health
                 {
                     drop.GetComponent<DropBoxController>().SetType(0); // health
                 }

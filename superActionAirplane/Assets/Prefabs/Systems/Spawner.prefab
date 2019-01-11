@@ -64,10 +64,38 @@ MonoBehaviour:
   - {fileID: 356180493459307865, guid: 9de84d44a8d54ca44bf9e2c8dcc7e876, type: 3}
   - {fileID: 775808639800742519, guid: edf148f7c0f50144a827cab6f300df72, type: 3}
   - {fileID: 7254790116327264293, guid: 7fcff1eacccdbcf428e72a5dde7b11db, type: 3}
-  - {fileID: 8419997450779734387, guid: ec2c69e06bacdff41bb2eff681431779, type: 3}
-  - {fileID: 5937241203011881970, guid: f6c1ad4defb1cfd479e83a981bbefee8, type: 3}
-  - {fileID: 6734415942033079628, guid: 2044c61f26bffd347bf4b1415750cc7d, type: 3}
-  - {fileID: 5410603256203862965, guid: ca980455fc26f3e48bd6d99188f942bf, type: 3}
+  - {fileID: 5882880195207128538, guid: ec2c69e06bacdff41bb2eff681431779, type: 3}
+  - {fileID: 144306538, guid: f6c1ad4defb1cfd479e83a981bbefee8, type: 3}
+  - {fileID: 144306538, guid: 2044c61f26bffd347bf4b1415750cc7d, type: 3}
+  - {fileID: 4124180690786266157, guid: ca980455fc26f3e48bd6d99188f942bf, type: 3}
+  trash:
+  - {fileID: 9057418614488918462, guid: f7c4930c47b136a4bb8e1549fe55fc8c, type: 3}
+  - {fileID: 1036510551203372796, guid: 2f78d0b5f2b4af04893e9b2e9ae0b6b9, type: 3}
+  - {fileID: 1036510551203372796, guid: f77bcdc4cfef32c49b32e5478c47d32d, type: 3}
+  - {fileID: 4364389085534052855, guid: 08c7be3de5c9f2240a5a11160ca5b54a, type: 3}
+  - {fileID: 1036510551203372796, guid: 51dabab55daee4040b68325ac6069048, type: 3}
+  - {fileID: 1036510551203372796, guid: a5c96584aa971ad458efa120792e45af, type: 3}
+  - {fileID: 1036510551203372796, guid: 2e23c401fba8da2448d393d632dff459, type: 3}
+  - {fileID: 356180493459307865, guid: 9de84d44a8d54ca44bf9e2c8dcc7e876, type: 3}
+  - {fileID: 775808639800742519, guid: edf148f7c0f50144a827cab6f300df72, type: 3}
+  - {fileID: 7254790116327264293, guid: 7fcff1eacccdbcf428e72a5dde7b11db, type: 3}
+  - {fileID: 7854626474754185906, guid: b511b55d8cbf4614ab981937ca7d7bb7, type: 3}
+  - {fileID: 7854626474754185906, guid: e8bb897799bbd0c49ac9a9f0e29eec1c, type: 3}
+  - {fileID: 7854626474754185906, guid: cde34e63770e5c14aaf7805c34bfcbab, type: 3}
+  - {fileID: 7854626474754185906, guid: ce705ec1f2753e94ea346dab0589ebc2, type: 3}
+  - {fileID: 7854626474754185906, guid: 840ad79e70291ec4ca3c1407b6f8cd56, type: 3}
+  - {fileID: 7854626474754185906, guid: b786adc961ba93e48a43a03ff5dbc177, type: 3}
+  - {fileID: 7854626474754185906, guid: 50dedf632e4c72d40a27424a480858dd, type: 3}
+  - {fileID: 7854626474754185906, guid: 1532b6d2dd20612449ed9bf5b4bb6faf, type: 3}
+  - {fileID: 7854626474754185906, guid: fd57e157706c9234c8c666a304496af8, type: 3}
+  - {fileID: 7854626474754185906, guid: edbd241a0c1c2f246a30f16abc4ed652, type: 3}
+  - {fileID: 7854626474754185906, guid: 2271e50fe17064f4ea2af4225ff36413, type: 3}
+  - {fileID: 7854626474754185906, guid: e0a9c5feee0cb19429ef7af5366692a6, type: 3}
+  - {fileID: 7854626474754185906, guid: a0ce552bd5e8d83419634ff8b99fa600, type: 3}
+  - {fileID: 5882880195207128538, guid: ec2c69e06bacdff41bb2eff681431779, type: 3}
+  - {fileID: 144306538, guid: f6c1ad4defb1cfd479e83a981bbefee8, type: 3}
+  - {fileID: 144306538, guid: 2044c61f26bffd347bf4b1415750cc7d, type: 3}
+  - {fileID: 4124180690786266157, guid: ca980455fc26f3e48bd6d99188f942bf, type: 3}
   solidsOnScene: []
   waves:
   - {fileID: 7543689485446871723, guid: fe35066793458f142971ff1f3a742bc2, type: 3}
@@ -89,5 +117,4 @@ MonoBehaviour:
   dropBox: {fileID: 1111331158389035792, guid: d2b78b884e23fc745a1b8bf533055f8a, type: 3}
   boss: {fileID: 9078731143076396796, guid: 3620d2e6d91611341aa1421c8e64b5bf, type: 3}
   bossState: 0
-  skyAnim: {fileID: 0}
   currentWaveController: {fileID: 0}
