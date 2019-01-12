@@ -21,7 +21,7 @@ public class BuildingController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.z < -10)
+        if (transform.position.z < -1000)
         {
             GameManager.instance.spawnerController.RemoveSolid(this);
             Destroy(gameObject);
