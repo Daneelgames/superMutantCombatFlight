@@ -60,7 +60,7 @@ public class Destructible : MonoBehaviour
                 {
                     Drop();
                     GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
-                    Destroy(gameObject);
+                    Destroy(dropBox.gameObject);
                 }
             }
         }

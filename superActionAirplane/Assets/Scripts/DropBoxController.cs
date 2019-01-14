@@ -7,7 +7,6 @@ public class DropBoxController : MonoBehaviour
     public int type = 0;
     public float lifeTime = 5;
     public Destructible destructibleController;
-    public Animator anim;
     public Rigidbody rb;
     public float speed = 1;
 
@@ -51,14 +50,12 @@ public class DropBoxController : MonoBehaviour
     {
         foreach(GameObject go in sprites)
         {
-            if (sprites.IndexOf(go) != type)
+            if (sprites.IndexOf(go) != _type)
+            {
                 go.SetActive(false);
+            }
         }
-        sprites[type].SetActive(true);
         type = _type;
-
-        anim.SetInteger("State", type);
-        anim.SetTrigger("Play");
 
         if (_type == 0)
             GameManager.instance.spawnerController.SetHealthOnScene(true);

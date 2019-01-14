@@ -401,7 +401,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.5254902}
+      maxColor: {r: 1, g: 0.76470596, b: 0.003921569, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4884,6 +4884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7535135239986129835}
     m_Modifications:
+    - target: {fileID: 9500000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 060e3ad44c96a2b479f4a880cf8d5e2d, type: 2}
     - target: {fileID: 400008, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
@@ -4908,11 +4912,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 060e3ad44c96a2b479f4a880cf8d5e2d, type: 2}
-    - target: {fileID: 13700000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+    - target: {fileID: 13700004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}
@@ -4920,7 +4920,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}
-    - target: {fileID: 13700004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+    - target: {fileID: 13700000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}
