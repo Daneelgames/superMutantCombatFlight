@@ -36,9 +36,13 @@ public class PlayerController : MonoBehaviour
     public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
 
+    ObjectPooler objectPooler;
+
     private void Start()
     {
         GameManager.instance.GetLinks(this);
+        objectPooler = ObjectPooler.instance;
+
 
         if (Application.platform == RuntimePlatform.Android)
             touchInput = true;
@@ -237,8 +241,8 @@ public class PlayerController : MonoBehaviour
 
     void ShotBullet()
     {
-        GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
-        BulletController _bulletController = newBullet.GetComponent<BulletController>();
+        //GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
+        BulletController _bulletController = objectPooler.SpawnFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
         _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;
     }
@@ -247,8 +251,8 @@ public class PlayerController : MonoBehaviour
     {
         foreach (GameObject go in bulletBurst)
         {
-            GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
-            BulletController _bulletController = newBullet.GetComponent<BulletController>();
+            //GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
+            BulletController _bulletController = objectPooler.SpawnFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
             //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
             _bulletController.SetTarget(target.transform, Vector3.zero, false);
             shotDelay = _bulletController.delayNextShotTime;

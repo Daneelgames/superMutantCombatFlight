@@ -19,8 +19,11 @@ public class Drone_1Controller : MonoBehaviour
 
     public bool unfiniteShooting = false;
 
+    ObjectPooler objectPooler;
+
     void Start()
     {
+        objectPooler = ObjectPooler.instance;
         InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
     }
     void Shooting()
@@ -72,8 +75,8 @@ public class Drone_1Controller : MonoBehaviour
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
 
-            GameObject newBullet = GameObject.Instantiate(bullet, shotOrigintPos, Quaternion.identity);
-            newBullet.GetComponent<BulletController>().SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+            BulletController newBullet = objectPooler.SpawnFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
+            newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
         }
         else if (bulletBurst.Count > 0) // bullet burst
         {
@@ -89,10 +92,8 @@ public class Drone_1Controller : MonoBehaviour
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
 
-            GameObject newBullet = GameObject.Instantiate(go, shotOrigintPos, Quaternion.identity);
-            BulletController _bulletController = newBullet.GetComponent<BulletController>();
-            //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
-            _bulletController.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+            BulletController newBullet = objectPooler.SpawnFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
+            newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
             yield return new WaitForSeconds(bulletBurstDelay);
         }
     }

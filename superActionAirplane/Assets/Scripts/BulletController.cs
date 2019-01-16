@@ -39,7 +39,12 @@ public class BulletController : MonoBehaviour
         }
         target = _target;
         rb.velocity = transform.forward * speed;
-        Destroy(gameObject, lifeTime);
+        Invoke("DestroyBullet", lifeTime);
+    }
+
+    void DestroyBullet()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Update()

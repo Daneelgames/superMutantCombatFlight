@@ -17,7 +17,7 @@ public class DamageController : MonoBehaviour
                 if (other.gameObject.tag == "Solids" || other.gameObject.tag == "Enemies" || (other.gameObject.tag == "Drop" && other.gameObject.layer == 12))
                 {
                     DamageOther(other);
-                    DestroyBullet();
+                    DestoyBullet();
                 }
             }
             else if (gameObject.layer == 11) // if enemy's bullet
@@ -27,12 +27,12 @@ public class DamageController : MonoBehaviour
                     if (gameObject.tag == "Enemies" || gameObject.tag == "Projectiles")
                     {
                         GameManager.instance.pc.Damage();
-                        DestroyBullet();
+                        DestoyBullet();
                     }
                 }
                 else if (other.gameObject.tag == "Solids" || other.gameObject.tag == "Enemies") // bullet hit player
                 {
-                    DestroyBullet();
+                    DestoyBullet();
                 }
             }
         }
@@ -45,9 +45,9 @@ public class DamageController : MonoBehaviour
             destructible.Damage(damage);
     }
 
-    void DestroyBullet()
+    void DestoyBullet()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -14,6 +14,8 @@ public class AdditionalWeaponController : MonoBehaviour
     public Animator anim;
     PlayerController pc;
 
+    ObjectPooler objectPooler;
+
     public MushroomLsdController mushroomLsdController;
 
     Transform weaponSpot; // spot for weapon parented by player
@@ -25,6 +27,8 @@ public class AdditionalWeaponController : MonoBehaviour
 
     private void Start()
     {
+        objectPooler = ObjectPooler.instance;
+
         if (pc.additionalWeapons.Count < 3) // if there is a free spot
         {
             weaponSpot = pc.additionalWeaponSpots[pc.additionalWeapons.Count]; // take free spot 
@@ -61,13 +65,12 @@ public class AdditionalWeaponController : MonoBehaviour
             {
                 if (anim)
                     anim.SetTrigger("Shoot");
-                GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
-                BulletController bc = newBullet.GetComponent<BulletController>();
+                BulletController newBullet = objectPooler.SpawnFromPool(bullet.name, shotHolder.position, Quaternion.identity);
                 Transform newTarget;
                 bool autoAim = false;
                 if (pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
                 {
-                    if (bc.rocket)
+                    if (newBullet.rocket)
                         autoAim = true;
 
                     newTarget = pc.aimAssist.currentTargetTransform;
@@ -77,7 +80,7 @@ public class AdditionalWeaponController : MonoBehaviour
                     newTarget = pc.target.transform;
                 }
 
-                bc.SetTarget(newTarget, new Vector3(offset.x, offset.y, 0), autoAim);
+                newBullet.SetTarget(newTarget, new Vector3(offset.x, offset.y, 0), autoAim);
 
                 currentDelay = delay;
             }
@@ -105,14 +108,13 @@ public class AdditionalWeaponController : MonoBehaviour
         foreach (GameObject go in bulletBurst)
         {
 
-            GameObject newBullet = GameObject.Instantiate(go, shotHolder.position, Quaternion.identity);
-            BulletController _bulletController = newBullet.GetComponent<BulletController>();
+            BulletController newBullet = objectPooler.SpawnFromPool(go.name, shotHolder.position, Quaternion.identity);
             if (_newTarget != null)
             {
                 _newTarget = pc.target.transform;
             }
-            _bulletController.SetTarget(_newTarget, offset, false);
-            yield return new WaitForSeconds(_bulletController.delayNextShotTime);
+            newBullet.SetTarget(_newTarget, offset, false);
+            yield return new WaitForSeconds(newBullet.delayNextShotTime);
         }
     }
 
