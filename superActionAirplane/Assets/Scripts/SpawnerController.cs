@@ -31,6 +31,8 @@ public class SpawnerController : MonoBehaviour
     public GameObject boss;
     public bool bossState = false;
 
+    public SkyController skyController;
+
 
     [HideInInspector]
     public WaveController currentWaveController;

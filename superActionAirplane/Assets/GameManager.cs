@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     public SpawnerController spawnerController;
     public TouchInputController touchInputController;
     public UiLivesController uiLivesController;
+    public CameraController cameraController;
 
     void Awake()
     {
         Application.targetFrameRate = 60;
+        Screen.SetResolution(640, 360, true);
+        Camera.main.aspect = 16f / 9f;
 
         //Check if instance already exists
         if (instance == null)
@@ -49,5 +52,6 @@ public class GameManager : MonoBehaviour
             pc = _pc;
         spawnerController = GameObject.Find("Spawner").GetComponent<SpawnerController>();
         uiLivesController = GameObject.Find("HeartsController").GetComponent<UiLivesController>();
+        cameraController = GameObject.Find("MainCamera").GetComponent<CameraController>();
     }
 }

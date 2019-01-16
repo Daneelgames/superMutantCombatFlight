@@ -10,7 +10,7 @@ public class Destructible : MonoBehaviour
     public WaveController waveController;
     public BossController bossController;
     
-    public DropBoxController dropBox; // if dropbox != null, GO is dropBox
+    public DropBoxController dropBoxController; // if dropBoxController != null, GO is dropBox
 
     public bool canBeDamagedBySolids = true;
     bool invincible = false;
@@ -27,8 +27,17 @@ public class Destructible : MonoBehaviour
         {
             if (gameObject.layer == 11) //if enemy crashes
             {
-                if (canBeDamagedBySolids && other.gameObject.tag == "Solids" && other.gameObject.layer == 9)
-                    Damage(1);
+                if (!dropBoxController)
+                {
+                    if (canBeDamagedBySolids && other.gameObject.tag == "Solids" && other.gameObject.layer == 9)
+                        Damage(1);
+                }
+                else
+                {
+                    Instantiate(explosion, transform.position, Quaternion.identity);
+                    GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+                    Destroy(dropBoxController.gameObject);
+                }
             }
         }
     }
@@ -60,7 +69,7 @@ public class Destructible : MonoBehaviour
                 {
                     Drop();
                     GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
-                    Destroy(dropBox.gameObject);
+                    Destroy(dropBoxController.gameObject);
                 }
             }
         }
@@ -78,7 +87,7 @@ public class Destructible : MonoBehaviour
 
     void Drop()
     {
-        if (dropBox == null) // drop from enemy
+        if (dropBoxController == null) // drop from enemy
         {
             if (GameManager.instance.spawnerController.currentWave == 0)
             {
@@ -95,13 +104,13 @@ public class Destructible : MonoBehaviour
         }
         else // drop from dropBox
         {
-            if (dropBox.type == 0)
+            if (dropBoxController.type == 0)
             {
-                dropBox.DropHealth();
+                dropBoxController.DropHealth();
             }
-            else if (dropBox.type == 1)
+            else if (dropBoxController.type == 1)
             {
-                dropBox.DropWeapon();
+                dropBoxController.DropWeapon();
             }
         }
     }

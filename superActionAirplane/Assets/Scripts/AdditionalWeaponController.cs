@@ -14,6 +14,8 @@ public class AdditionalWeaponController : MonoBehaviour
     public Animator anim;
     PlayerController pc;
 
+    public MushroomLsdController mushroomLsdController;
+
     Transform weaponSpot; // spot for weapon parented by player
 
     private void Awake()
@@ -117,11 +119,14 @@ public class AdditionalWeaponController : MonoBehaviour
     public void Remove()
     {
         Instantiate(smallExplosion, shotHolder.position, Quaternion.identity);
+
+        if (mushroomLsdController)
+            mushroomLsdController.ToggleLsdInactive();
+
         Destroy(gameObject);
     }
     public void Reparent(int index)
     {
         weaponSpot = pc.additionalWeaponSpots[index].transform;
-        //transform.SetParent(weaponSpot);
     }
 }

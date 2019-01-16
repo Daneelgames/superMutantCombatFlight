@@ -10,39 +10,23 @@ public class DropBoxController : MonoBehaviour
     public Rigidbody rb;
     public float speed = 1;
 
-    bool moveUp = true;
-
     [Header("0 is medpack, 1 is weapon")]
     public List<GameObject> sprites;
 
+    bool goingUp = true;
+    float t = 0;
+    Vector3 startPosition;
+
     private void Start()
     {
-        Invoke("DestroyDropBox", lifeTime);
-        InvokeRepeating("SetVelocity", 0.1f, 0.1f);
-
-        StartCoroutine(SetMovementDirection(true));
-    }
-
-    IEnumerator SetMovementDirection(bool _moveUp)
-    {
-        moveUp = _moveUp;
-
-        yield return new WaitForSeconds(1);
-
-        StartCoroutine(SetMovementDirection(!_moveUp));
-    }
-
-    private void SetVelocity()
-    {
-        if (moveUp)
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.up, 0.9f * Time.deltaTime * speed);
-        else
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.down, 0.9f * Time.deltaTime * speed);
+        startPosition = transform.position;
     }
 
     void DestroyDropBox()
     {
         GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+
+        Instantiate(destructibleController.explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
@@ -70,10 +54,10 @@ public class DropBoxController : MonoBehaviour
 
     public void DropWeapon()
     {
-        // choose weapon
         int weaponIndex = Random.Range(0, GameManager.instance.spawnerController.additionalWeapons.Count);
 
-        /*
+        /*  //CHOOSE UNIQUE WEAPON
+        
         GameObject newWeapon;
 
         if (GameManager.instance.pc.additionalWeapons.Count > 0)
@@ -108,5 +92,33 @@ public class DropBoxController : MonoBehaviour
 
         GameObject newWeapon = Instantiate(GameManager.instance.spawnerController.additionalWeapons[weaponIndex].gameObject, transform.position, Quaternion.identity);
         newWeapon.name = newWeapon.name.Substring(0, newWeapon.name.Length - 7);
+    }
+
+    private void Update()
+    {
+        if (goingUp)
+        {
+            if (transform.position.y < 4)
+            {
+                t += Time.deltaTime;
+                transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, 4, 7), t);
+            }
+            else
+            {
+                t = 0;
+                startPosition = transform.position;
+                goingUp = false;
+            }
+        }
+        else
+        {
+            if (transform.position.y > -5.25f)
+            {
+                t += Time.deltaTime/9f;
+                transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, -5.25f, 7), t);
+            }
+            else
+                DestroyDropBox();
+        }
     }
 }

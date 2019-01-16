@@ -10,7 +10,10 @@ public class CameraController : MonoBehaviour
     public float cameraZoneY = 1.75f;
     PlayerController pc;
 
+    public Animator anim;
+
     Vector3 newEulerAngles = Vector3.zero;
+    int lsdCount = 0;
 
     private void Start()
     {
@@ -63,5 +66,11 @@ public class CameraController : MonoBehaviour
             float newX = Mathf.LerpAngle(newEulerAngles.x, -13, 0.9f * Time.deltaTime * cameraSpeed);
             newEulerAngles = new Vector3(newX, newEulerAngles.y, newEulerAngles.z);
         }
+    }
+
+    public void SetLSD(int _lsd)
+    {
+        lsdCount += _lsd;
+        anim.SetInteger("LSD", lsdCount);
     }
 }

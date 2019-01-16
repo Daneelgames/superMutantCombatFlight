@@ -1271,5 +1271,5 @@ MonoBehaviour:
     type: 3}
   waveController: {fileID: 0}
   bossController: {fileID: 0}
-  dropBox: {fileID: 672613425260513543}
+  dropBoxController: {fileID: 672613425260513543}
   canBeDamagedBySolids: 0

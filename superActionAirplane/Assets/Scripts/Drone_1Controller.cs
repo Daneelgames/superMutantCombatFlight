@@ -17,6 +17,8 @@ public class Drone_1Controller : MonoBehaviour
     public GameObject shotHolder;
     public Animator anim;
 
+    public bool unfiniteShooting = false;
+
     void Start()
     {
         InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
@@ -31,7 +33,7 @@ public class Drone_1Controller : MonoBehaviour
                 {
                     if (gameObject.transform.position.y < 7) // if noBossState, but y is < 7
                     {
-                        Shot();
+                       Shot();
                     }
                 }
                 else // if bossState
@@ -56,8 +58,16 @@ public class Drone_1Controller : MonoBehaviour
         if (bullet) // single bullet
         {
             if (anim)
-                anim.SetTrigger("Shot");
-
+            {
+                if (!unfiniteShooting)
+                {
+                    anim.SetTrigger("Shot");
+                }
+                else
+                {
+                    anim.SetBool("Shot", true);
+                }
+            }
             Vector3 shotOrigintPos = transform.position;
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
