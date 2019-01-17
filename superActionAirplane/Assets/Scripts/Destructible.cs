@@ -99,10 +99,10 @@ public class Destructible : MonoBehaviour
             {
                 DropDropBox();
             }
-            else
+            else if (!GameManager.instance.spawnerController.dropBoxOnScene)
             {
                 float randomDrop = Random.Range(0f, 100f);
-                if (randomDrop > 75f)
+                if (randomDrop > 66f)
                 {
                     DropDropBox();
                 }

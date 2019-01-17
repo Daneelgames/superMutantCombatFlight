@@ -9,56 +9,70 @@ public class DropBoxController : MonoBehaviour
     public Rigidbody rb;
     public float speed = 1;
 
-    bool goingUp = true;
-    float t = 0;
-    Vector3 startPosition;
+    GameManager gameManager;
 
     private void Start()
     {
-        startPosition = transform.position;
+        gameManager = GameManager.instance;
+        gameManager.spawnerController.ToggleDropBoxOnScene(true);
+        StartCoroutine("MoveCrate");
     }
 
     void DestroyDropBox()
     {
-        GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+        gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
 
         Instantiate(destructibleController.explosion, transform.position, Quaternion.identity);
+
+        gameManager.spawnerController.ToggleDropBoxOnScene(false);
         Destroy(gameObject);
     }
 
     public void DropWeapon()
     {
-        int weaponIndex = Random.Range(0, GameManager.instance.spawnerController.additionalWeapons.Count);
+        gameManager.spawnerController.ToggleDropBoxOnScene(false);
+
+        int weaponIndex = Random.Range(0, gameManager.spawnerController.additionalWeapons.Count);
+        int doubles = 0;
+
+        for (int i = 0; i < gameManager.pc.additionalWeapons.Count; i++)
+        {
+            if (gameManager.spawnerController.additionalWeapons[weaponIndex].name == gameManager.pc.additionalWeapons[i].name)
+            {
+                doubles += 1;
+            }
+        }
+
+        if (doubles == 3)
+        {
+            if (weaponIndex > 0)
+                weaponIndex -= 1;
+            else
+                weaponIndex += 1;
+        }
 
         GameObject newWeapon = Instantiate(GameManager.instance.spawnerController.additionalWeapons[weaponIndex].gameObject, transform.position, Quaternion.identity);
         newWeapon.name = newWeapon.name.Substring(0, newWeapon.name.Length - 7);
     }
 
-    private void Update()
+    IEnumerator MoveCrate()
     {
-        if (goingUp)
+        float t = 0;
+        Vector3 startPosition = transform.position;
+        while (t < 1)
         {
-            if (transform.position.y < 4)
-            {
-                t += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, 4, 7), t);
-            }
-            else
-            {
-                t = 0;
-                startPosition = transform.position;
-                goingUp = false;
-            }
+            t += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, 4, 7), t);
+            yield return null;
         }
-        else
+        startPosition = transform.position;
+        t = 0;
+        while (t < 9)
         {
-            if (transform.position.y > -5.25f)
-            {
-                t += Time.deltaTime/9f;
-                transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, -5.25f, 7), t);
-            }
-            else
-                DestroyDropBox();
+            t += Time.deltaTime/9;
+            transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, -5.25f, 7), t);
+            yield return null;
         }
+        DestroyDropBox();
     }
 }

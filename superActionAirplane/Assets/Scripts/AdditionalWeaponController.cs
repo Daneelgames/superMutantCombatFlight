@@ -42,10 +42,17 @@ public class AdditionalWeaponController : MonoBehaviour
 
     void GetWeaponSpot()
     {
-        int index = Random.Range(0, 3); // take random spot
-        pc.additionalWeapons[index].Remove();
-        pc.additionalWeapons[index] = this; // replace existing weapon
-        weaponSpot = pc.additionalWeaponSpots[index];
+        for (int i = 0; i < 3; i++)
+        {
+            if (pc.additionalWeapons[i].name != gameObject.name)
+            {
+                pc.additionalWeapons[i].Remove();
+                pc.additionalWeapons[i] = this; // replace existing weapon
+                weaponSpot = pc.additionalWeaponSpots[i];
+
+                return;
+            }
+        }
     }
 
     private void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
+    public bool infiniteMode = false;
     public float movementSpeed = 100;
 
     public int testStartWave = 0;
@@ -32,9 +33,10 @@ public class SpawnerController : MonoBehaviour
 
     public SkyController skyController;
 
-
     [HideInInspector]
     public WaveController currentWaveController;
+    [HideInInspector]
+    public bool dropBoxOnScene;
 
     private void Start()
     {
@@ -130,9 +132,15 @@ public class SpawnerController : MonoBehaviour
             currentWave = newWaveIndex;
             SpawnWave();
         }
-        else // if waves is over, spawn boss
+        else if (!infiniteMode) // if waves is over, spawn boss
         {
             SpawnBoss();
+        }
+        else if (infiniteMode)
+        {
+            GenerateSpawnList();
+            currentWave = 1;
+            SpawnWave();
         }
     }
 
@@ -156,5 +164,9 @@ public class SpawnerController : MonoBehaviour
     {
         GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
         currentWaveController = newWave.GetComponent<WaveController>();
+    }
+    public void ToggleDropBoxOnScene(bool onScene)
+    {
+        dropBoxOnScene = onScene;
     }
 }
