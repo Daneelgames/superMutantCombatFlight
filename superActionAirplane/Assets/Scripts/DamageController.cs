@@ -6,7 +6,12 @@ public class DamageController : MonoBehaviour
 {
     public float damage = 1;
     public GameObject explosion;
+    ObjectPooler objectPooler;
 
+    private void Start()
+    {
+        objectPooler = ObjectPooler.instance;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -47,7 +52,7 @@ public class DamageController : MonoBehaviour
 
     void DestoyBullet()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
         gameObject.SetActive(false);
     }
 }

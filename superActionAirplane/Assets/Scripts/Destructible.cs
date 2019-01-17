@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Destructible : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class Destructible : MonoBehaviour
     public bool canBeDamagedBySolids = true;
     bool invincible = false;
 
+    ObjectPooler objectPooler;
+
     private void Start()
     {
+        objectPooler = ObjectPooler.instance;
+
         if (waveController)
             waveController.AddEnemy(gameObject);
     }
@@ -34,7 +39,7 @@ public class Destructible : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(explosion, transform.position, Quaternion.identity);
+                    objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
                     GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
                     Destroy(dropBoxController.gameObject);
                 }
@@ -49,11 +54,12 @@ public class Destructible : MonoBehaviour
 
             health -= damage;
             if (health > 0)
-                Instantiate(smallExplosion, transform.position, Quaternion.identity);
+                objectPooler.SpawnGameObjectFromPool(smallExplosion.name, transform.position, Quaternion.identity);
             else // if object has no health
             {
-                Instantiate(explosion, transform.position, Quaternion.identity);
+                objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
 
+                CameraShaker.Instance.ShakeOnce(6, 6, 0.1f, 1);
                 if (waveController) //if gameObject is an enemy
                 {
                     Drop();
@@ -104,14 +110,7 @@ public class Destructible : MonoBehaviour
         }
         else // drop from dropBox
         {
-            if (dropBoxController.type == 0)
-            {
-                dropBoxController.DropHealth();
-            }
-            else if (dropBoxController.type == 1)
-            {
-                dropBoxController.DropWeapon();
-            }
+            dropBoxController.DropWeapon();
         }
     }
 
@@ -120,23 +119,6 @@ public class Destructible : MonoBehaviour
         if (GameManager.instance.pc.isActiveAndEnabled)
         {
             GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
-
-            if (GameManager.instance.spawnerController.currentWave == 0)
-            {
-                drop.GetComponent<DropBoxController>().SetType(1); // weapon
-            }
-            else
-            {
-                float random = Random.Range(0f, 100f);
-                if (!GameManager.instance.spawnerController.healthDropOnScene && random > 35 * GameManager.instance.pc.lives) // if player are low on health
-                {
-                    drop.GetComponent<DropBoxController>().SetType(0); // health
-                }
-                else
-                {
-                    drop.GetComponent<DropBoxController>().SetType(1); // weapon
-                }
-            }
         }
     }
 }

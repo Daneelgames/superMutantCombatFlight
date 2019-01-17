@@ -25,44 +25,91 @@ public class ObjectPooler : MonoBehaviour
 
     #endregion
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<BulletController>> poolDictionary;
+    public List<Pool> poolsBullets;
+    public List<Pool> poolsObjects;
+    public Dictionary<string, Queue<BulletController>> poolDictionaryBullets;
+    public Dictionary<string, Queue<GameObject>> poolDictionaryObjects;
 
     private void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<BulletController>>();
+        CreateBullets();
+        CreateObjects();
+    }
 
-        foreach (Pool pool in pools)
+    void CreateBullets()
+    {
+        poolDictionaryBullets = new Dictionary<string, Queue<BulletController>>();
+
+        foreach (Pool pool in poolsBullets)
         {
-            Queue<BulletController> objectPool = new Queue<BulletController>();
+            Queue<BulletController> objectPoolBullets = new Queue<BulletController>();
 
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj =  Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                objectPool.Enqueue(obj.GetComponent<BulletController>());
+                objectPoolBullets.Enqueue(obj.GetComponent<BulletController>());
                 obj.transform.SetParent(pool.parent);
             }
 
-            poolDictionary.Add(pool.tag, objectPool);
+            poolDictionaryBullets.Add(pool.tag, objectPoolBullets);
         }
     }
 
-    public BulletController SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    void CreateObjects()
     {
-        if (!poolDictionary.ContainsKey(tag))
+        poolDictionaryObjects = new Dictionary<string, Queue<GameObject>>();
+
+        foreach (Pool pool in poolsObjects)
+        {
+            Queue<GameObject> objectPoolObjects = new Queue<GameObject>();
+
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab);
+                obj.SetActive(false);
+                objectPoolObjects.Enqueue(obj);
+                obj.transform.SetParent(pool.parent);
+            }
+
+            poolDictionaryObjects.Add(pool.tag, objectPoolObjects);
+        }
+    }
+
+    public BulletController SpawnBulletFromPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionaryBullets.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
             return null;
         }
 
-        BulletController objectToSpawn = poolDictionary[tag].Dequeue();
+        BulletController objectToSpawn = poolDictionaryBullets[tag].Dequeue();
 
         objectToSpawn.gameObject.SetActive(true);
         objectToSpawn.gameObject.transform.position = position;
         objectToSpawn.gameObject.transform.rotation = rotation;
 
-        poolDictionary[tag].Enqueue(objectToSpawn);
+        poolDictionaryBullets[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
+    }
+
+    public GameObject SpawnGameObjectFromPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionaryObjects.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist");
+            return null;
+        }
+
+        GameObject objectToSpawn = poolDictionaryObjects[tag].Dequeue();
+
+        objectToSpawn.gameObject.SetActive(true);
+        objectToSpawn.gameObject.transform.position = position;
+        objectToSpawn.gameObject.transform.rotation = rotation;
+
+        poolDictionaryObjects[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }

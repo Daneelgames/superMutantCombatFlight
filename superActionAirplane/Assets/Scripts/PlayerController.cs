@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerController : MonoBehaviour
 {
@@ -72,7 +73,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!hurt)
         {
-            Instantiate(explosion, transform.position, transform.rotation);
+            CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
+
+            objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
             if (!invinsible)
             {
                 lives -= 1;
@@ -242,7 +245,7 @@ public class PlayerController : MonoBehaviour
     void ShotBullet()
     {
         //GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
-        BulletController _bulletController = objectPooler.SpawnFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
+        BulletController _bulletController = objectPooler.SpawnBulletFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
         _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;
     }
@@ -252,7 +255,7 @@ public class PlayerController : MonoBehaviour
         foreach (GameObject go in bulletBurst)
         {
             //GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
-            BulletController _bulletController = objectPooler.SpawnFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
+            BulletController _bulletController = objectPooler.SpawnBulletFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
             //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
             _bulletController.SetTarget(target.transform, Vector3.zero, false);
             shotDelay = _bulletController.delayNextShotTime;

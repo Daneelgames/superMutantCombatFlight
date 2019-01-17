@@ -65,7 +65,7 @@ public class AdditionalWeaponController : MonoBehaviour
             {
                 if (anim)
                     anim.SetTrigger("Shoot");
-                BulletController newBullet = objectPooler.SpawnFromPool(bullet.name, shotHolder.position, Quaternion.identity);
+                BulletController newBullet = objectPooler.SpawnBulletFromPool(bullet.name, shotHolder.position, Quaternion.identity);
                 Transform newTarget;
                 bool autoAim = false;
                 if (pc.aimAssist.currentTargetTransform != null) // if aimAssist has someone inside
@@ -108,7 +108,7 @@ public class AdditionalWeaponController : MonoBehaviour
         foreach (GameObject go in bulletBurst)
         {
 
-            BulletController newBullet = objectPooler.SpawnFromPool(go.name, shotHolder.position, Quaternion.identity);
+            BulletController newBullet = objectPooler.SpawnBulletFromPool(go.name, shotHolder.position, Quaternion.identity);
             if (_newTarget != null)
             {
                 _newTarget = pc.target.transform;

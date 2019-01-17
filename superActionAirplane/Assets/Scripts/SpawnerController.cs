@@ -21,7 +21,6 @@ public class SpawnerController : MonoBehaviour
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
-    public bool healthDropOnScene;
     public int currentWave = 0;
     public GameObject solidsParent;
     public GameObject trashParent;
@@ -157,10 +156,5 @@ public class SpawnerController : MonoBehaviour
     {
         GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
         currentWaveController = newWave.GetComponent<WaveController>();
-    }
-
-    public void SetHealthOnScene(bool _bool)
-    {
-        healthDropOnScene = _bool;
     }
 }

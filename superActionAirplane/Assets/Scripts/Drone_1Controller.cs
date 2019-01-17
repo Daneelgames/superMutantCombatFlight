@@ -75,7 +75,7 @@ public class Drone_1Controller : MonoBehaviour
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
 
-            BulletController newBullet = objectPooler.SpawnFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
+            BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
             newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
         }
         else if (bulletBurst.Count > 0) // bullet burst
@@ -92,7 +92,7 @@ public class Drone_1Controller : MonoBehaviour
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
 
-            BulletController newBullet = objectPooler.SpawnFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
+            BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
             newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
             yield return new WaitForSeconds(bulletBurstDelay);
         }

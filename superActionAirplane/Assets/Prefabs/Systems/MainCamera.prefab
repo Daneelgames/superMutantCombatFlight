@@ -94,10 +94,9 @@ GameObject:
   - component: {fileID: 8130134782583477901}
   - component: {fileID: 8130134782583477906}
   - component: {fileID: 8130134782583477903}
-  - component: {fileID: 379671370}
   - component: {fileID: 397391699}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,19 +185,6 @@ MonoBehaviour:
   cameraZoneX: 3
   cameraZoneY: 1.75
   anim: {fileID: 397391699}
---- !u!114 &379671370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8130134782583477907}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 59962ee35ee0b544aa2f814889aaec6a, type: 2}
 --- !u!95 &397391699
 Animator:
   serializedVersion: 3

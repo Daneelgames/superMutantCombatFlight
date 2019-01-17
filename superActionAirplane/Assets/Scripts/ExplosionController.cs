@@ -7,9 +7,14 @@ public class ExplosionController : MonoBehaviour
 
     public float speed = 2;
 
-    void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, 2);
+        Invoke("DestroyExplosion", 2);
+    }
+
+    void DestroyExplosion()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Update()

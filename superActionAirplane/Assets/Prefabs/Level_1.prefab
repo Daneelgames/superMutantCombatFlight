@@ -188,6 +188,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &818207731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 818207732}
+  m_Layer: 0
+  m_Name: Explosions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &818207732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818207731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 871736752}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871736751
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +252,7 @@ Transform:
   - {fileID: 1123760980}
   - {fileID: 1998330002}
   - {fileID: 1002162405}
+  - {fileID: 818207732}
   m_Father: {fileID: 5688977980719362449}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3320b263fc9630b49b0b34a9f75eb192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
+  poolsBullets:
   - tag: PlayerBullet
     prefab: {fileID: 2215745776762814028, guid: 810c2a61d6a9ee94a8d66383b6c943da,
       type: 3}
@@ -246,28 +277,44 @@ MonoBehaviour:
   - tag: EnemyBullet
     prefab: {fileID: 2215745776762814028, guid: 6d67e2983c8772d4c8fb91d8150017d1,
       type: 3}
-    size: 100
+    size: 50
     parent: {fileID: 299147805}
   - tag: MinigunBullet
     prefab: {fileID: 2215745776762814028, guid: b52fe05ccdd018c45a1dc13b08463db7,
       type: 3}
-    size: 10
+    size: 50
     parent: {fileID: 1002162405}
   - tag: RocketBullet
     prefab: {fileID: 2215745776762814028, guid: e5431615ab0861f44bb3dce52608c5af,
       type: 3}
-    size: 10
+    size: 6
     parent: {fileID: 1998330002}
   - tag: ShotgunBullet
     prefab: {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d,
       type: 3}
-    size: 200
+    size: 20
     parent: {fileID: 1123760980}
   - tag: SniperRifleBullet
     prefab: {fileID: 2215745776762814028, guid: 188cc4140bbfb204f992ed3d9745f9ee,
       type: 3}
-    size: 10
+    size: 6
     parent: {fileID: 1021782590}
+  poolsObjects:
+  - tag: ExplosionPlayer
+    prefab: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,
+      type: 3}
+    size: 3
+    parent: {fileID: 818207732}
+  - tag: ExplosionBullet
+    prefab: {fileID: 1479900517559180053, guid: c6d2f71be17a23f4981b45d2de3f333e,
+      type: 3}
+    size: 20
+    parent: {fileID: 818207732}
+  - tag: ExplosionSmall
+    prefab: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
+      type: 3}
+    size: 20
+    parent: {fileID: 818207732}
 --- !u!1 &943561383
 GameObject:
   m_ObjectHideFlags: 0
