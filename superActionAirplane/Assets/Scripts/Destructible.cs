@@ -15,6 +15,7 @@ public class Destructible : MonoBehaviour
 
     public bool canBeDamagedBySolids = true;
     bool invincible = false;
+    public Animator damageFeedbackAnimator;
 
     ObjectPooler objectPooler;
 
@@ -51,8 +52,11 @@ public class Destructible : MonoBehaviour
     {
         if (!invincible)
         {
-
             health -= damage;
+
+            if (damageFeedbackAnimator)
+                damageFeedbackAnimator.SetTrigger("Damage");
+
             if (health > 0)
                 objectPooler.SpawnGameObjectFromPool(smallExplosion.name, transform.position, Quaternion.identity);
             else // if object has no health
@@ -80,6 +84,7 @@ public class Destructible : MonoBehaviour
             }
         }
     }
+
     void Destroyed()
     {
         GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);

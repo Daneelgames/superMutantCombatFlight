@@ -100,8 +100,9 @@ MonoBehaviour:
     type: 3}
   waveController: {fileID: 0}
   bossController: {fileID: 0}
-  dropBox: {fileID: 0}
+  dropBoxController: {fileID: 0}
   canBeDamagedBySolids: 1
+  damageFeedbackAnimator: {fileID: 4991207417375865500}
 --- !u!114 &7244448745974765093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
     m_Bits: 0
   shotHolder: {fileID: 4904121869486365905}
   anim: {fileID: 8253597335634742207}
+  unfiniteShooting: 0
 --- !u!136 &2489386072328719634
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -149,6 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 144728719680943464}
+  - component: {fileID: 4991207417375865500}
   m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
@@ -171,6 +174,25 @@ Transform:
   m_Father: {fileID: 1420091392090082983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4991207417375865500
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508026989676415734}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3a5876db80b33c43879c8d4f00b764e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8256188238890396434
 GameObject:
   m_ObjectHideFlags: 0

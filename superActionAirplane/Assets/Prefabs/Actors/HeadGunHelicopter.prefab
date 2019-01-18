@@ -59,6 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3770238370967215201}
+  - component: {fileID: 1784697129}
   m_Layer: 11
   m_Name: Model
   m_TagString: Untagged
@@ -81,6 +82,25 @@ Transform:
   m_Father: {fileID: 2730747398978791342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1784697129
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782666294703956991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3a5876db80b33c43879c8d4f00b764e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8071139308801820650
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,8 +172,9 @@ MonoBehaviour:
     type: 3}
   waveController: {fileID: 0}
   bossController: {fileID: 0}
-  dropBox: {fileID: 0}
+  dropBoxController: {fileID: 0}
   canBeDamagedBySolids: 1
+  damageFeedbackAnimator: {fileID: 1784697129}
 --- !u!114 &5970029358301380396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +199,7 @@ MonoBehaviour:
     m_Bits: 0
   shotHolder: {fileID: 9135752828325074446}
   anim: {fileID: 5196088815056554358}
+  unfiniteShooting: 0
 --- !u!136 &1503268394304545819
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -246,10 +268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: headGun
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 8fb84979101d7b34f814c16b6adbebea, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 948a5f9b46c726c4b8a8f706c8c8449f, type: 2}
     - target: {fileID: 400010, guid: 8fb84979101d7b34f814c16b6adbebea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -294,6 +312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 8fb84979101d7b34f814c16b6adbebea, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 948a5f9b46c726c4b8a8f706c8c8449f, type: 2}
     - target: {fileID: 400014, guid: 8fb84979101d7b34f814c16b6adbebea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
