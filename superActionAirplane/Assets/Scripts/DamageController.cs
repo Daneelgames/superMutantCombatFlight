@@ -46,8 +46,26 @@ public class DamageController : MonoBehaviour
     void DamageOther(Collider other)
     {
         Destructible destructible = other.gameObject.GetComponent<Destructible>();
+        float newDamage = damage;
         if (destructible)
-            destructible.Damage(damage);
+        {
+            int mushroomsOnScene = GameManager.instance.spawnerController.skyController.lsdCount;
+            switch (mushroomsOnScene)
+            {
+                case 0:
+                    break;
+                case 1:
+                    newDamage += newDamage * 0.5f;
+                    break;
+                case 2:
+                    newDamage += newDamage;
+                    break;
+                case 3:
+                    newDamage *= 2;
+                    break;
+            }
+            destructible.Damage(newDamage);
+        }
     }
 
     void DestoyBullet()

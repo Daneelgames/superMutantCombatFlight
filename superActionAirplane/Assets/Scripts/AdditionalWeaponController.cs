@@ -16,7 +16,7 @@ public class AdditionalWeaponController : MonoBehaviour
 
     ObjectPooler objectPooler;
 
-    public MushroomLsdController mushroomLsdController;
+    public PowerUpController powerUpController;
 
     Transform weaponSpot; // spot for weapon parented by player
 
@@ -127,10 +127,10 @@ public class AdditionalWeaponController : MonoBehaviour
 
     public void Remove()
     {
-        Instantiate(smallExplosion, shotHolder.position, Quaternion.identity);
+        //Instantiate(smallExplosion, shotHolder.position, Quaternion.identity);
 
-        if (mushroomLsdController)
-            mushroomLsdController.ToggleLsdInactive();
+        if (powerUpController)
+            powerUpController.ToggleEffectInactive();
 
         Destroy(gameObject);
     }

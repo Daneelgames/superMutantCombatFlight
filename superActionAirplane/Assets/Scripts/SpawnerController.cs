@@ -6,6 +6,8 @@ public class SpawnerController : MonoBehaviour
 {
     public bool infiniteMode = false;
     public float movementSpeed = 100;
+    float originalMovementSpeed = 100;
+    int sharksOnScene = 0;
 
     public int testStartWave = 0;
     public float spawnZ = 200;
@@ -37,6 +39,9 @@ public class SpawnerController : MonoBehaviour
     public WaveController currentWaveController;
     [HideInInspector]
     public bool dropBoxOnScene;
+
+    [Header("0 to 100. When 0, will drop every time. Default is 66")]
+    public float dropRate = 66;
 
     private void Start()
     {
@@ -101,7 +106,22 @@ public class SpawnerController : MonoBehaviour
                 Vector3 newSolidPosition = new Vector3(Random.Range(-rangeX, rangeX), groundLevel, spawnZ);
                 GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
                 go.transform.SetParent(solidsParent.transform);
-                currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
+
+                switch(sharksOnScene)
+                {
+                    case 0:
+                        currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
+                        break;
+                    case 1:
+                        currentDelay = 3;
+                        break;
+                    case 2:
+                        currentDelay = 2f;
+                        break;
+                    case 3:
+                        currentDelay = 1f;
+                        break;
+                }
             }
         }
     }
@@ -121,7 +141,10 @@ public class SpawnerController : MonoBehaviour
         GameObject go = GameObject.Instantiate(trash[Random.Range(0, trash.Count)], newSolidPosition, Quaternion.identity);
         go.transform.SetParent(trashParent.transform);
         trashSide *= -1;
-        Invoke("SpawnTrash", .1f);
+        if (sharksOnScene > 0)
+            Invoke("SpawnTrash", 0.05f);
+        else
+            Invoke("SpawnTrash", 0.1f);
     }
 
     public void WaveDestroyed(WaveController wave)
@@ -168,5 +191,12 @@ public class SpawnerController : MonoBehaviour
     public void ToggleDropBoxOnScene(bool onScene)
     {
         dropBoxOnScene = onScene;
+    }
+
+    public void SetShark(int amount)
+    {
+        sharksOnScene += amount;
+
+        movementSpeed = originalMovementSpeed + 33 * amount;
     }
 }

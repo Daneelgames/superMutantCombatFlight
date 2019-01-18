@@ -29,7 +29,7 @@ public class Destructible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name != "AimAssist")
+        if (other.gameObject.name != "AimAssist" && other.gameObject.tag != "Projectiles")
         {
             if (gameObject.layer == 11) //if enemy crashes
             {
@@ -61,6 +61,9 @@ public class Destructible : MonoBehaviour
                 objectPooler.SpawnGameObjectFromPool(smallExplosion.name, transform.position, Quaternion.identity);
             else // if object has no health
             {
+                invincible = true;
+                if (dropBoxController)
+                    print(dropBoxController.gameObject.name + " is destroyed. ID is " + dropBoxController.GetInstanceID());
                 objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
 
                 CameraShaker.Instance.ShakeOnce(6, 6, 0.1f, 1);
@@ -107,7 +110,7 @@ public class Destructible : MonoBehaviour
             else if (!GameManager.instance.spawnerController.dropBoxOnScene)
             {
                 float randomDrop = Random.Range(0f, 100f);
-                if (randomDrop > 66f)
+                if (randomDrop > GameManager.instance.spawnerController.dropRate)
                 {
                     DropDropBox();
                 }
@@ -115,6 +118,7 @@ public class Destructible : MonoBehaviour
         }
         else // drop from dropBox
         {
+            //print(dropBoxController.gameObject.name + " is dropped a weapon");
             dropBoxController.DropWeapon();
         }
     }

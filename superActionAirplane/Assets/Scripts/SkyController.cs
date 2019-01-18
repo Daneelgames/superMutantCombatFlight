@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkyController : MonoBehaviour
 {
     public Animator skyAnimator;
-    int lsdCount = 0;
+    public int lsdCount = 0;
 
     public void SetLSD(int _lsd)
     {

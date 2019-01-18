@@ -362,11 +362,11 @@ PrefabInstance:
     - target: {fileID: 13700002, guid: 5bec03decbe5d1749bc847f735d6e071, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c47aa351e23866049a7a9ca1806a1cf6, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c3fdc3d844c5b845b15fc1ca049d9d8, type: 2}
     - target: {fileID: 13700000, guid: 5bec03decbe5d1749bc847f735d6e071, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e4ce4c79fcaaaef4f9db31dd6ff2a9f2, type: 2}
+      objectReference: {fileID: 2100000, guid: 6c3fdc3d844c5b845b15fc1ca049d9d8, type: 2}
     - target: {fileID: 400010, guid: 5bec03decbe5d1749bc847f735d6e071, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 2.2292066

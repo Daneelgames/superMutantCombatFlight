@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0088878cee9fba742b3f56ca441ac445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 8130134782583477901}
+  uiCamera: {fileID: 4367277713242280541}
   targetTransform: {fileID: 8130134782628283331}
   cameraSpeed: 3
   cameraZoneX: 3

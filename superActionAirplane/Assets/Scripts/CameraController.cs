@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
 
     Vector3 newEulerAngles = Vector3.zero;
     int lsdCount = 0;
+    int sharkCount = 0;
 
     private void Start()
     {
@@ -72,5 +73,11 @@ public class CameraController : MonoBehaviour
     {
         lsdCount += _lsd;
         anim.SetInteger("LSD", lsdCount);
+    }
+
+    public void SetShark(int _shark)
+    {
+        sharkCount += _shark;
+        anim.SetInteger("Shark", sharkCount);
     }
 }

@@ -115,7 +115,7 @@ MonoBehaviour:
     type: 3}
   shotHolder: {fileID: 2010307262197500451}
   anim: {fileID: 0}
-  mushroomLsdController: {fileID: 4410530376319038168}
+  powerUpController: {fileID: 4410530376319038168}
 --- !u!114 &4410530376319038168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892b587f15acb124998e8bfb618039dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupType: 0
 --- !u!1001 &8990435570564213376
 PrefabInstance:
   m_ObjectHideFlags: 0
