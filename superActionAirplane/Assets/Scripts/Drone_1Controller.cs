@@ -86,6 +86,7 @@ public class Drone_1Controller : MonoBehaviour
 
     IEnumerator ShotBulletBurst()
     {
+        anim.SetTrigger("Shot");
         foreach (GameObject go in bulletBurst)
         {
             Vector3 shotOrigintPos = transform.position;
