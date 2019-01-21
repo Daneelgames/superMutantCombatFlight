@@ -14,7 +14,6 @@ public class SpawnerController : MonoBehaviour
 
     public float solidsMinDelay = 1;
     public float solidsMaxDelay = 10;
-    public float rangeX = 5;
     float currentDelay = 1;
     public float groundLevel = -6;
 
@@ -29,6 +28,7 @@ public class SpawnerController : MonoBehaviour
     public GameObject trashParent;
     int trashSide = -1;
     public GameObject dropBox;
+    public float dropBoxDelay = 0;
 
     public GameObject boss;
     public bool bossState = false;
@@ -103,7 +103,7 @@ public class SpawnerController : MonoBehaviour
                 if (!solidsParent)
                     GetSolids();
 
-                Vector3 newSolidPosition = new Vector3(Random.Range(-rangeX, rangeX), groundLevel, spawnZ);
+                Vector3 newSolidPosition = new Vector3(0, groundLevel, spawnZ);
                 GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
                 go.transform.SetParent(solidsParent.transform);
 
@@ -191,12 +191,25 @@ public class SpawnerController : MonoBehaviour
     public void ToggleDropBoxOnScene(bool onScene)
     {
         dropBoxOnScene = onScene;
+        StartCoroutine("DropBoxDelay");
+    }
+
+    IEnumerator DropBoxDelay()
+    {
+        dropBoxDelay = 5;
+        while (dropBoxDelay > 0)
+        {
+            dropBoxDelay -= Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void SetShark(int amount)
     {
         sharksOnScene += amount;
+        if (sharksOnScene < 0)
+            sharksOnScene = 0;
 
-        movementSpeed = originalMovementSpeed + 33 * amount;
+        movementSpeed = originalMovementSpeed + 33 * sharksOnScene;
     }
 }

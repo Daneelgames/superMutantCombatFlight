@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Application.targetFrameRate = 60;
-        Screen.SetResolution(640, 360, true);
-        Camera.main.aspect = 16f / 9f;
+        Screen.SetResolution(540, 960, true);
+        //Camera.main.aspect = 16f / 9f;
 
         //Check if instance already exists
         if (instance == null)

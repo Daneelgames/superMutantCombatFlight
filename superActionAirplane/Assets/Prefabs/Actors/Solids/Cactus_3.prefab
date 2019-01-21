@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3469588597365980837}
   - component: {fileID: 6103676002167826784}
+  - component: {fileID: 6105302007191105498}
   m_Layer: 0
   m_Name: Cactus_3
   m_TagString: Untagged
@@ -122,8 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15204f760c16194895d51925c6d85be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
   hideSolidController: {fileID: 0}
+--- !u!65 &6105302007191105498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254790116327264293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7724725894641522278
 GameObject:
   m_ObjectHideFlags: 0

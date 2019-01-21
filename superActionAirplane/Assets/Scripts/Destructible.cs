@@ -62,8 +62,6 @@ public class Destructible : MonoBehaviour
             else // if object has no health
             {
                 invincible = true;
-                if (dropBoxController)
-                    print(dropBoxController.gameObject.name + " is destroyed. ID is " + dropBoxController.GetInstanceID());
                 objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
 
                 CameraShaker.Instance.ShakeOnce(6, 6, 0.1f, 1);
@@ -107,7 +105,7 @@ public class Destructible : MonoBehaviour
             {
                 DropDropBox();
             }
-            else if (!GameManager.instance.spawnerController.dropBoxOnScene)
+            else if (!GameManager.instance.spawnerController.dropBoxOnScene && GameManager.instance.spawnerController.dropBoxDelay <= 0)
             {
                 float randomDrop = Random.Range(0f, 100f);
                 if (randomDrop > GameManager.instance.spawnerController.dropRate)

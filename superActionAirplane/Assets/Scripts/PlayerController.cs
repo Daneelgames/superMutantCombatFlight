@@ -162,7 +162,10 @@ public class PlayerController : MonoBehaviour
         if (!touchInput)
             _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         else
+        {
             _move = new Vector2(GameManager.instance.touchInputController.joystick.Horizontal, GameManager.instance.touchInputController.joystick.Vertical) * touchMovementScaler;
+
+        }
     }
 
 
@@ -182,25 +185,25 @@ public class PlayerController : MonoBehaviour
 
     Vector2 ClampMovement(Vector2 move)
     {
-        if (transform.position.x < -7 && move.x < 0)
+        if (transform.position.x < -2 && move.x < 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -7, 0.9f), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -2, 0.9f), transform.position.y, transform.position.z);
         }
-        if (transform.position.x > 7 && move.x > 0)
+        if (transform.position.x > 2 && move.x > 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 7, 0.9f), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 2, 0.9f), transform.position.y, transform.position.z);
         }
         if (transform.position.y < -4 && move.y < 0)
         {
             move.y = Mathf.Lerp(move.y, 0, 0.9f);
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, -4, 0.9f), transform.position.z);
         }
-        if (transform.position.y > 4 && move.y > 0)
+        if (transform.position.y > 4.5f && move.y > 0)
         {
             move.y = Mathf.Lerp(move.y, 0, 0.9f);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 4, 0.9f), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 4.5f, 0.9f), transform.position.z);
         }
         return move;
     }

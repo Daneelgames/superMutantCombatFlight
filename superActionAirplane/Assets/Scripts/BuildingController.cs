@@ -19,9 +19,10 @@ public class BuildingController : MonoBehaviour
 
     }
 
-    private void Update()
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (transform.position.z < -1000)
+        if (other.gameObject.name == "Destroyer")
         {
             GameManager.instance.spawnerController.RemoveSolid(this);
             Destroy(gameObject);

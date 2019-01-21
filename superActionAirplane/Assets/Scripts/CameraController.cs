@@ -21,6 +21,7 @@ public class CameraController : MonoBehaviour
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+    /*
     private void LateUpdate()
     {
         GetRotation();
@@ -35,7 +36,7 @@ public class CameraController : MonoBehaviour
         //Camera's horizontal turn
         if (x < -cameraZoneX)
         {
-            float newY = Mathf.LerpAngle(newEulerAngles.y, -15f, 0.9f * Time.deltaTime * cameraSpeed);
+            float newY = Mathf.LerpAngle(newEulerAngles.y, -25, 0.9f * Time.deltaTime * cameraSpeed);
             newEulerAngles = new Vector3(newEulerAngles.x, newY, newEulerAngles.z);
 
         }
@@ -46,7 +47,7 @@ public class CameraController : MonoBehaviour
         }
         else if (x >= cameraZoneX)
         {
-            float newY = Mathf.LerpAngle(newEulerAngles.y, 15, 0.9f * Time.deltaTime * cameraSpeed);
+            float newY = Mathf.LerpAngle(newEulerAngles.y, 25, 0.9f * Time.deltaTime * cameraSpeed);
             newEulerAngles = new Vector3(newEulerAngles.x, newY, newEulerAngles.z);
         }
 
@@ -68,6 +69,7 @@ public class CameraController : MonoBehaviour
             newEulerAngles = new Vector3(newX, newEulerAngles.y, newEulerAngles.z);
         }
     }
+    */
 
     public void SetLSD(int _lsd)
     {

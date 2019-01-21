@@ -53,17 +53,24 @@ public class DropBoxController : MonoBehaviour
 
         GameObject newWeapon = Instantiate(gameManager.spawnerController.additionalWeapons[weaponIndex].gameObject, transform.position, Quaternion.identity);
         newWeapon.name = newWeapon.name.Substring(0, newWeapon.name.Length - 7);
-        print(newWeapon.name + " is dropped on " + Time.deltaTime);
     }
 
     IEnumerator MoveCrate()
     {
         float t = 0;
+        float newX = transform.position.x;
+
+        if (newX > 4.5f)
+            newX = 4.5f;
+
+        if (newX < -4.5f)
+            newX = -4.5f;
+
         Vector3 startPosition = transform.position;
         while (t < 1)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, 4, 7), t);
+            transform.position = Vector3.Lerp(startPosition, new Vector3(newX, 4, 7), t);
             yield return null;
         }
         startPosition = transform.position;
@@ -71,7 +78,7 @@ public class DropBoxController : MonoBehaviour
         while (t < 0.9f)
         {
             t += Time.deltaTime/9;
-            transform.position = Vector3.Lerp(startPosition, new Vector3(transform.position.x, -5.25f, 7), t);
+            transform.position = Vector3.Lerp(startPosition, new Vector3(newX, -5.25f, 7), t);
             yield return null;
         }
         DestroyDropBox();
