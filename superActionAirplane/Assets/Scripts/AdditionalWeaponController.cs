@@ -20,13 +20,10 @@ public class AdditionalWeaponController : MonoBehaviour
 
     Transform weaponSpot; // spot for weapon parented by player
 
-    private void Awake()
-    {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
-    }
-
     private void Start()
     {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+
         objectPooler = ObjectPooler.instance;
 
         if (pc.additionalWeapons.Count < 3) // if there is a free spot
