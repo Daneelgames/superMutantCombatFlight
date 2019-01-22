@@ -11,33 +11,39 @@ public class BuildingController : MonoBehaviour
     {
         GameManager.instance.spawnerController.AddSolidOnScene(this);
         StartCoroutine("Grow");
+        InvokeRepeating("CheckPositionZ", 5f, 0.1f);
     }
 
     IEnumerator Grow()
     {
         float t = 0;
         transform.localScale = Vector3.zero;
-        while (t <1)
+        while (t < 3)
         {
             t += Time.deltaTime;
-      //      transform.localScale = new Vector3(t, t, t);
+            transform.localScale = new Vector3(t/3, t/3, t/3);
             yield return null;
         }
     }
 
-    private void FixedUpdate()
+    void CheckPositionZ()
+    {
+        if (transform.position.z < 0)
+        {
+            CancelInvoke();
+            Invoke("SolidDestroyed", 0.5f);
+        }
+    }
+
+    private void Update()
     {
         newZ = transform.position.z - GameManager.instance.spawnerController.movementSpeed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    void SolidDestroyed()
     {
-        if (other.gameObject.name == "Destroyer")
-        {
-            GameManager.instance.spawnerController.RemoveSolid(this);
-            Destroy(gameObject);
-        }
+        GameManager.instance.spawnerController.RemoveSolid(this);
+        Destroy(gameObject);
     }
 }

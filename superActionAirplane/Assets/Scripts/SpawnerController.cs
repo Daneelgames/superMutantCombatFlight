@@ -19,14 +19,14 @@ public class SpawnerController : MonoBehaviour
 
     public List<AdditionalWeaponController> additionalWeapons;
     public List<GameObject> solids = new List<GameObject>();
-    public List<GameObject> trash = new List<GameObject>();
+    //public List<GameObject> trash = new List<GameObject>();
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
     public int currentWave = 0;
     public GameObject solidsParent;
-    public GameObject trashParent;
-    int trashSide = -1;
+    //public GameObject trashParent;
+   // int trashSide = -1;
     public GameObject dropBox;
     public float dropBoxDelay = 0;
 
@@ -51,7 +51,7 @@ public class SpawnerController : MonoBehaviour
         {
             GenerateSpawnList();
             Invoke("SpawnWave", 2f);
-            Invoke("SpawnTrash", 0.1f);
+            //Invoke("SpawnTrash", 0.1f);
         }
     }
 
@@ -103,7 +103,7 @@ public class SpawnerController : MonoBehaviour
                 if (!solidsParent)
                     GetSolids();
 
-                Vector3 newSolidPosition = new Vector3(0, groundLevel, spawnZ);
+                Vector3 newSolidPosition = new Vector3(Random.Range(-2f, 2f), groundLevel, spawnZ);
                 GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
                 go.transform.SetParent(solidsParent.transform);
 
@@ -126,6 +126,7 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
+    /*
     void SpawnTrash()
     {
         Vector3 newSolidPosition;
@@ -146,6 +147,7 @@ public class SpawnerController : MonoBehaviour
         else
             Invoke("SpawnTrash", 0.1f);
     }
+    */
 
     public void WaveDestroyed(WaveController wave)
     {

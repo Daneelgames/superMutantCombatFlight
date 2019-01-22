@@ -34,7 +34,7 @@ public class Drone_1Controller : MonoBehaviour
             {
                 if (!GameManager.instance.spawnerController.bossState)
                 {
-                    if (gameObject.transform.position.y < 7 && gameObject.transform.position.x < 5f && gameObject.transform.position.x > -5f) // if noBossState, but y is < 7
+                    if (gameObject.transform.position.y < 10 && gameObject.transform.position.x < 5f && gameObject.transform.position.x > -5f) // if noBossState, but y is < 7
                     {
                        Shot();
                     }
@@ -74,6 +74,8 @@ public class Drone_1Controller : MonoBehaviour
             Vector3 shotOrigintPos = transform.position;
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
+
+            print(shotOrigintPos);
 
             BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
             newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
