@@ -7,6 +7,7 @@ public class DamageController : MonoBehaviour
     public float damage = 1;
     public GameObject explosion;
     ObjectPooler objectPooler;
+    public BulletController enemyBulletController;
 
     private void Start()
     {
@@ -71,6 +72,8 @@ public class DamageController : MonoBehaviour
     void DestoyBullet()
     {
         objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
+        if (enemyBulletController)
+            enemyBulletController.ResetColor();
         gameObject.SetActive(false);
     }
 }

@@ -20,7 +20,7 @@ public class BuildingController : MonoBehaviour
         while (t <1)
         {
             t += Time.deltaTime;
-            transform.localScale = new Vector3(t, t, t);
+      //      transform.localScale = new Vector3(t, t, t);
             yield return null;
         }
     }

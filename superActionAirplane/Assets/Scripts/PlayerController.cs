@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     bool hurt = false;
 
-    bool touchInput = false;
+    bool touchInput = true;
 
     public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
         objectPooler = ObjectPooler.instance;
 
 
-        if (Application.platform == RuntimePlatform.Android)
-            touchInput = true;
+        //if (Application.platform == RuntimePlatform.Android)
+        //    touchInput = true;
     }
 
     void Update()

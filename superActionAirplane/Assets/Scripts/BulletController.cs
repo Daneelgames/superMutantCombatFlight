@@ -14,7 +14,26 @@ public class BulletController : MonoBehaviour
     public bool rocket = false;
     bool autoAim = false;
 
-    public MeshRenderer art;
+    public ParticleSystem particles;
+    ParticleSystem.EmissionModule particlesEmissionModule;
+
+    private void Start()
+    {
+        if (particles)
+        {
+            particlesEmissionModule = particles.emission;
+        }
+    }
+
+    void CheckPositionZ()
+    {
+        if(transform.position.z < -1 )
+        {
+            particlesEmissionModule.enabled = false;
+            CancelInvoke("CheckPositionZ");
+            Invoke("DestroyBullet", 2);
+        }
+    }
 
     public void SetRocket(bool active)
     {
@@ -39,11 +58,18 @@ public class BulletController : MonoBehaviour
         }
         target = _target;
         rb.velocity = transform.forward * speed;
-        Invoke("DestroyBullet", lifeTime);
+
+        if (gameObject.layer == 11) // if enemy bullet
+            InvokeRepeating("CheckPositionZ", 0.1f, 0.1f);
+        else
+            Invoke("DestroyBullet", lifeTime);
     }
 
     void DestroyBullet()
     {
+        if (particles)
+            ResetColor();
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
 
@@ -59,13 +85,10 @@ public class BulletController : MonoBehaviour
             }
             rb.velocity = transform.forward * speed;
         }
+    }
 
-        if (art && gameObject.layer!=10)
-        {
-            if (transform.position.z < GameManager.instance.pc.transform.position.z)
-            {
-                art.material.color = new Color(art.material.color.r, art.material.color.g, art.material.color.b, art.material.color.a - Time.deltaTime * 3);
-            }
-        }
+    public void ResetColor()
+    {
+        particlesEmissionModule.enabled = true;
     }
 }
