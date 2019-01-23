@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using EZCameraShake;
 
 public class PlayerController : MonoBehaviour
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
     public SkinnedMeshRenderer mesh;
 
     ObjectPooler objectPooler;
+
+    Vector3 startPos;
+    Vector3 distance;
+    public Text inputDistance;
+
 
     private void Start()
     {
@@ -141,12 +147,6 @@ public class PlayerController : MonoBehaviour
         mesh.enabled = true;
         yield return new WaitForSeconds(0.1f);
 
-        /*
-        for (float t = 1; t>0; t -= 0.1f)
-        {
-        }
-        */
-        // animator.SetBool("Hurt", false);
         mesh.enabled = true;
         hurt = false;
     }
@@ -166,12 +166,31 @@ public class PlayerController : MonoBehaviour
 
     void PlayerInput()
     {
+        /*
         if (!touchInput)
             _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         else
         {
             _move = new Vector2(GameManager.instance.touchInputController.joystick.Horizontal, GameManager.instance.touchInputController.joystick.Vertical) * touchMovementScaler;
 
+        }
+        */
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    startPos = Camera.main.ScreenToViewportPoint(touch.position);
+                    startPos = new Vector3(startPos.x, startPos.y, 0);
+                     break;
+
+                case TouchPhase.Moved:
+                    distance = Camera.main.ScreenToViewportPoint(touch.position) - startPos;
+                    distance = new Vector3(distance.x, distance.y, 0);
+                    break;
+            }
+            inputDistance.text = ""+ distance;
         }
     }
 
@@ -192,24 +211,24 @@ public class PlayerController : MonoBehaviour
 
     Vector2 ClampMovement(Vector2 move)
     {
-        if (transform.position.x < -3 && move.x < 0)
+        if (transform.position.x < -3 && distance.x < 0)
         {
-            move.x = Mathf.Lerp(move.x, 0, 0.9f);
+            distance.x = Mathf.Lerp(distance.x, 0, 0.9f);
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, -3, 0.9f), transform.position.y, transform.position.z);
         }
-        if (transform.position.x > 3 && move.x > 0)
+        if (transform.position.x > 3 && distance.x > 0)
         {
-            move.x = Mathf.Lerp(move.x, 0, 0.9f);
+            distance.x = Mathf.Lerp(distance.x, 0, 0.9f);
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, 3, 0.9f), transform.position.y, transform.position.z);
         }
-        if (transform.position.y < -4 && move.y < 0)
+        if (transform.position.y < -4 && distance.y < 0)
         {
-            move.y = Mathf.Lerp(move.y, 0, 0.9f);
+            distance.y = Mathf.Lerp(distance.y, 0, 0.9f);
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, -4, 0.9f), transform.position.z);
         }
-        if (transform.position.y > 4.5f && move.y > 0)
+        if (transform.position.y > 4.5f && distance.y > 0)
         {
-            move.y = Mathf.Lerp(move.y, 0, 0.9f);
+            distance.y = Mathf.Lerp(distance.y, 0, 0.9f);
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 4.5f, 0.9f), transform.position.z);
         }
         return move;
@@ -217,8 +236,11 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        transform.position += new Vector3 (distance.x, distance.y, 0);
+        /*
         Vector3 force = new Vector3(movementVector.x, movementVector.y, 0);
         rb.velocity = force * movementSpeed;
+        */
     }
 
     void RotatePlayer()

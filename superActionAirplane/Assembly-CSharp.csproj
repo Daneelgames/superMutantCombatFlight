@@ -63,6 +63,7 @@
     <Compile Include="Assets\CoinController.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\MenuController.cs" />
+    <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />
     <Compile Include="Assets\Scripts\AimAssistController.cs" />
     <Compile Include="Assets\Scripts\AnimationEventReciever.cs" />

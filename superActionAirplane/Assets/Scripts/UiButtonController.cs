@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UiButtonController : MonoBehaviour, IPointerDownHandler //, IPointerUpHandler
+public class UiButtonController : MonoBehaviour, IPointerDownHandler
 {
     public string buttonName = "Invinsible";
     public MenuController menuController;
