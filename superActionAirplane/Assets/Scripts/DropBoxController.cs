@@ -75,9 +75,9 @@ public class DropBoxController : MonoBehaviour
         }
         startPosition = transform.position;
         t = 0;
-        while (t < 0.9f)
+        while (t < 0.4f)
         {
-            t += Time.deltaTime/9;
+            t += Time.deltaTime/4;
             transform.position = Vector3.Lerp(startPosition, new Vector3(newX, -5.25f, 7), t);
             yield return null;
         }
