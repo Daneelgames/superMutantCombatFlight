@@ -30,6 +30,8 @@ public class ObjectPooler : MonoBehaviour
     public Dictionary<string, Queue<BulletController>> poolDictionaryBullets;
     public Dictionary<string, Queue<GameObject>> poolDictionaryObjects;
 
+    List<BulletController> bullets = new List<BulletController>();
+
     private void Start()
     {
         CreateBullets();
@@ -47,11 +49,13 @@ public class ObjectPooler : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false);
-                objectPoolBullets.Enqueue(obj.GetComponent<BulletController>());
+                BulletController objController = obj.GetComponent<BulletController>();
+                objectPoolBullets.Enqueue(objController);
                 obj.transform.SetParent(pool.parent);
-            }
+                obj.SetActive(false);
 
+                bullets.Add(objController);
+            }
             poolDictionaryBullets.Add(pool.tag, objectPoolBullets);
         }
     }
@@ -71,7 +75,6 @@ public class ObjectPooler : MonoBehaviour
                 objectPoolObjects.Enqueue(obj);
                 obj.transform.SetParent(pool.parent);
             }
-
             poolDictionaryObjects.Add(pool.tag, objectPoolObjects);
         }
     }
@@ -112,5 +115,14 @@ public class ObjectPooler : MonoBehaviour
         poolDictionaryObjects[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
+    }
+
+    public void DisableAllProjectiles()
+    {
+        foreach(BulletController b in bullets)
+        {
+            if (b.isActiveAndEnabled)
+                b.DestroyBullet();
+        }
     }
 }

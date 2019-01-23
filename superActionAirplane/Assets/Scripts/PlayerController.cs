@@ -41,9 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.GetLinks(this);
         objectPooler = ObjectPooler.instance;
-
 
         //if (Application.platform == RuntimePlatform.Android)
         //    touchInput = true;
@@ -60,17 +58,17 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if ((other.tag == "Solids" && other.gameObject.layer == 9) || (other.gameObject.tag == "Enemies" && other.gameObject.layer == 11))
-        Damage();
-    }
-
-    public void GetLive()
-    {
-        lives += 1;
-        GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
+            Damage();
     }
 
     public void Damage()
     {
+        CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
+        objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
+
+        PlayerDeath();
+        return;
+
         if (!hurt)
         {
             CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
@@ -113,10 +111,7 @@ public class PlayerController : MonoBehaviour
             }
             else //death
             {
-                target.gameObject.SetActive(false);
-                target_2.gameObject.SetActive(false);
-                gameObject.SetActive(false);
-                GameManager.instance.StartCoroutine("Restart");
+                PlayerDeath();
             }
         }
     }
@@ -156,6 +151,18 @@ public class PlayerController : MonoBehaviour
         hurt = false;
     }
 
+    void PlayerDeath()
+    {
+        foreach(AdditionalWeaponController wpn in additionalWeapons)
+        {
+            wpn.Remove();
+        }
+        additionalWeapons.Clear();
+        //target.gameObject.SetActive(false);
+        //target_2.gameObject.SetActive(false);
+        GameManager.instance.Restart();
+        gameObject.SetActive(false);
+    }
 
     void PlayerInput()
     {
@@ -185,15 +192,15 @@ public class PlayerController : MonoBehaviour
 
     Vector2 ClampMovement(Vector2 move)
     {
-        if (transform.position.x < -2 && move.x < 0)
+        if (transform.position.x < -3 && move.x < 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -2, 0.9f), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -3, 0.9f), transform.position.y, transform.position.z);
         }
-        if (transform.position.x > 2 && move.x > 0)
+        if (transform.position.x > 3 && move.x > 0)
         {
             move.x = Mathf.Lerp(move.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 2, 0.9f), transform.position.y, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 3, 0.9f), transform.position.y, transform.position.z);
         }
         if (transform.position.y < -4 && move.y < 0)
         {

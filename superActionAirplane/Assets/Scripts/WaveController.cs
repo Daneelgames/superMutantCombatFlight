@@ -24,4 +24,20 @@ public class WaveController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void RemoveWave()
+    {
+        StartCoroutine("MoveUp");
+    }
+
+    IEnumerator MoveUp()
+    {
+        float t = 0;
+
+        while (t < 1)
+        {
+            transform.position += Vector3.up * Time.deltaTime * 30;
+            yield return null;
+        }
+    }
 }

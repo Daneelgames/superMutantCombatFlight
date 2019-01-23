@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    public bool infiniteMode = false;
     public float movementSpeed = 100;
     float originalMovementSpeed = 100;
     int sharksOnScene = 0;
@@ -30,33 +29,44 @@ public class SpawnerController : MonoBehaviour
     public GameObject dropBox;
     public float dropBoxDelay = 0;
 
-    public GameObject boss;
-    public bool bossState = false;
-
     public SkyController skyController;
 
     [HideInInspector]
     public WaveController currentWaveController;
     [HideInInspector]
-    public bool dropBoxOnScene;
+    public DropBoxController dropBoxOnScene;
 
     [Header("0 to 100. When 0, will drop every time. Default is 66")]
     public float dropRate = 66;
 
-    private void Start()
+    bool canSpawn = true;
+
+    public void StartSpawning()
     {
         currentWave = testStartWave;
         GetSolids();
-        if (!bossState)
+
+        GenerateSpawnList();
+        canSpawn = true;
+        Invoke("SpawnWave", 2f);
+        Invoke("SpawnSolids", 0);
+        //Invoke("SpawnTrash", 0.1f);
+    }
+
+    public void StopSpawning()
+    {
+        canSpawn = false;
+        CancelInvoke();
+
+        foreach (BuildingController b in solidsOnScene)
         {
-            GenerateSpawnList();
-            Invoke("SpawnWave", 2f);
-            //Invoke("SpawnTrash", 0.1f);
+            b.Wane();
         }
     }
 
     void GenerateSpawnList()
     {
+        currentWave = 0;
         List<GameObject> tempList = new List<GameObject>(waves);
         wavesInGame.Add(tempList[0]);
         tempList.RemoveAt(0);
@@ -66,6 +76,17 @@ public class SpawnerController : MonoBehaviour
             int random = Random.Range(0, tempList.Count);
             wavesInGame.Add(tempList[random]);
             tempList.RemoveAt(random);
+        }
+    }
+
+    public void ClearWaves()
+    {
+        if (currentWaveController)
+        {
+            currentWaveController.RemoveWave();
+            wavesInGame.Clear();
+            if (dropBoxOnScene)
+                dropBoxOnScene.RemoveDropBox();
         }
     }
 
@@ -83,71 +104,38 @@ public class SpawnerController : MonoBehaviour
         solidsOnScene.Remove(buildingController);
     }
 
-    private void Update()
-    {
-        SpawnSolids();
-    }
-
     void SpawnSolids()
     {
-        if (!bossState)
+        if (canSpawn)
         {
-            if (currentDelay > 0)
+            int solidIndex = Random.Range(0, solids.Count);
+
+            if (!solidsParent)
+                GetSolids();
+
+            Vector3 newSolidPosition = new Vector3(Random.Range(-2f, 2f), groundLevel, spawnZ);
+            GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
+            go.transform.SetParent(solidsParent.transform);
+
+            switch (sharksOnScene)
             {
-                currentDelay -= Time.deltaTime;
+                case 0:
+                    currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
+                    break;
+                case 1:
+                    currentDelay = 3;
+                    break;
+                case 2:
+                    currentDelay = 2f;
+                    break;
+                case 3:
+                    currentDelay = 1f;
+                    break;
             }
-            else
-            {
-                int solidIndex = Random.Range(0, solids.Count);
 
-                if (!solidsParent)
-                    GetSolids();
-
-                Vector3 newSolidPosition = new Vector3(Random.Range(-2f, 2f), groundLevel, spawnZ);
-                GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
-                go.transform.SetParent(solidsParent.transform);
-
-                switch(sharksOnScene)
-                {
-                    case 0:
-                        currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
-                        break;
-                    case 1:
-                        currentDelay = 3;
-                        break;
-                    case 2:
-                        currentDelay = 2f;
-                        break;
-                    case 3:
-                        currentDelay = 1f;
-                        break;
-                }
-            }
+            Invoke("SpawnSolids", currentDelay);
         }
     }
-
-    /*
-    void SpawnTrash()
-    {
-        Vector3 newSolidPosition;
-        if (trashSide == -1)
-        {
-            newSolidPosition = new Vector3(Random.Range(-30f, -15f), -6.5f, spawnZ);
-        }
-        else
-        {
-            newSolidPosition = new Vector3(Random.Range(30f, 15f), -6.5f, spawnZ);
-        }
-
-        GameObject go = GameObject.Instantiate(trash[Random.Range(0, trash.Count)], newSolidPosition, Quaternion.identity);
-        go.transform.SetParent(trashParent.transform);
-        trashSide *= -1;
-        if (sharksOnScene > 0)
-            Invoke("SpawnTrash", 0.05f);
-        else
-            Invoke("SpawnTrash", 0.1f);
-    }
-    */
 
     public void WaveDestroyed(WaveController wave)
     {
@@ -157,23 +145,12 @@ public class SpawnerController : MonoBehaviour
             currentWave = newWaveIndex;
             SpawnWave();
         }
-        else if (!infiniteMode) // if waves is over, spawn boss
-        {
-            SpawnBoss();
-        }
-        else if (infiniteMode)
+        else
         {
             GenerateSpawnList();
             currentWave = 1;
             SpawnWave();
         }
-    }
-
-    void SpawnBoss()
-    {
-        bossState = true;
-        GameObject.Instantiate(boss, Vector3.zero, Quaternion.identity);
-        Invoke("HideSolids", 1);
     }
 
     void HideSolids()
@@ -187,12 +164,12 @@ public class SpawnerController : MonoBehaviour
 
     void SpawnWave()
     {
-        GameObject newWave = GameObject.Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
+        GameObject newWave = Instantiate(wavesInGame[currentWave], Vector3.zero, Quaternion.identity);
         currentWaveController = newWave.GetComponent<WaveController>();
     }
-    public void ToggleDropBoxOnScene(bool onScene)
+    public void ToggleDropBoxOnScene(DropBoxController box)
     {
-        dropBoxOnScene = onScene;
+        dropBoxOnScene = box;
         StartCoroutine("DropBoxDelay");
     }
 

@@ -5,12 +5,17 @@ using System.Collections.Generic;       //Allows us to use Lists.
 
 public class GameManager : MonoBehaviour
 {
+    public int coins = 0;
+
     public static GameManager instance = null;
     public PlayerController pc;
     public SpawnerController spawnerController;
     public TouchInputController touchInputController;
     public UiLivesController uiLivesController;
     public CameraController cameraController;
+    public ObjectPooler objectPooler;
+
+    public MenuController menuController;
 
     void Awake()
     {
@@ -18,40 +23,34 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(540, 960, true);
         //Camera.main.aspect = 16f / 9f;
 
-        //Check if instance already exists
-        if (instance == null)
-
-            //if not, set instance to this
-            instance = this;
-
-        //If instance already exists and it's not this:
-        else if (instance != this)
-
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);
-
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public IEnumerator Restart()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GetLinks(null);
+        instance = this;
     }
 
     private void Start()
     {
-  //      GetLinks(null);
+        //    spawnerController.movementSpeed = 0;
+        pc.gameObject.SetActive(false);
     }
 
-    public void GetLinks(PlayerController _pc)
+    public void GameStart()
     {
-        if (_pc)
-            pc = _pc;
-        spawnerController = GameObject.Find("Spawner").GetComponent<SpawnerController>();
-        uiLivesController = GameObject.Find("HeartsController").GetComponent<UiLivesController>();
-        cameraController = GameObject.Find("MainCamera").GetComponent<CameraController>();
+        pc.transform.position = Vector3.zero;
+        pc.gameObject.SetActive(true);
+        spawnerController.StartSpawning();
+        //    spawnerController.movementSpeed = 100;
+    }
+
+    public void Restart()
+    {
+        objectPooler.DisableAllProjectiles();
+        spawnerController.StopSpawning();
+        menuController.GameOver();
+        spawnerController.ClearWaves();
+    }
+
+    public void AddCoins(int newCoins)
+    {
+        coins += newCoins;
+        menuController.SetCoins(coins);
     }
 }

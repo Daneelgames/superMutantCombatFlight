@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf66f8ebceef07b49a706ccafc88c437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 9
+  coinDrop: 2
+  health: 6
   smallExplosion: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
     type: 3}
   explosion: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,
@@ -275,6 +276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: redMonomid
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: dec5ee2adba3e7c4e9cd2d27cf1c4f11, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0bf9fe6b847d39b4883025356d0d6cbd, type: 2}
     - target: {fileID: 400000, guid: dec5ee2adba3e7c4e9cd2d27cf1c4f11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -331,10 +336,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: dec5ee2adba3e7c4e9cd2d27cf1c4f11, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0bf9fe6b847d39b4883025356d0d6cbd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec5ee2adba3e7c4e9cd2d27cf1c4f11, type: 3}
 --- !u!1 &4920042145062985113 stripped

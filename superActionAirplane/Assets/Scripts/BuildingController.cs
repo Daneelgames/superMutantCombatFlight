@@ -26,6 +26,24 @@ public class BuildingController : MonoBehaviour
         }
     }
 
+    public void Wane()
+    {
+        StartCoroutine("WaneCoroutine");
+    }
+
+    IEnumerator WaneCoroutine()
+    {
+        float t = 0;
+        transform.localScale = Vector3.zero;
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+            transform.position = new Vector3(transform.position.x, t * -3, transform.position.z);
+            yield return null;
+        }
+        SolidDestroyed();
+    }
+
     void CheckPositionZ()
     {
         if (transform.position.z < 0)

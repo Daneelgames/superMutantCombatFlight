@@ -7,14 +7,31 @@ using UnityEngine.EventSystems;
 public class UiButtonController : MonoBehaviour, IPointerDownHandler //, IPointerUpHandler
 {
     public string buttonName = "Invinsible";
+    public MenuController menuController;
     public Image heartsBackground;
+    bool canPress = true;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (buttonName == "Invinsible")
+        if (canPress)
         {
-            GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
-            heartsBackground.enabled = !heartsBackground.isActiveAndEnabled;
+            if (buttonName == "Play")
+            {
+                canPress = false;
+                Invoke("CanPress", 1);
+                GameManager.instance.GameStart();
+                menuController.GameStart();
+            }
+            else if (buttonName == "Invinsible")
+            {
+                GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
+                heartsBackground.enabled = !heartsBackground.isActiveAndEnabled;
+            }
         }
+    }
+
+    void CanPress()
+    {
+        canPress = true;
     }
 }

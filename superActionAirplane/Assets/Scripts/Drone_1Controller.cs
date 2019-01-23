@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Drone_1Controller : MonoBehaviour
 {
+
     public Vector2 shotRandomOffset;
     public bool canShoot = true;
     public GameObject bullet;
@@ -32,14 +33,7 @@ public class Drone_1Controller : MonoBehaviour
         {
             if (gameObject.transform.position.z > 3 && GameManager.instance.pc.lives > 0)
             {
-                if (!GameManager.instance.spawnerController.bossState)
-                {
-                    if (gameObject.transform.position.y < 10 && gameObject.transform.position.x < 5f && gameObject.transform.position.x > -5f) // if noBossState, but y is < 7
-                    {
-                       Shot();
-                    }
-                }
-                else // if bossState
+                if (gameObject.transform.position.y < 10 && gameObject.transform.position.x < 5f && gameObject.transform.position.x > -5f) // if noBossState, but y is < 7
                 {
                     Shot();
                 }
@@ -75,7 +69,6 @@ public class Drone_1Controller : MonoBehaviour
             if (shotHolder)
                 shotOrigintPos = shotHolder.transform.position;
 
-            print(shotOrigintPos);
 
             BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
             newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);

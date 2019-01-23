@@ -65,11 +65,16 @@ public class BulletController : MonoBehaviour
             Invoke("DestroyBullet", lifeTime);
     }
 
-    void DestroyBullet()
+    public void DestroyBullet()
     {
         if (particles)
             ResetColor();
         StopAllCoroutines();
+        Invoke("SetInactive", 2f);
+    }
+
+    void SetInactive()
+    {
         gameObject.SetActive(false);
     }
 

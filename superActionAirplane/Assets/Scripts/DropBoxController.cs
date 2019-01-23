@@ -14,7 +14,7 @@ public class DropBoxController : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
-        gameManager.spawnerController.ToggleDropBoxOnScene(true);
+        gameManager.spawnerController.ToggleDropBoxOnScene(this);
         StartCoroutine("MoveCrate");
     }
 
@@ -24,13 +24,13 @@ public class DropBoxController : MonoBehaviour
 
         ObjectPooler.instance.SpawnGameObjectFromPool(destructibleController.explosion.name, transform.position, Quaternion.identity);
 
-        gameManager.spawnerController.ToggleDropBoxOnScene(false);
+        gameManager.spawnerController.ToggleDropBoxOnScene(null);
         Destroy(gameObject);
     }
 
     public void DropWeapon()
     {
-        gameManager.spawnerController.ToggleDropBoxOnScene(false);
+        gameManager.spawnerController.ToggleDropBoxOnScene(null);
 
         int weaponIndex = Random.Range(0, gameManager.spawnerController.additionalWeapons.Count);
         int doubles = 0;
@@ -82,5 +82,22 @@ public class DropBoxController : MonoBehaviour
             yield return null;
         }
         DestroyDropBox();
+    }
+
+    public void RemoveDropBox()
+    {
+        StopAllCoroutines();
+        StartCoroutine("MoveUp");
+    }
+
+    IEnumerator MoveUp()
+    {
+        float t = 0;
+
+        while (t < 1)
+        {
+            transform.position += Vector3.up * Time.deltaTime * 30;
+            yield return null;
+        }
     }
 }

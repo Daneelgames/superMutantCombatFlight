@@ -5,6 +5,8 @@ using EZCameraShake;
 
 public class Destructible : MonoBehaviour
 {
+    public int coinDrop = 1;
+
     public float health = 5;
     public GameObject smallExplosion;
     public GameObject explosion;
@@ -18,9 +20,11 @@ public class Destructible : MonoBehaviour
     public Animator damageFeedbackAnimator;
 
     ObjectPooler objectPooler;
+    GameManager gameManager;
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         objectPooler = ObjectPooler.instance;
 
         if (waveController)
@@ -41,7 +45,7 @@ public class Destructible : MonoBehaviour
                 else
                 {
                     objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
-                    GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+                    gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
                     Destroy(dropBoxController.gameObject);
                 }
             }
@@ -79,7 +83,7 @@ public class Destructible : MonoBehaviour
                 else // dropBox
                 {
                     Drop();
-                    GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+                    gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
                     Destroy(dropBoxController.gameObject);
                 }
             }
@@ -88,8 +92,23 @@ public class Destructible : MonoBehaviour
 
     void Destroyed()
     {
-        GameManager.instance.pc.aimAssist.RemoveDeadEnemy(gameObject);
+        gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
+        if (coinDrop > 0)
+            DropCoins();
         gameObject.SetActive(false);
+    }
+
+    void DropCoins()
+    {
+        gameManager.AddCoins(coinDrop);
+        for (int i = 0; i < coinDrop; i ++)
+        {
+            float x = Random.Range(-1f, 1f);
+            float y = Random.Range(-1f, 1f);
+            float z = Random.Range(-1f, 1f);
+
+            objectPooler.SpawnGameObjectFromPool("Coin", transform.position + new Vector3(x,y,z), Quaternion.identity);
+        }
     }
 
     public void SetInvincible(bool _true)
@@ -101,14 +120,14 @@ public class Destructible : MonoBehaviour
     {
         if (dropBoxController == null) // drop from enemy
         {
-            if (GameManager.instance.spawnerController.currentWave == 0)
+            if (gameManager.spawnerController.currentWave == 0)
             {
                 DropDropBox();
             }
-            else if (!GameManager.instance.spawnerController.dropBoxOnScene && GameManager.instance.spawnerController.dropBoxDelay <= 0)
+            else if (!gameManager.spawnerController.dropBoxOnScene && GameManager.instance.spawnerController.dropBoxDelay <= 0)
             {
                 float randomDrop = Random.Range(0f, 100f);
-                if (randomDrop > GameManager.instance.spawnerController.dropRate)
+                if (randomDrop > gameManager.spawnerController.dropRate)
                 {
                     DropDropBox();
                 }
@@ -123,9 +142,9 @@ public class Destructible : MonoBehaviour
 
     void DropDropBox()
     {
-        if (GameManager.instance.pc.isActiveAndEnabled)
+        if (gameManager.pc.isActiveAndEnabled)
         {
-            GameObject drop = GameObject.Instantiate(GameManager.instance.spawnerController.dropBox, transform.position, Quaternion.identity);
+            GameObject drop = GameObject.Instantiate(gameManager.spawnerController.dropBox, transform.position, Quaternion.identity);
         }
     }
 }
