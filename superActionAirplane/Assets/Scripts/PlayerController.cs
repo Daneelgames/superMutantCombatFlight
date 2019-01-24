@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    Vector2 movementVector;
     public Rigidbody rb; 
     Vector2 _move;
     Vector3 _moveRotation = Vector3.zero;
@@ -40,15 +39,18 @@ public class PlayerController : MonoBehaviour
 
     ObjectPooler objectPooler;
 
-    Vector3 startPos;
-    Vector3 distance;
-    public Text inputDistance;
 
+    Vector3 newPos;
+
+    GameObject parent;
 
     private void Start()
     {
         objectPooler = ObjectPooler.instance;
 
+        parent = new GameObject();
+        parent.transform.position = transform.position;
+        parent.name = "PlayerMovementContainer";
         //if (Application.platform == RuntimePlatform.Android)
         //    touchInput = true;
     }
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
         GetMoveRotation();
         Shoot();
         ShootByTouch();
+        ClampMovement();
+        RotatePlayer();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -166,82 +170,90 @@ public class PlayerController : MonoBehaviour
 
     void PlayerInput()
     {
-        /*
-        if (!touchInput)
-            _move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        else
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            _move = new Vector2(GameManager.instance.touchInputController.joystick.Horizontal, GameManager.instance.touchInputController.joystick.Vertical) * touchMovementScaler;
+            Vector3 screenPos = Input.mousePosition;
+            screenPos.z = 10.0f;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+            Vector3 parentNewPos = parent.transform.position;
+            parentNewPos.x = worldPos.x;
+            parentNewPos.y = worldPos.y;
 
+            parent.transform.position = parentNewPos;
+            transform.SetParent(parent.transform);
         }
-        */
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButton(0) || Input.touchCount > 0)
         {
-            var touch = Input.GetTouch(0);
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    startPos = Camera.main.ScreenToViewportPoint(touch.position);
-                    startPos = new Vector3(startPos.x, startPos.y, 0);
-                     break;
+            // get mouse position in screen space
+            // (if touch, gets average of all touches)
+            Vector3 screenPos = Input.mousePosition;
+            // set a distance from the camera
+            screenPos.z = 10.0f;
+            // convert mouse position to world space
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 
-                case TouchPhase.Moved:
-                    distance = Camera.main.ScreenToViewportPoint(touch.position) - startPos;
-                    distance = new Vector3(distance.x, distance.y, 0);
-                    break;
-            }
-            inputDistance.text = ""+ distance;
+            // get current position of this GameObject
+            newPos = parent.transform.position;
+            // set x position to mouse world-space x position
+            newPos.x = worldPos.x;
+            newPos.y = worldPos.y;
+            // apply new position
+            parent.transform.position = Vector3.Lerp(parent.transform.position, newPos, Time.deltaTime * 5);
+        }
+        if (Input.GetMouseButtonUp(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            transform.SetParent(null);
+            newPos = Vector3.zero;
         }
     }
 
 
     void GetMoveRotation()
     {
-        _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, _move.y * -30, 0.9f * Time.deltaTime * 10f);
-        _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, _move.x * 50, 0.9f * Time.deltaTime * 10f);
-        _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, _move.x * -50, 0.9f * Time.deltaTime * 10f);
-    }
-
-    void FixedUpdate()
-    {
-        movementVector = ClampMovement(_move);
-        MovePlayer();
-        RotatePlayer();
-    }
-
-    Vector2 ClampMovement(Vector2 move)
-    {
-        if (transform.position.x < -3 && distance.x < 0)
-        {
-            distance.x = Mathf.Lerp(distance.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, -3, 0.9f), transform.position.y, transform.position.z);
-        }
-        if (transform.position.x > 3 && distance.x > 0)
-        {
-            distance.x = Mathf.Lerp(distance.x, 0, 0.9f);
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, 3, 0.9f), transform.position.y, transform.position.z);
-        }
-        if (transform.position.y < -4 && distance.y < 0)
-        {
-            distance.y = Mathf.Lerp(distance.y, 0, 0.9f);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, -4, 0.9f), transform.position.z);
-        }
-        if (transform.position.y > 4.5f && distance.y > 0)
-        {
-            distance.y = Mathf.Lerp(distance.y, 0, 0.9f);
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 4.5f, 0.9f), transform.position.z);
-        }
-        return move;
-    }
-
-    void MovePlayer()
-    {
-        transform.position += new Vector3 (distance.x, distance.y, 0);
         /*
-        Vector3 force = new Vector3(movementVector.x, movementVector.y, 0);
-        rb.velocity = force * movementSpeed;
+        if (newPos.x - transform.position.x > 1)
+        {
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 30, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 30, 0.9f * Time.deltaTime * 10f);
+        }
+        else if (transform.position.x - newPos.x > 1)
+        {
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, -30, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, -30, 0.9f * Time.deltaTime * 10f);
+        }
+        else
+        {
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 0, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
+        }
+
+        if (newPos.y - transform.position.y > 1)
+        {
+            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, -30, 0.9f * Time.deltaTime * 10f);
+        }
+        else if (transform.position.y - newPos.y > 1)
+        {
+            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 30, 0.9f * Time.deltaTime * 10f);
+        }
+        else
+        {
+            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 0, 0.9f * Time.deltaTime * 10f);
+        }
         */
     }
+
+    void ClampMovement()
+    {
+        if (transform.position.x > 3)
+            transform.position = new Vector3(3, transform.position.y, 0);
+         if (transform.position.x < -3)
+            transform.position = new Vector3(-3, transform.position.y, 0);
+         if (transform.position.y > 4)
+            transform.position = new Vector3(transform.position.x, 4, 0);
+         if (transform.position.y < -4)
+            transform.position = new Vector3(transform.position.x, -4, 0);
+    }
+
 
     void RotatePlayer()
     {
