@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5970029358301380396}
   - component: {fileID: 1503268394304545819}
   m_Layer: 11
-  m_Name: HeadGunHelicopter
+  m_Name: RedPyramid
   m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf66f8ebceef07b49a706ccafc88c437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  coinDrop: 1
+  health: 6
   smallExplosion: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
     type: 3}
   explosion: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,

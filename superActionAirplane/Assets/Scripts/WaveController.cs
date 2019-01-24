@@ -37,7 +37,9 @@ public class WaveController : MonoBehaviour
         while (t < 1)
         {
             transform.position += Vector3.up * Time.deltaTime * 30;
+            t += Time.deltaTime;
             yield return null;
         }
+        Destroy(gameObject);
     }
 }

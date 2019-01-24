@@ -21,17 +21,19 @@ public class Drone_1Controller : MonoBehaviour
     public bool unfiniteShooting = false;
 
     ObjectPooler objectPooler;
+    PlayerController pc;
 
     void Start()
     {
+        pc = GameManager.instance.pc;
         objectPooler = ObjectPooler.instance;
         InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
     }
     void Shooting()
     {
-        if (gameObject.activeInHierarchy && canShoot)
+        if (pc.isActiveAndEnabled && gameObject.activeInHierarchy && canShoot)
         {
-            if (gameObject.transform.position.z > 3 && GameManager.instance.pc.lives > 0)
+            if (gameObject.transform.position.z > 3 && pc.lives > 0)
             {
                 if (gameObject.transform.position.y < 10 && gameObject.transform.position.x < 5f && gameObject.transform.position.x > -5f) // if noBossState, but y is < 7
                 {
@@ -89,7 +91,7 @@ public class Drone_1Controller : MonoBehaviour
                 shotOrigintPos = shotHolder.transform.position;
 
             BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
-            newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+            newBullet.SetTarget(pc.transform, shotRandomOffset, false);
             yield return new WaitForSeconds(bulletBurstDelay);
         }
     }
@@ -97,6 +99,6 @@ public class Drone_1Controller : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.pc)
-            transform.LookAt(GameManager.instance.pc.transform);
+            transform.LookAt(pc.transform);
     }
 }

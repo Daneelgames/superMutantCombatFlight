@@ -207,39 +207,43 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void GetMoveRotation()
     {
-        /*
-        if (newPos.x - transform.position.x > 1)
+        if (newPos != Vector3.zero)
         {
-            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 30, 0.9f * Time.deltaTime * 10f);
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 30, 0.9f * Time.deltaTime * 10f);
-        }
-        else if (transform.position.x - newPos.x > 1)
-        {
-            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, -30, 0.9f * Time.deltaTime * 10f);
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, -30, 0.9f * Time.deltaTime * 10f);
-        }
-        else
-        {
-            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 0, 0.9f * Time.deltaTime * 10f);
-            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
-        }
+            if (newPos.x - parent.transform.position.x > 1)
+            {
+                _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, -50, 0.9f * Time.deltaTime * 10f);
+            }
+            else if (parent.transform.position.x - newPos.x > 1)
+            {
+                _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 50, 0.9f * Time.deltaTime * 10f);
+            }
+            else
+            {
+                _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 0, 0.9f * Time.deltaTime * 10f);
+                _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
+            }
 
-        if (newPos.y - transform.position.y > 1)
-        {
-            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, -30, 0.9f * Time.deltaTime * 10f);
-        }
-        else if (transform.position.y - newPos.y > 1)
-        {
-            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 30, 0.9f * Time.deltaTime * 10f);
+            if (newPos.y - parent.transform.position.y > 1)
+            {
+                _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, -50, 0.9f * Time.deltaTime * 10f);
+            }
+            else if (parent.transform.position.y - newPos.y > 1)
+            {
+                _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 50, 0.9f * Time.deltaTime * 10f);
+            }
+            else
+            {
+                _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 0, 0.9f * Time.deltaTime * 10f);
+            }
         }
         else
         {
             _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 0, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 0, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
         }
-        */
     }
 
     void ClampMovement()

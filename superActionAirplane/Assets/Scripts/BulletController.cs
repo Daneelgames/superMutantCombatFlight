@@ -67,10 +67,13 @@ public class BulletController : MonoBehaviour
 
     public void DestroyBullet()
     {
+        StopAllCoroutines();
+
         if (particles)
             ResetColor();
-        StopAllCoroutines();
-        Invoke("SetInactive", 2f);
+
+        SetInactive();
+        //Invoke("SetInactive", 2f);
     }
 
     void SetInactive()
