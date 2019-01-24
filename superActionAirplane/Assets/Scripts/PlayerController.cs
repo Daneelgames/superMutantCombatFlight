@@ -195,8 +195,8 @@ public class PlayerController : MonoBehaviour
             // get current position of this GameObject
             newPos = parent.transform.position;
             // set x position to mouse world-space x position
-            newPos.x = worldPos.x;
-            newPos.y = worldPos.y;
+            newPos.x = worldPos.x * touchMovementScaler;
+            newPos.y = worldPos.y * touchMovementScaler;
             // apply new position
             parent.transform.position = Vector3.Lerp(parent.transform.position, newPos, Time.deltaTime * 5);
         }

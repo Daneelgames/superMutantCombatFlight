@@ -10320,9 +10320,8 @@ MonoBehaviour:
   shotHolder: {fileID: 384672077776141691}
   animator: {fileID: 3933979342327177557}
   rb: {fileID: 9129881597683822455}
-  touchMovementScaler: 1
+  touchMovementScaler: 1.3
   mesh: {fileID: 7300593451248520043}
-  parent: {fileID: 0}
 --- !u!54 &9129881597683822455
 Rigidbody:
   m_ObjectHideFlags: 0

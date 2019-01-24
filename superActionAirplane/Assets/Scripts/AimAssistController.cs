@@ -17,7 +17,7 @@ public class AimAssistController : MonoBehaviour
     private void Update()
     {
         transform.position = pcTransform.position;
-        transform.rotation = pcTransform.rotation;
+        //transform.rotation = pcTransform.rotation;
     }
 
     void CheckClosestTarget()
