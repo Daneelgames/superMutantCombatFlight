@@ -7,9 +7,18 @@ public class SkyController : MonoBehaviour
     public Animator skyAnimator;
     public int lsdCount = 0;
 
+    GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+    }
+
     public void SetLSD(int _lsd)
     {
         lsdCount += _lsd;
-        skyAnimator.SetInteger("LSD", lsdCount);
+
+        if (gameManager.acidSkyCanBeEnabled)
+            skyAnimator.SetInteger("LSD", lsdCount);
     }
 }

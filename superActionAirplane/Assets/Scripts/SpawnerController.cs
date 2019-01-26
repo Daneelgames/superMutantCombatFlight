@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    public float movementSpeed = 100;
-    float originalMovementSpeed = 100;
+    public float movementSpeed = 150;
+    float originalMovementSpeed = 150;
     int sharksOnScene = 0;
 
     public int testStartWave = 0;
@@ -48,9 +48,8 @@ public class SpawnerController : MonoBehaviour
 
         GenerateSpawnList();
         canSpawn = true;
-        Invoke("SpawnWave", 2f);
-        Invoke("SpawnSolids", 0);
-        //Invoke("SpawnTrash", 0.1f);
+        SpawnWave();
+        SpawnSolids();
     }
 
     public void StopSpawning()

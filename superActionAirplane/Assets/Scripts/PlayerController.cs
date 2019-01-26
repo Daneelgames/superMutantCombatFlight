@@ -73,56 +73,12 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
-        CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
-        objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
-
-        PlayerDeath();
-        return;
-
-        if (!hurt)
+        if (!invinsible)
         {
             CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
-
             objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
-            if (!invinsible)
-            {
-                lives -= 1;
-                GameManager.instance.uiLivesController.UpdateLivesUI(); // UI animation
 
-                // lost weapon
-                if (additionalWeapons.Count > 0)
-                {
-                    int random = Random.Range(0, additionalWeapons.Count);
-                    additionalWeapons[random].Remove();
-                    additionalWeapons.RemoveAt(random);
-                    if (additionalWeapons.Count > 0)
-                    {
-                        foreach (AdditionalWeaponController wpn in additionalWeapons)
-                        {
-                            wpn.Reparent(additionalWeapons.IndexOf(wpn));
-                        }
-                    }
-                }
-
-                // lost all weapons
-                /*
-                foreach (AdditionalWeaponController w in additionalWeapons)
-                {
-                    w.Remove();
-                    additionalWeapons.Remove(w);
-                }
-                additionalWeapons.Clear();
-                */
-            }
-
-            if (lives > 0)
-            {
-                StartCoroutine("HurtTimer");
-            }
-            else //death
-            {
-                PlayerDeath();
-            }
+            PlayerDeath();
         }
     }
 
@@ -165,6 +121,9 @@ public class PlayerController : MonoBehaviour
         //target.gameObject.SetActive(false);
         //target_2.gameObject.SetActive(false);
         GameManager.instance.Restart();
+        transform.SetParent(null);
+        newPos = Vector3.zero;
+        parent.transform.position = transform.position;
         gameObject.SetActive(false);
     }
 
@@ -331,5 +290,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetSensitivity(float newSensitivity)
+    {
+        touchMovementScaler = newSensitivity;
     }
 }

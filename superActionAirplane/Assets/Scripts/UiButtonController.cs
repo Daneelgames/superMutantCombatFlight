@@ -8,7 +8,6 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler
 {
     public string buttonName = "Invinsible";
     public MenuController menuController;
-    public Image heartsBackground;
     bool canPress = true;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -22,10 +21,21 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler
                 GameManager.instance.GameStart();
                 menuController.GameStart();
             }
+            else if (buttonName == "SettingsStart")
+            {
+                canPress = false;
+                Invoke("CanPress", 1);
+                menuController.SettingsStart();
+            }
+            else if (buttonName == "SettingsClose")
+            {
+                canPress = false;
+                Invoke("CanPress", 1);
+                menuController.SettingsClose();
+            }
             else if (buttonName == "Invinsible")
             {
                 GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
-                heartsBackground.enabled = !heartsBackground.isActiveAndEnabled;
             }
         }
     }

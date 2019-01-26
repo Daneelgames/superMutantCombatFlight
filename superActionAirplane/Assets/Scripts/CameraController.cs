@@ -21,4 +21,9 @@ public class CameraController : MonoBehaviour
         sharkCount += _shark;
         anim.SetInteger("Shark", sharkCount);
     }
+
+    public void SetMenu(bool active)
+    {
+        anim.SetBool("Menu", active);
+    }
 }

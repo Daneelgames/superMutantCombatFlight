@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public ObjectPooler objectPooler;
 
     public MenuController menuController;
+    public bool acidSkyCanBeEnabled = true;
+
+    public AudioSource audio;
 
     void Awake()
     {
@@ -30,13 +33,16 @@ public class GameManager : MonoBehaviour
     {
         //    spawnerController.movementSpeed = 0;
         pc.gameObject.SetActive(false);
+        audio.pitch = 0.5f;
     }
 
     public void GameStart()
     {
         pc.transform.position = Vector3.zero;
         pc.gameObject.SetActive(true);
+        pc.SetSensitivity(menuController.playersSensitivitySlider.value);
         spawnerController.StartSpawning();
+        cameraController.SetMenu(false);
         //    spawnerController.movementSpeed = 100;
     }
 
@@ -46,11 +52,22 @@ public class GameManager : MonoBehaviour
         spawnerController.StopSpawning();
         menuController.GameOver();
         spawnerController.ClearWaves();
+        cameraController.SetMenu(true);
     }
 
     public void AddCoins(int newCoins)
     {
         coins += newCoins;
         menuController.SetCoins(coins);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        audio.volume = volume;
+    }
+
+    public void SetAcidSkyEnabled(bool active)
+    {
+        acidSkyCanBeEnabled = active;
     }
 }
