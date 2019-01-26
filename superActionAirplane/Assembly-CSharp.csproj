@@ -60,10 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CoinController.cs" />
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\MenuController.cs" />
-    <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />
     <Compile Include="Assets\Scripts\AimAssistController.cs" />
     <Compile Include="Assets\Scripts\AnimationEventReciever.cs" />
@@ -73,6 +70,7 @@
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChargeMarkerController.cs" />
+    <Compile Include="Assets\Scripts\CoinController.cs" />
     <Compile Include="Assets\Scripts\DamageController.cs" />
     <Compile Include="Assets\Scripts\Destructible.cs" />
     <Compile Include="Assets\Scripts\Drone_1Controller.cs" />
@@ -81,9 +79,11 @@
     <Compile Include="Assets\Scripts\FpsCounter.cs" />
     <Compile Include="Assets\Scripts\GroundTextureController.cs" />
     <Compile Include="Assets\Scripts\HideSolidController.cs" />
+    <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\PlayerCanvasController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayerTargetController.cs" />
     <Compile Include="Assets\Scripts\PowerUpController.cs" />
     <Compile Include="Assets\Scripts\SkyController.cs" />
@@ -91,8 +91,8 @@
     <Compile Include="Assets\Scripts\TouchInputController.cs" />
     <Compile Include="Assets\Scripts\UiButtonController.cs" />
     <Compile Include="Assets\Scripts\UiLivesController.cs" />
+    <Compile Include="Assets\Scripts\WaterWaveController.cs" />
     <Compile Include="Assets\Scripts\WaveController.cs" />
-    <Compile Include="Assets\WaterWaveController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/@daneelgames/superMutantCombatFlight/superActionAirplane/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

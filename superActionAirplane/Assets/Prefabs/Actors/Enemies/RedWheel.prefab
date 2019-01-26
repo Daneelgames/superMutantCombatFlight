@@ -97,7 +97,7 @@ MonoBehaviour:
   health: 12
   smallExplosion: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
     type: 3}
-  explosion: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,
+  explosion: {fileID: 1479900517559180053, guid: 84cc3a5c9bc800842bd567fc3c258197,
     type: 3}
   waveController: {fileID: 0}
   bossController: {fileID: 0}

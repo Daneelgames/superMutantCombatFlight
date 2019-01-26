@@ -19,8 +19,11 @@ public class Destructible : MonoBehaviour
     bool invincible = false;
     public Animator damageFeedbackAnimator;
 
+
     ObjectPooler objectPooler;
     GameManager gameManager;
+
+    bool dead = false;
 
     private void Start()
     {
@@ -54,7 +57,7 @@ public class Destructible : MonoBehaviour
 
     public void Damage(float damage)
     {
-        if (!invincible)
+        if (!invincible && !dead)
         {
             health -= damage;
 
@@ -62,39 +65,52 @@ public class Destructible : MonoBehaviour
                 damageFeedbackAnimator.SetTrigger("Damage");
 
             if (health > 0)
+            {
                 objectPooler.SpawnGameObjectFromPool(smallExplosion.name, transform.position, Quaternion.identity);
+            }
             else // if object has no health
             {
                 invincible = true;
                 objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, Quaternion.identity);
 
-                CameraShaker.Instance.ShakeOnce(6, 6, 0.1f, 1);
-                if (waveController) //if gameObject is an enemy
-                {
-                    Drop();
-                    waveController.EnemyDestroyed(gameObject);
-                    Destroyed();
-                }
-                else if (bossController)
-                {
-                    bossController.PieceDestroyed(this);
-                    Destroyed();
-                }
-                else // dropBox
+                CameraShaker.Instance.ShakeOnce(6, 8, 0.1f, 1);
+
+                if (!waveController && !bossController) // dropBox
                 {
                     Drop();
                     gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
                     Destroy(dropBoxController.gameObject);
                 }
+                else
+                {
+                    StartCoroutine(Destroyed());
+                }
             }
         }
     }
 
-    void Destroyed()
+    IEnumerator Destroyed()
     {
-        gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
+        dead = true;
+        Time.timeScale = 0.5f;
         if (coinDrop > 0)
             DropCoins();
+
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        Time.timeScale = 1;
+        print(gameObject.name);
+        gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
+        dead = false;
+
+        if (bossController)
+            bossController.PieceDestroyed(this);
+        else if (waveController)
+        {
+            Drop();
+            waveController.EnemyDestroyed(gameObject);
+        }
+
         gameObject.SetActive(false);
     }
 

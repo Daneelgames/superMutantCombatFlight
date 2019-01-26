@@ -2508,22 +2508,27 @@ MonoBehaviour:
   - tag: ExplosionPlayer
     prefab: {fileID: 1479900517559180053, guid: af90127f6a6e5224ebc31c15fd321b93,
       type: 3}
-    size: 3
+    size: 1
     parent: {fileID: 818207732}
   - tag: ExplosionBullet
     prefab: {fileID: 1479900517559180053, guid: c6d2f71be17a23f4981b45d2de3f333e,
       type: 3}
-    size: 20
+    size: 100
     parent: {fileID: 818207732}
   - tag: ExplosionSmall
     prefab: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
       type: 3}
-    size: 20
+    size: 100
     parent: {fileID: 818207732}
   - tag: Coin
     prefab: {fileID: 1479900517559180053, guid: eddbbfbbd7d4dd3448b44c77ae5a390d,
       type: 3}
     size: 30
+    parent: {fileID: 412208701}
+  - tag: ExplosionEnemy
+    prefab: {fileID: 1479900517559180053, guid: 84cc3a5c9bc800842bd567fc3c258197,
+      type: 3}
+    size: 50
     parent: {fileID: 412208701}
 --- !u!1 &886036247
 GameObject:
@@ -6950,7 +6955,7 @@ PrefabInstance:
     - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 980
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4777963095997841280, guid: bb235834f1fac074d8c412fbae0fff8c,
         type: 3}

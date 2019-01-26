@@ -17,6 +17,7 @@ public class BulletController : MonoBehaviour
     public ParticleSystem particles;
     ParticleSystem.EmissionModule particlesEmissionModule;
 
+
     private void Start()
     {
         if (particles)
@@ -39,7 +40,6 @@ public class BulletController : MonoBehaviour
     {
         rocket = active;
     }
-
     public void SetTarget(Transform _target, Vector3 offset, bool _autoAim)
     {
         autoAim = _autoAim;

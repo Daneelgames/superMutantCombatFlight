@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
 
+    public AudioSource audio;
+
     ObjectPooler objectPooler;
 
 
@@ -75,10 +77,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!invinsible)
         {
+            invinsible = true;
+            Time.timeScale = 0.3f;
             CameraShaker.Instance.ShakeOnce(16f, 16f, 0.1f, 1f);
             objectPooler.SpawnGameObjectFromPool(explosion.name, transform.position, transform.rotation);
 
-            PlayerDeath();
+            StartCoroutine(PlayerDeath());
         }
     }
 
@@ -111,16 +115,20 @@ public class PlayerController : MonoBehaviour
         hurt = false;
     }
 
-    void PlayerDeath()
+    IEnumerator PlayerDeath()
     {
-        foreach(AdditionalWeaponController wpn in additionalWeapons)
+        GameManager.instance.Restart();
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1;
+
+        invinsible = false;
+        foreach (AdditionalWeaponController wpn in additionalWeapons)
         {
             wpn.Remove();
         }
         additionalWeapons.Clear();
         //target.gameObject.SetActive(false);
         //target_2.gameObject.SetActive(false);
-        GameManager.instance.Restart();
         transform.SetParent(null);
         newPos = Vector3.zero;
         parent.transform.position = transform.position;
@@ -252,6 +260,8 @@ public class PlayerController : MonoBehaviour
     void ShotBullet()
     {
         //GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
+        audio.pitch = Random.Range(0.75f, 1.25f);
+        audio.Play();
         BulletController _bulletController = objectPooler.SpawnBulletFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
         _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;

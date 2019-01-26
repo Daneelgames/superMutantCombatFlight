@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ExplosionController : MonoBehaviour
 {
-
+    public AudioSource _audio;
     public float speed = 2;
 
     private void OnEnable()
     {
+        if (_audio)
+        {
+            _audio.pitch = Random.Range(0.75f, 1.25f);
+            _audio.Play();
+        }
         Invoke("DestroyExplosion", 2);
     }
 
