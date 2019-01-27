@@ -7280,6 +7280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
+      propertyPath: wavesEasy.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
       propertyPath: spawnZ
       value: 500
       objectReference: {fileID: 0}
@@ -7362,6 +7367,24 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: wavesEasy.Array.data[0]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: b3bb7f8ce0e997a428e357cf035f204b,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: wavesEasy.Array.data[1]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: bb9a8065409116f41bb373b1a6bf8518,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: wavesEasy.Array.data[2]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: d7e43793c19aac94295881045ac655b3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2becf5453539fae418e71dea7a5c6330, type: 3}
 --- !u!4 &5688977980624641103 stripped

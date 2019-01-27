@@ -20,8 +20,11 @@ public class SpawnerController : MonoBehaviour
     public List<GameObject> solids = new List<GameObject>();
     //public List<GameObject> trash = new List<GameObject>();
     public List<BuildingController> solidsOnScene = new List<BuildingController>();
+    public List<GameObject> wavesEasy = new List<GameObject>();
     public List<GameObject> waves = new List<GameObject>();
     public List<GameObject> wavesInGame = new List<GameObject>();
+    [SerializeField]
+    List<GameObject> tempList;
     public int currentWave = 0;
     public GameObject solidsParent;
     //public GameObject trashParent;
@@ -40,6 +43,8 @@ public class SpawnerController : MonoBehaviour
     public float dropRate = 66;
 
     bool canSpawn = true;
+    [SerializeField]
+    bool tutorial = true;       
 
     public void StartSpawning()
     {
@@ -66,11 +71,23 @@ public class SpawnerController : MonoBehaviour
     void GenerateSpawnList()
     {
         currentWave = 0;
-        List<GameObject> tempList = new List<GameObject>(waves);
+        int maxWaves = 2;
+
+        if (tutorial)
+        {
+            tempList = new List<GameObject>(wavesEasy);
+        }
+        else
+        {
+            wavesInGame.Clear();
+            tempList.Clear();
+            maxWaves = 9;
+            tempList  = new List<GameObject>(waves);
+        }
         wavesInGame.Add(tempList[0]);
         tempList.RemoveAt(0);
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < maxWaves; i++)
         {
             int random = Random.Range(0, tempList.Count);
             wavesInGame.Add(tempList[random]);
@@ -86,6 +103,10 @@ public class SpawnerController : MonoBehaviour
             wavesInGame.Clear();
             if (dropBoxOnScene)
                 dropBoxOnScene.RemoveDropBox();
+
+            tempList.Clear();
+
+            tutorial = true;
         }
     }
 
@@ -132,6 +153,9 @@ public class SpawnerController : MonoBehaviour
                     break;
             }
 
+            if (tutorial)
+                currentDelay *= 3;
+
             Invoke("SpawnSolids", currentDelay);
         }
     }
@@ -146,6 +170,9 @@ public class SpawnerController : MonoBehaviour
         }
         else
         {
+            if (tutorial)
+                tutorial = false;
+
             GenerateSpawnList();
             currentWave = 1;
             SpawnWave();

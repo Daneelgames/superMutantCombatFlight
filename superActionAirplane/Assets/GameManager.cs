@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audio;
 
+    public bool playerAlive = false;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -43,11 +45,13 @@ public class GameManager : MonoBehaviour
         pc.SetSensitivity(menuController.playersSensitivitySlider.value);
         spawnerController.StartSpawning();
         cameraController.SetMenu(false);
+        playerAlive = true;
         //    spawnerController.movementSpeed = 100;
     }
 
     public void Restart()
     {
+        playerAlive = true;
         objectPooler.DisableAllProjectiles();
         spawnerController.StopSpawning();
         menuController.GameOver();

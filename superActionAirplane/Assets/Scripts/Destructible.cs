@@ -57,7 +57,7 @@ public class Destructible : MonoBehaviour
 
     public void Damage(float damage)
     {
-        if (!invincible && !dead)
+        if (!invincible && !dead && GameManager.instance.playerAlive)
         {
             health -= damage;
 
@@ -99,7 +99,6 @@ public class Destructible : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
 
         Time.timeScale = 1;
-        print(gameObject.name);
         gameManager.pc.aimAssist.RemoveDeadEnemy(gameObject);
         dead = false;
 
@@ -134,25 +133,28 @@ public class Destructible : MonoBehaviour
 
     void Drop()
     {
-        if (dropBoxController == null) // drop from enemy
+        if (GameManager.instance.playerAlive)
         {
-            if (gameManager.spawnerController.currentWave == 0)
+            if (dropBoxController == null) // drop from enemy
             {
-                DropDropBox();
-            }
-            else if (!gameManager.spawnerController.dropBoxOnScene && GameManager.instance.spawnerController.dropBoxDelay <= 0)
-            {
-                float randomDrop = Random.Range(0f, 100f);
-                if (randomDrop > gameManager.spawnerController.dropRate)
+                if (gameManager.spawnerController.currentWave == 0)
                 {
                     DropDropBox();
                 }
+                else if (!gameManager.spawnerController.dropBoxOnScene && GameManager.instance.spawnerController.dropBoxDelay <= 0)
+                {
+                    float randomDrop = Random.Range(0f, 100f);
+                    if (randomDrop > gameManager.spawnerController.dropRate)
+                    {
+                        DropDropBox();
+                    }
+                }
             }
-        }
-        else // drop from dropBox
-        {
-            //print(dropBoxController.gameObject.name + " is dropped a weapon");
-            dropBoxController.DropWeapon();
+            else // drop from dropBox
+            {
+                //print(dropBoxController.gameObject.name + " is dropped a weapon");
+                dropBoxController.DropWeapon();
+            }
         }
     }
 
@@ -160,7 +162,7 @@ public class Destructible : MonoBehaviour
     {
         if (gameManager.pc.isActiveAndEnabled)
         {
-            GameObject drop = GameObject.Instantiate(gameManager.spawnerController.dropBox, transform.position, Quaternion.identity);
+            GameObject drop = Instantiate(gameManager.spawnerController.dropBox, transform.position, Quaternion.identity);
         }
     }
 }

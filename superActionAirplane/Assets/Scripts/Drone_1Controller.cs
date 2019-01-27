@@ -27,7 +27,8 @@ public class Drone_1Controller : MonoBehaviour
     {
         pc = GameManager.instance.pc;
         objectPooler = ObjectPooler.instance;
-        InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
+        if (shotDelay > 0 && betweenShotsDelay > 0)
+            InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
     }
     void Shooting()
     {
