@@ -53,6 +53,8 @@ public class SpawnerController : MonoBehaviour
 
         GenerateSpawnList();
         canSpawn = true;
+
+        StartCoroutine(GameManager.instance.menuController.GuiActorPlay("FirstWave"));
         SpawnWave();
         SpawnSolids();
     }
@@ -163,6 +165,9 @@ public class SpawnerController : MonoBehaviour
     public void WaveDestroyed(WaveController wave)
     {
         int newWaveIndex = currentWave + 1;
+
+        StartCoroutine(GameManager.instance.menuController.GuiActorPlay("WaveDestroyed"));
+
         if (wavesInGame.Count > newWaveIndex)
         {
             currentWave = newWaveIndex;

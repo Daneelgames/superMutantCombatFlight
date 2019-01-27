@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 6630953582365945725}
   - component: {fileID: 2475960013485037920}
   - component: {fileID: 7685137317713948866}
+  - component: {fileID: 7896605541409050166}
   m_Layer: 10
   m_Name: tail
   m_TagString: Untagged
@@ -397,9 +398,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
+      minMaxState: 0
       minColor: {r: 1, g: 0, b: 0, a: 1}
-      maxColor: {r: 0.227451, g: 0, b: 0.007843138, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1480,7 +1481,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
+        key0: {r: 0, g: 0, b: 0, a: 1}
         key1: {r: 1, g: 0, b: 0, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1504,7 +1505,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_Mode: 0
+        m_Mode: 1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4831,8 +4832,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d2a83c9838f8034f9b3532f8defaccf, type: 2}
-  - {fileID: 2100000, guid: 0d2a83c9838f8034f9b3532f8defaccf, type: 2}
+  - {fileID: 2100000, guid: 4fa147448bc819445ab39da46f1f49a5, type: 2}
+  - {fileID: 2100000, guid: 4fa147448bc819445ab39da46f1f49a5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4875,3 +4876,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7896605541409050166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636578456878891706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175777a1992811b4e9595ab23d37a4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 2475960013485037920}
+  startColor: {r: 0, g: 0, b: 0, a: 1}
+  finalColor: {r: 1, g: 0, b: 0, a: 1}

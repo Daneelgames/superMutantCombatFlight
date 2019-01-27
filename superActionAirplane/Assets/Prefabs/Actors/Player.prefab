@@ -87,13 +87,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561180974}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 42.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1402966028}
-  m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 1
+  m_Father: {fileID: 1047668614}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -201,9 +201,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 561180975}
   m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1047668616
 MonoBehaviour:
@@ -264,7 +265,7 @@ Transform:
   - {fileID: 1588550191}
   - {fileID: 122485666}
   m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402966027
 GameObject:
@@ -531,7 +532,7 @@ Transform:
   - {fileID: 1789090257}
   - {fileID: 6684849754726422163}
   m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7165788225807763246
 MonoBehaviour:
@@ -577,7 +578,7 @@ Transform:
   - {fileID: 8339754004164093280}
   - {fileID: 7911961275525186800}
   m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3301784088782965367
 MonoBehaviour:
@@ -620,7 +621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 156902412648423692}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5271714850488857730
 GameObject:
@@ -10279,7 +10280,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1727676194487363523}
-  - {fileID: 561180975}
   - {fileID: 7813201771232694229}
   - {fileID: 1499104082073200386}
   - {fileID: 1047668614}

@@ -53,7 +53,7 @@ MonoBehaviour:
   lifeTime: 1
   rb: {fileID: 4959465482014204621}
   rocket: 0
-  art: {fileID: 2215745777121052870}
+  particles: {fileID: 0}
 --- !u!114 &7366631211162132029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   damage: 0.5
   explosion: {fileID: 1479900517559180053, guid: c6d2f71be17a23f4981b45d2de3f333e,
     type: 3}
+  enemyBulletController: {fileID: 0}
 --- !u!54 &4959465482014204621
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4830,8 +4831,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d2a83c9838f8034f9b3532f8defaccf, type: 2}
-  - {fileID: 2100000, guid: 0d2a83c9838f8034f9b3532f8defaccf, type: 2}
+  - {fileID: 2100000, guid: 4fa147448bc819445ab39da46f1f49a5, type: 2}
+  - {fileID: 2100000, guid: 4fa147448bc819445ab39da46f1f49a5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

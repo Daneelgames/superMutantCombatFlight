@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         pc.transform.position = Vector3.zero;
         pc.gameObject.SetActive(true);
+        spawnerController.skyController.skyAnimator.SetBool("Gameplay", true);
         pc.SetSensitivity(menuController.playersSensitivitySlider.value);
         spawnerController.StartSpawning();
         cameraController.SetMenu(false);
@@ -51,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        StartCoroutine(menuController.GuiActorPlay("GameOver"));
+        spawnerController.skyController.skyAnimator.SetBool("Gameplay", false);
         playerAlive = true;
         objectPooler.DisableAllProjectiles();
         spawnerController.StopSpawning();
