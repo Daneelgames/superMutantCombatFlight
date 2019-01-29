@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinDrop: 1
-  health: 5
+  health: 10
   smallExplosion: {fileID: 1479900517559180053, guid: 12b1d8e9e08273a4eaf4d79722e5fab4,
     type: 3}
   explosion: {fileID: 1479900517559180053, guid: 84cc3a5c9bc800842bd567fc3c258197,
@@ -621,7 +621,6 @@ MonoBehaviour:
   dropBoxController: {fileID: 672613425260513543}
   canBeDamagedBySolids: 0
   damageFeedbackAnimator: {fileID: 7688856609273317370}
-  _audio: {fileID: 7778800254463550841}
 --- !u!82 &7778800254463550841
 AudioSource:
   m_ObjectHideFlags: 0

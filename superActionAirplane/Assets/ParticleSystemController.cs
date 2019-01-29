@@ -8,7 +8,7 @@ public class ParticleSystemController : MonoBehaviour
 
     public Color startColor;
     public Color finalColor;
-    float maxDistance = 10;
+    float maxDistance = 3;
     float distance;
     //public float t = 1;
 
@@ -25,11 +25,14 @@ public class ParticleSystemController : MonoBehaviour
         pc = GameManager.instance.pc;
     }
 
-    private void Update() // НАДО ПРОВЕРЯТЬ ПО РАССТОЯНИЮ ДО ИГРОКА
+    private void Update()
     {
-         distance = Vector3.Distance(transform.position, pc.transform.position);
+        if (transform.position.z > 1)
+        {
+            distance = Mathf.Abs(transform.position.z - 1);
 
-        var main = particles.main;
-        main.startColor = Color.Lerp(finalColor, startColor, distance / maxDistance);
+            var main = particles.main;
+            main.startColor = Color.Lerp(finalColor, startColor, distance / maxDistance);
+        }
     }
 }

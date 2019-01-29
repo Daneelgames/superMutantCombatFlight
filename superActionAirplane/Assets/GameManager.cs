@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         pc.gameObject.SetActive(true);
         spawnerController.skyController.skyAnimator.SetBool("Gameplay", true);
         pc.SetSensitivity(menuController.playersSensitivitySlider.value);
+        spawnerController.ClearWaves();
         spawnerController.StartSpawning();
         cameraController.SetMenu(false);
         playerAlive = true;

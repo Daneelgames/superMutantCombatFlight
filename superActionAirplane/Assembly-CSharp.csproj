@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EnemyOutlineController.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\ParticleSystemController.cs" />
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />

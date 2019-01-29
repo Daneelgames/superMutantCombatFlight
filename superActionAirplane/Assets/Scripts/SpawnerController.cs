@@ -166,21 +166,24 @@ public class SpawnerController : MonoBehaviour
     {
         int newWaveIndex = currentWave + 1;
 
-        StartCoroutine(GameManager.instance.menuController.GuiActorPlay("WaveDestroyed"));
-
-        if (wavesInGame.Count > newWaveIndex)
+        if (GameManager.instance.playerAlive)
         {
-            currentWave = newWaveIndex;
-            SpawnWave();
-        }
-        else
-        {
-            if (tutorial)
-                tutorial = false;
+            StartCoroutine(GameManager.instance.menuController.GuiActorPlay("WaveDestroyed"));
 
-            GenerateSpawnList();
-            currentWave = 1;
-            SpawnWave();
+            if (wavesInGame.Count > newWaveIndex)
+            {
+                currentWave = newWaveIndex;
+                SpawnWave();
+            }
+            else
+            {
+                if (tutorial)
+                    tutorial = false;
+
+                GenerateSpawnList();
+                currentWave = 1;
+                SpawnWave();
+            }
         }
     }
 

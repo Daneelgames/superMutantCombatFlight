@@ -16,7 +16,7 @@ public class Drone_1Controller : MonoBehaviour
     public LayerMask layerMask;
 
     public GameObject shotHolder;
-    public Animator anim;
+    public List <Animator> anim;
 
     public bool unfiniteShooting = false;
 
@@ -57,15 +57,18 @@ public class Drone_1Controller : MonoBehaviour
     {
         if (bullet) // single bullet
         {
-            if (anim)
+            if (anim.Count > 0)
             {
-                if (!unfiniteShooting)
+                foreach(Animator a in anim)
                 {
-                    anim.SetTrigger("Shot");
-                }
-                else
-                {
-                    anim.SetBool("Shot", true);
+                    if (!unfiniteShooting)
+                    {
+                        a.SetTrigger("Shot");
+                    }
+                    else
+                    {
+                        a.SetBool("Shot", true);
+                    }
                 }
             }
             Vector3 shotOrigintPos = transform.position;
@@ -84,7 +87,13 @@ public class Drone_1Controller : MonoBehaviour
 
     IEnumerator ShotBulletBurst()
     {
-        anim.SetTrigger("Shot");
+        if (anim.Count > 0)
+        {
+            foreach (Animator a in anim)
+            {
+                a.SetTrigger("Shot");
+            }
+        }
         foreach (GameObject go in bulletBurst)
         {
             Vector3 shotOrigintPos = transform.position;

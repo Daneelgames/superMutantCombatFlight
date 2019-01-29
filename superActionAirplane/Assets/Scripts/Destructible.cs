@@ -62,7 +62,9 @@ public class Destructible : MonoBehaviour
             health -= damage;
 
             if (damageFeedbackAnimator)
+            {
                 damageFeedbackAnimator.SetTrigger("Damage");
+            }
 
             if (health > 0)
             {
