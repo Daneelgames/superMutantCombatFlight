@@ -146,7 +146,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  shotHolder: {fileID: 3150721425667570776}
+  shotHolders:
+  - {fileID: 3150721425667570776}
   anim:
   - {fileID: 2051937918146820001}
   - {fileID: 6879124543367199309}
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMeshes:
   - {fileID: 2277528158971452292}
+  outlineSkinnedMeshes: []
 --- !u!1 &6508026989676415734
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +293,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: redWheelOutline
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1086b6fa12d74ea4fb8b3db11e2b1102, type: 2}
     - target: {fileID: 400002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -327,22 +345,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1086b6fa12d74ea4fb8b3db11e2b1102, type: 2}
     - target: {fileID: 2300000, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -378,6 +380,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: redWheel
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0bf9fe6b847d39b4883025356d0d6cbd, type: 2}
     - target: {fileID: 400002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -422,22 +440,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0bf9fe6b847d39b4883025356d0d6cbd, type: 2}
     - target: {fileID: 2300000, guid: 18a9a0bdaba827949b991f7a32d001ba, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

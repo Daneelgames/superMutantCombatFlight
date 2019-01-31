@@ -2482,7 +2482,7 @@ MonoBehaviour:
   - tag: EnemyBullet
     prefab: {fileID: 2215745776762814028, guid: 6d67e2983c8772d4c8fb91d8150017d1,
       type: 3}
-    size: 100
+    size: 1000
     parent: {fileID: 299147805}
   - tag: MinigunBullet
     prefab: {fileID: 2215745776762814028, guid: b52fe05ccdd018c45a1dc13b08463db7,
@@ -7276,7 +7276,7 @@ PrefabInstance:
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
       propertyPath: waves.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
@@ -7385,6 +7385,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7543689485446871723, guid: d7e43793c19aac94295881045ac655b3,
         type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[13]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: a18f5021fba11be448821ffaa05b68bb,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: solidsMaxDelay
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2becf5453539fae418e71dea7a5c6330, type: 3}
 --- !u!4 &5688977980624641103 stripped

@@ -11,8 +11,7 @@ public class SpawnerController : MonoBehaviour
     public int testStartWave = 0;
     public float spawnZ = 200;
 
-    public float solidsMinDelay = 1;
-    public float solidsMaxDelay = 10;
+    public float solidsDelay = 5;
     float currentDelay = 1;
     public float groundLevel = -6;
 
@@ -56,7 +55,7 @@ public class SpawnerController : MonoBehaviour
 
         StartCoroutine(GameManager.instance.menuController.GuiActorPlay("FirstWave"));
         SpawnWave();
-        SpawnSolids();
+        Invoke("SpawnSolids", 5);
     }
 
     public void StopSpawning()
@@ -136,28 +135,28 @@ public class SpawnerController : MonoBehaviour
                 GetSolids();
 
             Vector3 newSolidPosition = new Vector3(Random.Range(-2f, 2f), groundLevel, spawnZ);
-            GameObject go = GameObject.Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
+            GameObject go = Instantiate(solids[solidIndex], newSolidPosition, Quaternion.identity);
             go.transform.SetParent(solidsParent.transform);
+            
 
-            switch (sharksOnScene)
-            {
-                case 0:
-                    currentDelay = Random.Range(solidsMinDelay, solidsMaxDelay);
-                    break;
-                case 1:
-                    currentDelay = 3;
-                    break;
-                case 2:
-                    currentDelay = 2f;
-                    break;
-                case 3:
-                    currentDelay = 1f;
-                    break;
-            }
-
+            
             if (tutorial)
-                currentDelay *= 3;
-
+                currentDelay = solidsDelay * 2;
+            else
+            {
+                switch (sharksOnScene)
+                {
+                    case 1:
+                        currentDelay = 2;
+                        break;
+                    case 2:
+                        currentDelay = 1.25f;
+                        break;
+                    case 3:
+                        currentDelay = 0.75f;
+                        break;
+                }
+            }
             Invoke("SpawnSolids", currentDelay);
         }
     }

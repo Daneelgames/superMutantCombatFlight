@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         spawnerController.ClearWaves();
         spawnerController.StartSpawning();
         cameraController.SetMenu(false);
+        objectPooler.DisableAllProjectiles();
         playerAlive = true;
         //    spawnerController.movementSpeed = 100;
     }

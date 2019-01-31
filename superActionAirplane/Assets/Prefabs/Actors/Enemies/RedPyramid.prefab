@@ -249,7 +249,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  shotHolder: {fileID: 6721405498853055896}
+  shotHolders:
+  - {fileID: 6721405498853055896}
   anim:
   - {fileID: 2238764735109693925}
   - {fileID: 9156528955458187418}
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMeshes:
   - {fileID: 2130350390772966607}
+  outlineSkinnedMeshes: []
 --- !u!1001 &438211251813170586
 PrefabInstance:
   m_ObjectHideFlags: 0

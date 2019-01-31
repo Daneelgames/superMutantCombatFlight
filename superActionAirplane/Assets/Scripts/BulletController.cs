@@ -61,8 +61,8 @@ public class BulletController : MonoBehaviour
 
         if (gameObject.layer == 11) // if enemy bullet
             InvokeRepeating("CheckPositionZ", 0.1f, 0.1f);
-        else
-            Invoke("DestroyBullet", lifeTime);
+
+        Invoke("DestroyBullet", lifeTime);
     }
 
     public void DestroyBullet()

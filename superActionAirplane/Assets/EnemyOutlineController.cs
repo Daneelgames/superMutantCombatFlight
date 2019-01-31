@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyOutlineController : MonoBehaviour
 {
     public List<MeshRenderer> outlineMeshes;
+    public List<SkinnedMeshRenderer> outlineSkinnedMeshes;
 
     private void Start()
     {
@@ -14,10 +15,19 @@ public class EnemyOutlineController : MonoBehaviour
     void ChangeColor()
     {
         float distance = Mathf.Abs(1 - transform.position.z);
-        print(distance / 5f);
-        foreach (MeshRenderer mesh in outlineMeshes)
+        if (outlineMeshes.Count > 0)
         {
-            mesh.material.color = Color.Lerp(Color.red, Color.black, distance / 5f);
+            foreach (MeshRenderer mesh in outlineMeshes)
+            {
+                mesh.material.color = Color.Lerp(Color.red, Color.black, distance / 5f);
+            }
+        }
+        else
+        {
+            foreach (SkinnedMeshRenderer mesh in outlineSkinnedMeshes)
+            {
+                mesh.material.color = Color.Lerp(Color.red, Color.black, distance / 5f);
+            }
         }
     }
 }

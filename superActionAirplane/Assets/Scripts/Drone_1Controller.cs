@@ -15,7 +15,10 @@ public class Drone_1Controller : MonoBehaviour
 
     public LayerMask layerMask;
 
-    public GameObject shotHolder;
+    public List<GameObject> shotHolders;
+    int lastShotHolder = 0;
+    public List<GameObject> shotTargets;
+    int lastShotTarget = 0;
     public List <Animator> anim;
 
     public bool unfiniteShooting = false;
@@ -72,12 +75,32 @@ public class Drone_1Controller : MonoBehaviour
                 }
             }
             Vector3 shotOrigintPos = transform.position;
-            if (shotHolder)
-                shotOrigintPos = shotHolder.transform.position;
+            if (shotHolders.Count > lastShotHolder + 1)
+            {
+                lastShotHolder += 1;
+            }
+            else
+                lastShotHolder = 0;
 
+            Transform target = GameManager.instance.pc.transform;
+
+            if (shotTargets.Count > 0)
+            {
+                if (shotTargets.Count > lastShotTarget + 1)
+                {
+                    lastShotTarget += 1;
+                }
+                else
+                {
+                    lastShotTarget = 0;
+                }
+                target = shotTargets[lastShotTarget].transform;
+            }
+
+            shotOrigintPos = shotHolders[lastShotHolder].transform.position;
 
             BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
-            newBullet.SetTarget(GameManager.instance.pc.transform, shotRandomOffset, false);
+            newBullet.SetTarget(target, shotRandomOffset, false);
         }
         else if (bulletBurst.Count > 0) // bullet burst
         {
@@ -97,18 +120,42 @@ public class Drone_1Controller : MonoBehaviour
         foreach (GameObject go in bulletBurst)
         {
             Vector3 shotOrigintPos = transform.position;
-            if (shotHolder)
-                shotOrigintPos = shotHolder.transform.position;
+
+            if (shotHolders.Count > lastShotHolder + 1)
+            {
+                lastShotHolder += 1;
+            }
+            else
+                lastShotHolder = 0;
+
+            Transform target = GameManager.instance.pc.transform;
+
+            if (shotTargets.Count > 0)
+            {
+                if (shotTargets.Count > lastShotTarget + 1)
+                {
+                    lastShotTarget += 1;
+                }
+                else
+                {
+                    lastShotTarget = 0;
+                }
+                target = shotTargets[lastShotTarget].transform;
+            }
+
+            shotOrigintPos = shotHolders[lastShotHolder].transform.position;
 
             BulletController newBullet = objectPooler.SpawnBulletFromPool("EnemyBullet", shotOrigintPos, Quaternion.identity);
-            newBullet.SetTarget(pc.transform, shotRandomOffset, false);
+            newBullet.SetTarget(target, shotRandomOffset, false);
             yield return new WaitForSeconds(bulletBurstDelay);
         }
     }
 
+    /*
     private void Update()
     {
         if (GameManager.instance.pc)
             transform.LookAt(pc.transform);
     }
+    */
 }
