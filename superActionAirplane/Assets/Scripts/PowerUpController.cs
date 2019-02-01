@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpController : MonoBehaviour
 {
-    enum Type {MushroomLSD, SharkNitro};
+    enum Type {MushroomLSD, SharkNitro, Pie};
 
     [SerializeField]
     Type powerupType = Type.MushroomLSD;
@@ -29,6 +29,10 @@ public class PowerUpController : MonoBehaviour
                 gameManager.spawnerController.SetShark(1);
                 gameManager.cameraController.SetShark(1);
                 break;
+
+            case Type.Pie:
+                gameManager.pc.SetScale(1);
+                break;
         }
     }
 
@@ -44,6 +48,10 @@ public class PowerUpController : MonoBehaviour
             case Type.SharkNitro:
                 gameManager.spawnerController.SetShark(-1);
                 gameManager.cameraController.SetShark(-1);
+                break;
+
+            case Type.Pie:
+                gameManager.pc.SetScale(-1);
                 break;
         }
     }

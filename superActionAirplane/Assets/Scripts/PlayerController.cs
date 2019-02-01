@@ -306,4 +306,9 @@ public class PlayerController : MonoBehaviour
     {
         touchMovementScaler = newSensitivity;
     }
+
+    public void SetScale(float newScale)
+    {
+        transform.localScale += Vector3.one * newScale * 0.3f;
+    }
 }

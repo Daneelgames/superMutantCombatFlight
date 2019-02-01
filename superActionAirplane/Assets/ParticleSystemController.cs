@@ -27,12 +27,9 @@ public class ParticleSystemController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.z > 1)
-        {
             distance = Mathf.Abs(transform.position.z - 1);
 
             var main = particles.main;
             main.startColor = Color.Lerp(finalColor, startColor, distance / maxDistance);
-        }
     }
 }
