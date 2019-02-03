@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
         cameraController.SetMenu(false);
         objectPooler.DisableAllProjectiles();
         playerAlive = true;
+        coins = 0;
+        menuController.ClearScore();
         //    spawnerController.movementSpeed = 100;
     }
 
     public void Restart()
     {
-        StartCoroutine(menuController.GuiActorPlay("GameOver"));
+        StartCoroutine(menuController.GuiActorPlay("GameOver", "Player"));
         spawnerController.skyController.skyAnimator.SetBool("Gameplay", false);
         playerAlive = true;
         objectPooler.DisableAllProjectiles();

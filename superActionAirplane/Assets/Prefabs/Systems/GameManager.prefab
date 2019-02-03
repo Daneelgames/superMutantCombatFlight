@@ -775,7 +775,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -942,16 +942,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138210399}
-  m_LocalRotation: {x: -0, y: -0, z: -0.043853704, w: 0.999038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1907632480}
+  m_Father: {fileID: 8193062003709489654}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.0270004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -247, y: -489.1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1138210402
@@ -982,7 +982,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 81e14d816ec747c4ab92ff594c54e22a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61dd630f3600f4e45b325a03b94b96f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1460,7 +1460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1907632480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1138210400}
+  - {fileID: 8193062003709489654}
   m_Father: {fileID: 7545331880402376650}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1807,6 +1807,42 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Music volume
+--- !u!1 &1503015074608278591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8193062003709489654}
+  m_Layer: 5
+  m_Name: SpriteHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8193062003709489654
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503015074608278591}
+  m_LocalRotation: {x: -0, y: -0, z: -0.043853704, w: 0.999038}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1138210400}
+  m_Father: {fileID: 1907632480}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -246.99998, y: -489.1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5047636556226470919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,9 +2069,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '0
-
-'
+  m_Text: 0
 --- !u!114 &366748490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,7 +2097,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 694ab866acc7cf74b8307b9a08c6d5c9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2369,6 +2403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
         type: 3}
+      propertyPath: guiWeaponLines.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
       propertyPath: score
       value: 
       objectReference: {fileID: 2746539576858506079}
@@ -2417,6 +2456,46 @@ PrefabInstance:
       propertyPath: guiActorLines.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: c802dd8e6667b0e4aa80a97185f2c121, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c802dd8e6667b0e4aa80a97185f2c121, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e379e79fa2ebb42b4658b6e44faf58, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ff84f01df98664394c38c9fbaf7e71, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: c802dd8e6667b0e4aa80a97185f2c121, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e379e79fa2ebb42b4658b6e44faf58, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: c802dd8e6667b0e4aa80a97185f2c121, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e379e79fa2ebb42b4658b6e44faf58, type: 3}
+    - target: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+        type: 3}
+      propertyPath: guiWeaponLines.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ff84f01df98664394c38c9fbaf7e71, type: 3}
     - target: {fileID: 2525781316310237864, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
         type: 3}
       propertyPath: m_Controller
@@ -2462,18 +2541,12 @@ PrefabInstance:
       objectReference: {fileID: 7915201749743592539}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f, type: 3}
---- !u!114 &7915201749743592539 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+--- !u!224 &7545331880402376650 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6130306054887929950, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
     type: 3}
   m_PrefabInstance: {fileID: 4442061880438370196}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba474d0dc57a4c4fa961ff53ea51013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6801795104807087125 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7188179460633478017, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
@@ -2504,9 +2577,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4442061880438370196}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &7545331880402376650 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6130306054887929950, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
+--- !u!114 &7915201749743592539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5799842132530383823, guid: e03dcb70bfab5ae4f9c1b9f386bbf86f,
     type: 3}
   m_PrefabInstance: {fileID: 4442061880438370196}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba474d0dc57a4c4fa961ff53ea51013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

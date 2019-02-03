@@ -32,37 +32,47 @@ public class PlayerController : MonoBehaviour
 
     bool hurt = false;
 
-    bool touchInput = true;
+   // bool touchInput = true;
 
     public float touchMovementScaler = 1.2f;
     public SkinnedMeshRenderer mesh;
 
-    public AudioSource audio;
+    public AudioSource _audio;
 
     ObjectPooler objectPooler;
 
+    float x = 0;
+    float y = 0;
 
     Vector3 newPos;
 
-    GameObject parent;
+     GameObject parent;
 
     private void Start()
     {
         objectPooler = ObjectPooler.instance;
 
-        parent = new GameObject();
-        parent.transform.position = transform.position;
-        parent.name = "PlayerMovementContainer";
+         parent = new GameObject(); 
+         parent.transform.position = transform.position; 
+         parent.name = "PlayerMovementContainer"; 
         //if (Application.platform == RuntimePlatform.Android)
         //    touchInput = true;
     }
 
     void Update()
     {
-        PlayerInput();
-        GetMoveRotation();
-        Shoot();
-        ShootByTouch();
+        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        {
+            PlayerInputTouch();
+            GetMoveRotationTouch();
+            ShootByTouch();
+        }
+        else
+        {
+            PlayerInput();
+            GetMoveRotation();
+            Shoot();
+        }
         ClampMovement();
         RotatePlayer();
     }
@@ -127,18 +137,18 @@ public class PlayerController : MonoBehaviour
             wpn.Remove();
         }
         additionalWeapons.Clear();
-        //target.gameObject.SetActive(false);
-        //target_2.gameObject.SetActive(false);
         transform.SetParent(null);
         newPos = Vector3.zero;
-        parent.transform.position = transform.position;
+        parent.transform.position = transform.position; 
         gameObject.SetActive(false);
     }
 
-    void PlayerInput()
+    void PlayerInputTouch()
     {
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
+            transform.SetParent(null);
+            parent.transform.position = transform.position; 
             Vector3 screenPos = Input.mousePosition;
             screenPos.z = 10.0f;
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
@@ -174,7 +184,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void GetMoveRotation()
+    void GetMoveRotationTouch()
     {
         if (newPos != Vector3.zero)
         {
@@ -213,6 +223,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void PlayerInput() //PC CONTROLS
+    {
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
+
+        rb.velocity = new Vector3(x, y, 0) * movementSpeed * touchMovementScaler;
+    }
+
+    void GetMoveRotation()
+    {
+        if (rb.velocity != Vector3.zero)
+        {
+            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, -50 * y, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 50 * x, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, -50 * x, 0.9f * Time.deltaTime * 10f);
+        }
+        else
+        {
+            _moveRotation.x = Mathf.LerpAngle(_moveRotation.x, 0, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.y = Mathf.LerpAngle(_moveRotation.y, 0, 0.9f * Time.deltaTime * 10f);
+            _moveRotation.z = Mathf.LerpAngle(_moveRotation.z, 0, 0.9f * Time.deltaTime * 10f);
+        }
+    }
+
     void ClampMovement()
     {
         if (transform.position.x > 3)
@@ -237,21 +271,18 @@ public class PlayerController : MonoBehaviour
             shotDelay -= Time.deltaTime;
         else
         {
-            if (!touchInput)
+            if (bullet)
             {
-                if (bullet)
-                {
-                    ShotBullet();
-                }
-                else
-                    StartCoroutine("ShotBulletBurst");
+                ShotBullet();
+            }
+            else
+                StartCoroutine("ShotBulletBurst");
 
-                if (additionalWeapons.Count > 0)
+            if (additionalWeapons.Count > 0)
+            {
+                foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
                 {
-                    foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
-                    {
-                        additionalWeapon.Shot();
-                    }
+                    additionalWeapon.Shot();
                 }
             }
         }
@@ -259,9 +290,8 @@ public class PlayerController : MonoBehaviour
 
     void ShotBullet()
     {
-        //GameObject newBullet = GameObject.Instantiate(bullet, shotHolder.position, Quaternion.identity);
-        audio.pitch = Random.Range(0.75f, 1.25f);
-        audio.Play();
+        _audio.pitch = Random.Range(0.75f, 1.25f);
+        _audio.Play();
         BulletController _bulletController = objectPooler.SpawnBulletFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
         _bulletController.SetTarget(target.transform, Vector3.zero, false);
         shotDelay = _bulletController.delayNextShotTime;
@@ -271,9 +301,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach (GameObject go in bulletBurst)
         {
-            //GameObject newBullet = GameObject.Instantiate(go, transform.position, Quaternion.identity);
             BulletController _bulletController = objectPooler.SpawnBulletFromPool("PlayerBullet", shotHolder.position, Quaternion.identity);
-            //_bulletController.SetTarget(target.transform.parent, Vector3.zero);
             _bulletController.SetTarget(target.transform, Vector3.zero, false);
             shotDelay = _bulletController.delayNextShotTime;
             yield return new WaitForSeconds(bulletBurstDelay);
@@ -282,22 +310,22 @@ public class PlayerController : MonoBehaviour
 
     public void ShootByTouch()
     {
-        if (touchInput)
+        if (shotDelay > 0)
+            shotDelay -= Time.deltaTime;
+
+        else if (shotDelay <= 0)
         {
-            if (shotDelay <= 0)
-            {
-                if (bullet)
-                    ShotBullet();
-                else
-                    StartCoroutine("ShotBulletBurst");
-            }
+            if (bullet)
+                ShotBullet();
+            else
+                StartCoroutine("ShotBulletBurst");
+        }
             
-            if (additionalWeapons.Count > 0)
+        if (additionalWeapons.Count > 0)
+        {
+            foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
             {
-                foreach (AdditionalWeaponController additionalWeapon in additionalWeapons)
-                {
-                    additionalWeapon.Shot();
-                }
+                additionalWeapon.Shot();
             }
         }
     }

@@ -60,9 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EnemyOutlineController.cs" />
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\ParticleSystemController.cs" />
+    <Compile Include="Assets\PowerUpDropFeedbackController.cs" />
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />
     <Compile Include="Assets\Scripts\AimAssistController.cs" />
     <Compile Include="Assets\Scripts\AnimationEventReciever.cs" />
@@ -77,12 +76,14 @@
     <Compile Include="Assets\Scripts\Destructible.cs" />
     <Compile Include="Assets\Scripts\Drone_1Controller.cs" />
     <Compile Include="Assets\Scripts\DropBoxController.cs" />
+    <Compile Include="Assets\Scripts\EnemyOutlineController.cs" />
     <Compile Include="Assets\Scripts\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\FpsCounter.cs" />
     <Compile Include="Assets\Scripts\GroundTextureController.cs" />
     <Compile Include="Assets\Scripts\HideSolidController.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
+    <Compile Include="Assets\Scripts\ParticleSystemController.cs" />
     <Compile Include="Assets\Scripts\PlayerCanvasController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />

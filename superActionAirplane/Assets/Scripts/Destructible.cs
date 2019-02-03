@@ -95,8 +95,11 @@ public class Destructible : MonoBehaviour
     {
         dead = true;
         Time.timeScale = 0.5f;
+
+            /*
         if (coinDrop > 0)
             DropCoins();
+            */
 
         yield return new WaitForSecondsRealtime(0.2f);
 

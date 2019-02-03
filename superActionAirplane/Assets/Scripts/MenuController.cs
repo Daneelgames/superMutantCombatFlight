@@ -15,12 +15,19 @@ public class MenuController : MonoBehaviour
     public Animator guiActorAnimator;
     int guiActorCurrentLine = 0;
     public List<AudioClip> guiActorLines;
+    public List<AudioClip> guiWeaponLines; 
 
-    GameManager gameManager;
+     GameManager gameManager;
 
     private void Start()
     {
         gameManager = GameManager.instance;
+        score.gameObject.SetActive(false);
+    }
+
+    public void ClearScore()
+    {
+        score.text = "0";
     }
 
     public void GameOver()
@@ -30,6 +37,7 @@ public class MenuController : MonoBehaviour
 
     public void GameStart()
     {
+        score.gameObject.SetActive(true);
         anim.SetTrigger("GameStart");
     }
 
@@ -58,10 +66,51 @@ public class MenuController : MonoBehaviour
         gameManager.SetAcidSkyEnabled(toggleAcidSky.isOn);
     }
 
-    public IEnumerator GuiActorPlay(string reason)
+    public IEnumerator GuiActorPlay(string reason, string actorName)
     {
         float playTime = .75f;
-        if (reason == "WaveDestroyed")
+
+        int index = 0;
+
+        if (reason == "PowerUp" && guiWeaponLines.Count > 0)
+        {
+            switch (actorName)
+            {
+                case "AdditionalShotgun":
+                    index = 0;
+                    break;
+
+                case "AdditionalMiniGun":
+                    index = 1;
+                    break;
+
+                case "AdditionalNitroShark":
+                    index = 2;
+                    break;
+
+                case "AdditionalSniperRifle":
+                    index = 3;
+                    break;
+
+                case "AdditionalPie":
+                    index = 4;
+                    break;
+
+                case "AdditionalHandPistol":
+                    index = 5;
+                    break;
+
+                case "AdditionalMushroomLSD":
+                    index = 6;
+                    break;
+
+                case "AdditionalRocketShooter":
+                    index = 7;
+                    break;
+            }
+            guiActorAudioSource.clip = guiWeaponLines[index];
+        }
+        else if (reason == "WaveDestroyed")
         {
             guiActorAudioSource.clip = guiActorLines[Random.Range(2, guiActorLines.Count)];
         }
@@ -77,11 +126,14 @@ public class MenuController : MonoBehaviour
 
         guiActorAudioSource.Play();
 
-
         if (gameManager.pc.transform.position.x > 0)
-            guiActorAnimator.SetTrigger("ActorLeft");
+        {
+            guiActorAnimator.transform.localScale = new Vector3(1, 1, 1);
+        }
         else
-            guiActorAnimator.SetTrigger("ActorRight");
+            guiActorAnimator.transform.localScale = new Vector3(-1, 1, 1);
+
+        guiActorAnimator.SetTrigger(actorName);
 
         guiActorAnimator.SetBool("Sleep", false);
 

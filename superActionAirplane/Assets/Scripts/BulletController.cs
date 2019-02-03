@@ -17,7 +17,6 @@ public class BulletController : MonoBehaviour
     public ParticleSystem particles;
     ParticleSystem.EmissionModule particlesEmissionModule;
 
-
     private void Start()
     {
         if (particles)

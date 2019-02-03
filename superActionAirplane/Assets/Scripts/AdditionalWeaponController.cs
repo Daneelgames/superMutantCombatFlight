@@ -14,15 +14,20 @@ public class AdditionalWeaponController : MonoBehaviour
     public Animator anim;
     PlayerController pc;
 
+    public AudioSource _audio;
+
     ObjectPooler objectPooler;
 
     public PowerUpController powerUpController;
+    public GameObject feedbackDrop;
 
     Transform weaponSpot; // spot for weapon parented by player
 
     private void Start()
     {
+        Instantiate(feedbackDrop, transform.position, Quaternion.identity);
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        //StartCoroutine(GameManager.instance.menuController.GuiActorPlay("PowerUp", gameObject.name));
 
         objectPooler = ObjectPooler.instance;
 
@@ -65,6 +70,12 @@ public class AdditionalWeaponController : MonoBehaviour
     {
         if (currentDelay <= 0)
         {
+            if (_audio)
+            {
+                _audio.pitch = Random.Range(0.75f, 1.25f);
+                _audio.Play();
+            }
+
             if (bullet != null)
             {
                 if (anim)

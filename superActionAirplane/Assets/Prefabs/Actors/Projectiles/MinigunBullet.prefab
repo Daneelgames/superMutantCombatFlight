@@ -4752,6 +4752,7 @@ MonoBehaviour:
   rb: {fileID: 4959465482014204621}
   rocket: 0
   particles: {fileID: 0}
+  _audio: {fileID: 0}
 --- !u!114 &7366631211162132029
 MonoBehaviour:
   m_ObjectHideFlags: 0

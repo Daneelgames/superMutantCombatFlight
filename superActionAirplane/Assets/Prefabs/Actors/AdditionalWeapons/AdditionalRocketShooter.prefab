@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040}
   - component: {fileID: 2766}
+  - component: {fileID: 886033967958894212}
   m_Layer: 0
   m_Name: AdditionalRocketShooter
   m_TagString: Untagged
@@ -52,6 +53,107 @@ MonoBehaviour:
     type: 3}
   shotHolder: {fileID: 1114}
   anim: {fileID: 9293231}
+  _audio: {fileID: 886033967958894212}
+  powerUpController: {fileID: 0}
+  feedbackDrop: {fileID: 1874469321651572722, guid: 4f6860ec58dcda046a18c0b61d7c4470,
+    type: 3}
+--- !u!82 &886033967958894212
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243751406005072366, guid: 425505c2b3c75f747b8a4d73db6fda0c,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: b76c0ea60b6034c44933ab7ac63c12d0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &684
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,22 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: emojiRocketLauncher
       objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.98021
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 53.791813
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -179.97923
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -179.59843
-      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 060e3ad44c96a2b479f4a880cf8d5e2d, type: 2}
     - target: {fileID: 400008, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -216,6 +306,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98021
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 53.791813
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -179.97923
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.59843
+      objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 75.27387
@@ -228,11 +334,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.99832
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 060e3ad44c96a2b479f4a880cf8d5e2d, type: 2}
-    - target: {fileID: 13700000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+    - target: {fileID: 13700004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}
@@ -240,7 +342,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}
-    - target: {fileID: 13700004, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
+    - target: {fileID: 13700000, guid: c3e532d396a76b249ae3d4fc59ce4ac6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0a9a6fdffb8a74f9d541207b16f0fd, type: 2}

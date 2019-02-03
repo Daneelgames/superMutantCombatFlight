@@ -115,7 +115,10 @@ MonoBehaviour:
     type: 3}
   shotHolder: {fileID: 2010307262197500451}
   anim: {fileID: 0}
+  _audio: {fileID: 0}
   powerUpController: {fileID: 4410530376319038168}
+  feedbackDrop: {fileID: 1874469321651572722, guid: 990aaf6b16a12f34fa8d658108d6674a,
+    type: 3}
 --- !u!114 &4410530376319038168
 MonoBehaviour:
   m_ObjectHideFlags: 0
