@@ -10,16 +10,24 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler
     public MenuController menuController;
     bool canPress = true;
 
+    public void GameStart()
+    {
+        if (canPress)
+        {
+            canPress = false;
+            Invoke("CanPress", 1);
+            GameManager.instance.GameStart();
+            menuController.GameStart();
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (canPress)
         {
             if (buttonName == "Play")
             {
-                canPress = false;
-                Invoke("CanPress", 1);
-                GameManager.instance.GameStart();
-                menuController.GameStart();
+                GameStart();
             }
             else if (buttonName == "SettingsStart")
             {
@@ -36,6 +44,16 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler
             else if (buttonName == "Invinsible")
             {
                 GameManager.instance.pc.invinsible = !GameManager.instance.pc.invinsible;
+            }
+            else if (buttonName == "DisclamerYes")
+            {
+                canPress = false;
+                menuController.DisclamerAnswer(true);
+            }
+            else if (buttonName == "DisclamerNo")
+            {
+                canPress = false;
+                menuController.DisclamerAnswer(false);
             }
         }
     }

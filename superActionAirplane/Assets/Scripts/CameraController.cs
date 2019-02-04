@@ -5,10 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Animator anim;
+    public AudioSource _audio;
 
     Vector3 newEulerAngles = Vector3.zero;
     int lsdCount = 0;
     int sharkCount = 0;
+
+    public void StartMusic()
+    {
+        _audio.Play();
+    }
 
     public void SetLSD(int _lsd)
     {

@@ -96,10 +96,8 @@ public class Destructible : MonoBehaviour
         dead = true;
         Time.timeScale = 0.5f;
 
-            /*
         if (coinDrop > 0)
             DropCoins();
-            */
 
         yield return new WaitForSecondsRealtime(0.2f);
 
@@ -121,6 +119,7 @@ public class Destructible : MonoBehaviour
     void DropCoins()
     {
         gameManager.AddCoins(coinDrop);
+        /*
         for (int i = 0; i < coinDrop; i ++)
         {
             float x = Random.Range(-1f, 1f);
@@ -129,6 +128,7 @@ public class Destructible : MonoBehaviour
 
             objectPooler.SpawnGameObjectFromPool("Coin", transform.position + new Vector3(x,y,z), Quaternion.identity);
         }
+        */
     }
 
     public void SetInvincible(bool _true)

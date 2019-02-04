@@ -33,6 +33,7 @@ public class Drone_1Controller : MonoBehaviour
         if (shotDelay > 0 && betweenShotsDelay > 0)
             InvokeRepeating("Shooting", shotDelay, betweenShotsDelay);
     }
+
     void Shooting()
     {
         if (pc.isActiveAndEnabled && gameObject.activeInHierarchy && canShoot)
@@ -150,12 +151,4 @@ public class Drone_1Controller : MonoBehaviour
             yield return new WaitForSeconds(bulletBurstDelay);
         }
     }
-
-    /*
-    private void Update()
-    {
-        if (GameManager.instance.pc)
-            transform.LookAt(pc.transform);
-    }
-    */
 }

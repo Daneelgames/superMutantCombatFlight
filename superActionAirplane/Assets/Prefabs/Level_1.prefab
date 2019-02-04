@@ -2492,7 +2492,7 @@ MonoBehaviour:
   - tag: RocketBullet
     prefab: {fileID: 2215745776762814028, guid: e5431615ab0861f44bb3dce52608c5af,
       type: 3}
-    size: 6
+    size: 20
     parent: {fileID: 1998330002}
   - tag: ShotgunBullet
     prefab: {fileID: 2215745776762814028, guid: 2bce369b617e49944b0eda213ebbae3d,
@@ -7275,13 +7275,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: waves.Array.size
-      value: 14
+      propertyPath: wavesEasy.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: wavesEasy.Array.size
-      value: 3
+      propertyPath: waves.Array.size
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
@@ -7293,12 +7293,6 @@ PrefabInstance:
       propertyPath: groundLevel
       value: -6.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: additionalWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 2229493408721876351, guid: 120cc958207186b4e9842a012ee0537b,
-        type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
       propertyPath: additionalWeapons.Array.data[1]
@@ -7336,39 +7330,6 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: waves.Array.data[10]
-      value: 
-      objectReference: {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421,
-        type: 3}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: waves.Array.data[11]
-      value: 
-      objectReference: {fileID: 7543689485446871723, guid: 7bd7c44188a1bdc4abaca130e64029fe,
-        type: 3}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: solidsParent
-      value: 
-      objectReference: {fileID: 5688977980558302034}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: skyController
-      value: 
-      objectReference: {fileID: 8251561283512703710}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: waves.Array.data[12]
-      value: 
-      objectReference: {fileID: 7543689485446871723, guid: c396134bb450caf45b1089f0cd6b9ab0,
-        type: 3}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
-        type: 3}
       propertyPath: wavesEasy.Array.data[0]
       value: 
       objectReference: {fileID: 7543689485446871723, guid: b3bb7f8ce0e997a428e357cf035f204b,
@@ -7387,20 +7348,67 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
+      propertyPath: waves.Array.data[10]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: d39bff81868f634448c9272bfa947421,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[11]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: 7bd7c44188a1bdc4abaca130e64029fe,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[12]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: c396134bb450caf45b1089f0cd6b9ab0,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
       propertyPath: waves.Array.data[13]
       value: 
       objectReference: {fileID: 7543689485446871723, guid: a18f5021fba11be448821ffaa05b68bb,
         type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: solidsMaxDelay
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: waves.Array.data[14]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: 2efeff3dee3532540a8e6f76527eca2d,
+        type: 3}
     - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
         type: 3}
-      propertyPath: additionalWeapons.Array.data[7]
+      propertyPath: waves.Array.data[15]
       value: 
-      objectReference: {fileID: 2229493408721876351, guid: 6ad0c330cbbbef643af52a0f22a4f20d,
+      objectReference: {fileID: 7543689485446871723, guid: 112e0f75a144f904a9141c83024d6c07,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: solidsParent
+      value: 
+      objectReference: {fileID: 5688977980558302034}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: skyController
+      value: 
+      objectReference: {fileID: 8251561283512703710}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[16]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: 704f56f653d5b5f4398cab5af85a11f1,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[17]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: b5a8b8d6a64cf5b4f92503e2fd7a2731,
+        type: 3}
+    - target: {fileID: 3733115137785061499, guid: 2becf5453539fae418e71dea7a5c6330,
+        type: 3}
+      propertyPath: waves.Array.data[18]
+      value: 
+      objectReference: {fileID: 7543689485446871723, guid: 68e08fb7c84ceae418a8d032657d6596,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2becf5453539fae418e71dea7a5c6330, type: 3}

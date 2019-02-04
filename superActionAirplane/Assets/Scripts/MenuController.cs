@@ -15,7 +15,9 @@ public class MenuController : MonoBehaviour
     public Animator guiActorAnimator;
     int guiActorCurrentLine = 0;
     public List<AudioClip> guiActorLines;
-    public List<AudioClip> guiWeaponLines; 
+    public List<AudioClip> guiWeaponLines;
+
+    public UiButtonController playButton;
 
      GameManager gameManager;
 
@@ -49,11 +51,13 @@ public class MenuController : MonoBehaviour
     public void SettingsStart()
     {
         anim.SetTrigger("SettingsStart");
+        gameManager.SetCanStartGame(false);
     }
 
     public void SettingsClose()
     {
         anim.SetTrigger("SettingsClose");
+        gameManager.SetCanStartGame(true);
     }
 
     public void ChangeMusicVolume()
@@ -140,5 +144,15 @@ public class MenuController : MonoBehaviour
         yield return new WaitForSecondsRealtime(playTime);
 
         guiActorAnimator.SetBool("Sleep", true);
+    }
+
+    public void DisclamerAnswer(bool answer)
+    {
+        gameManager.SetAcidSkyEnabled(answer);
+        anim.SetTrigger("Disclamer");
+        gameManager.cameraController.StartMusic();
+
+        toggleAcidSky.isOn = answer;
+        gameManager.SetCanStartGame(true);
     }
 }

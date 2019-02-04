@@ -61,7 +61,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        /*
+        //if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
         {
             PlayerInputTouch();
             GetMoveRotationTouch();
@@ -69,10 +71,19 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // reset mouse input
+            transform.SetParent(null);
+            newPos = Vector3.zero;
+
             PlayerInput();
             GetMoveRotation();
             Shoot();
         }
+        */
+        PlayerInput();
+        GetMoveRotation();
+        Shoot();
+
         ClampMovement();
         RotatePlayer();
     }
@@ -145,13 +156,15 @@ public class PlayerController : MonoBehaviour
 
     void PlayerInputTouch()
     {
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        Vector3 screenPos;
+        Vector3 worldPos;
+
+        if (transform.parent == null)
         {
-            transform.SetParent(null);
-            parent.transform.position = transform.position; 
-            Vector3 screenPos = Input.mousePosition;
+            parent.transform.position = transform.position;
+            screenPos = Input.mousePosition;
             screenPos.z = 10.0f;
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+            worldPos = Camera.main.ScreenToWorldPoint(screenPos);
             Vector3 parentNewPos = parent.transform.position;
             parentNewPos.x = worldPos.x;
             parentNewPos.y = worldPos.y;
@@ -159,29 +172,22 @@ public class PlayerController : MonoBehaviour
             parent.transform.position = parentNewPos;
             transform.SetParent(parent.transform);
         }
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
-        {
-            // get mouse position in screen space
-            // (if touch, gets average of all touches)
-            Vector3 screenPos = Input.mousePosition;
-            // set a distance from the camera
-            screenPos.z = 10.0f;
-            // convert mouse position to world space
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 
-            // get current position of this GameObject
-            newPos = parent.transform.position;
-            // set x position to mouse world-space x position
-            newPos.x = worldPos.x * touchMovementScaler;
-            newPos.y = worldPos.y * touchMovementScaler;
-            // apply new position
-            parent.transform.position = Vector3.Lerp(parent.transform.position, newPos, Time.deltaTime * 5);
-        }
-        if (Input.GetMouseButtonUp(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            transform.SetParent(null);
-            newPos = Vector3.zero;
-        }
+        // get mouse position in screen space
+        // (if touch, gets average of all touches)
+        screenPos = Input.mousePosition;
+        // set a distance from the camera
+        screenPos.z = 10.0f;
+        // convert mouse position to world space
+        worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+        // get current position of this GameObject
+        newPos = parent.transform.position;
+        // set x position to mouse world-space x position
+        newPos.x = worldPos.x * touchMovementScaler;
+        newPos.y = worldPos.y * touchMovementScaler;
+        // apply new position
+        parent.transform.position = Vector3.Lerp(parent.transform.position, newPos, Time.deltaTime * 5);
     }
 
     void GetMoveRotationTouch()
