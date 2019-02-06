@@ -61,8 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\GjApiManager.cs" />
-    <Compile Include="Assets\PowerUpDropFeedbackController.cs" />
     <Compile Include="Assets\Scripts\AdditionalWeaponController.cs" />
     <Compile Include="Assets\Scripts\AimAssistController.cs" />
     <Compile Include="Assets\Scripts\AnimationEventReciever.cs" />
@@ -80,6 +78,7 @@
     <Compile Include="Assets\Scripts\EnemyOutlineController.cs" />
     <Compile Include="Assets\Scripts\ExplosionController.cs" />
     <Compile Include="Assets\Scripts\FpsCounter.cs" />
+    <Compile Include="Assets\Scripts\GjApiManager.cs" />
     <Compile Include="Assets\Scripts\GroundTextureController.cs" />
     <Compile Include="Assets\Scripts\HideSolidController.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
@@ -90,6 +89,7 @@
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayerTargetController.cs" />
     <Compile Include="Assets\Scripts\PowerUpController.cs" />
+    <Compile Include="Assets\Scripts\PowerUpDropFeedbackController.cs" />
     <Compile Include="Assets\Scripts\SkyController.cs" />
     <Compile Include="Assets\Scripts\SpawnerController.cs" />
     <Compile Include="Assets\Scripts\TouchInputController.cs" />

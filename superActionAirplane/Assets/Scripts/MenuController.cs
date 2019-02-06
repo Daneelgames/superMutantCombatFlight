@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     public Slider playersSensitivitySlider;
     public Slider musicVolumeSlider;
     public Toggle toggleAcidSky;
+    public InputField inputField;
 
     public AudioSource guiActorAudioSource;
     public Animator guiActorAnimator;
@@ -19,10 +20,17 @@ public class MenuController : MonoBehaviour
 
     public UiButtonController playButton;
 
-     GameManager gameManager;
+    public GjApiManager gjApi;
+
+    GameManager gameManager;
+    public List<GameObject> blackBoarders;
 
     private void Start()
     {
+        foreach(GameObject obj in blackBoarders)
+        {
+            obj.SetActive(true);
+        }
         gameManager = GameManager.instance;
         score.gameObject.SetActive(false);
     }
@@ -32,9 +40,15 @@ public class MenuController : MonoBehaviour
         score.text = "0";
     }
 
-    public void GameOver()
+    public void InputScore()
     {
-        anim.SetTrigger("GameOver");
+        anim.SetTrigger("InputScore");
+        inputField.Select();
+    }
+
+    public void MainMenu()
+    {
+        anim.SetTrigger("MainMenu");
     }
 
     public void GameStart()
@@ -154,5 +168,15 @@ public class MenuController : MonoBehaviour
 
         toggleAcidSky.isOn = answer;
         gameManager.SetCanStartGame(true);
+    }
+
+    public string GetInputText()
+    {
+        return inputField.text;
+    }
+
+    public void ShowLeaderboard()
+    {
+        anim.SetTrigger("ShowLeaderboard");
     }
 }

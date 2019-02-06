@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GJAPISettings
   m_EditorClassIdentifier: 
   gameId: 389826
-  privateKey: 4ad57ba8fb57c85831158814256eb9bc
+  privateKey: b33f640e5c90df08fde60f36fc468207
   timeout: 10
   autoPing: 1
   autoSignInOutMessage: 0
@@ -24,5 +24,5 @@ MonoBehaviour:
   logLevel: 1
   secretTrophies: 
   autoConnect: 1
-  user: '@daneelgames'
-  token: da44neel
+  user: 
+  token: 

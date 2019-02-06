@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;       //Allows us to use Lists. 
+using GameJolt;
+using GameJolt.UI;
+using GameJolt.API;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,11 +21,19 @@ public class GameManager : MonoBehaviour
     public MenuController menuController;
     public bool acidSkyCanBeEnabled = true;
 
+    public GjApiManager gjApiManager;
+
     public AudioSource audio;
 
     public bool playerAlive = false;
 
     bool canStartGame = false;
+    public bool inputScore = false;
+    bool leaderboard = false;
+    bool canPause = false;
+    public GameObject pause;
+
+    public GameJolt.UI.Controllers.LeaderboardsWindow leaderboardsWindow;
 
     void Awake()
     {
@@ -40,6 +51,45 @@ public class GameManager : MonoBehaviour
         {
             menuController.playButton.GameStart();
         }
+        else if (Input.GetButtonDown("Pause"))
+        {
+            if (playerAlive)
+            {
+                if (Time.timeScale != 0)
+                {
+                    pause.SetActive(true);
+                    Time.timeScale = 0;
+                    Invoke("CanPause", 0.25f * Time.unscaledDeltaTime);
+                    cameraController._audio.Pause();
+                }
+                else if (Time.timeScale == 0)
+                {
+                    pause.SetActive(false);
+                    Time.timeScale = 1;
+                    Invoke("CanPause", 0.25f * Time.unscaledDeltaTime);
+                    cameraController._audio.UnPause();
+                }
+            }
+            else if (inputScore)
+            {
+                ShowLeaderboard();
+            }
+            else if (leaderboard)
+                HideLeaderboard();
+        }
+        else if (Input.GetButtonDown("Submit") && inputScore)
+        {
+            if (menuController.GetInputText().Length > 0)
+                SetScore(false);
+            else
+                SetScore(true);
+        }
+    }
+
+    void CanPause()
+    {
+        if (playerAlive)
+            canPause = true;
     }
 
     private void Start()
@@ -51,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        canPause = true;
         canStartGame = false;
         pc.transform.position = Vector3.zero;
         pc.gameObject.SetActive(true);
@@ -65,27 +116,89 @@ public class GameManager : MonoBehaviour
         menuController.ClearScore();
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        //    spawnerController.movementSpeed = 100;
     }
 
     public void Restart()
     {
+        canPause = false;
+        playerAlive = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        StartCoroutine(menuController.GuiActorPlay("GameOver", "Player"));
         spawnerController.skyController.skyAnimator.SetBool("Gameplay", false);
-        playerAlive = true;
+        //StartCoroutine(menuController.GuiActorPlay("GameOver", "Player"));
         objectPooler.DisableAllProjectiles();
         spawnerController.StopSpawning();
-        menuController.GameOver();
         spawnerController.ClearWaves();
         cameraController.SetMenu(true);
+        
+        GameJolt.API.Scores.GetRank(coins, 0, (int rank) => {
+            Debug.Log(string.Format("Rank {0}", rank));
+
+            if (rank <= 25)
+            {
+                if (GameJoltAPI.Instance.CurrentUser == null)
+                    InputScore();
+                else
+                {
+                    gjApiManager.SaveScore(coins, "");
+                    ShowLeaderboard();
+                }
+            }
+            else
+                MainMenu();
+        });
+    }
+
+    void InputScore()
+    {
+        menuController.InputScore();
+        //GameJoltUI.Instance.ShowLeaderboards();
+        inputScore = true;
+    }
+
+    public void HideLeaderboard()
+    {
+        MainMenu();
+    }
+
+    void MainMenu()
+    {
+        inputScore = false;
+        leaderboard = false;
+        menuController.MainMenu();
         Invoke("SetCanStart", 1);
+        leaderboardsWindow.Dismiss(false);
+    }
+
+    void ShowLeaderboard()
+    {
+        inputScore = false;
+        leaderboard = true;
+        GameJoltUI.Instance.ShowLeaderboards();
+        menuController.ShowLeaderboard();
     }
 
     void SetCanStart()
     {
         canStartGame = true;
+    }
+
+    void SetScore(bool anonim)
+    {
+        menuController.ShowLeaderboard();
+        if (anonim)
+            gjApiManager.SaveScore(coins, "Unknown");
+        else
+            gjApiManager.SaveScore(coins, menuController.GetInputText());
+
+        inputScore = false;
+        Invoke("ShowLeaderboardDelayed", 1);
+    }
+
+    void ShowLeaderboardDelayed()
+    {
+        GameJoltUI.Instance.ShowLeaderboards();
+        leaderboard = true;
     }
 
     public void AddCoins(int newCoins)

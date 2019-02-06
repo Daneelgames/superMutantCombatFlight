@@ -666,6 +666,7 @@
     <Compile Include="Packages\com.unity.analytics\DataPrivacy\DataPrivacyButton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\GameJolt\readme.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />

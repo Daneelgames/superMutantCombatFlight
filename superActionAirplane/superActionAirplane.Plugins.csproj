@@ -660,6 +660,47 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\GameJolt\Demo\Console\ConsoleTest.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Demo\Load\LoadTest.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Demo\UI\RestrictedButton.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Demo\UI\UITest.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Demo\UI\UserInfoBox.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\AutoLoginEvent.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Constants.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Core\MonoSingleton.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Core\Request.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Core\Response.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\DataStore.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Friends.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\GameJoltAPI.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Internal\UnityVersionAbstraction.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\LogHelper.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Misc.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Objects\Base.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Objects\Score.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Objects\Table.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Objects\Trophy.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Objects\User.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Scores.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Sessions.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Settings.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Trophies.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\API\Users.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\External\SimpleJSON.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\External\XTEA.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Behaviours\DismissibleWindow.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Behaviours\KeyboardNavigableForm.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Behaviours\NotificationCentre.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\BaseWindow.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\LeaderboardsWindow.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\NotificationItem.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\ScoreItem.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\SignInWindow.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\TableButton.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\TrophiesWindow.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Controllers\TrophyItem.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\GameJoltUI.cs" />
+    <Compile Include="Assets\Plugins\GameJolt\Scripts\UI\Objects\Notification.cs" />
     <Compile Include="Assets\Standard Assets\EZ Camera Shake\Demo\Sample Scripts\ShakeByDistance.cs" />
     <Compile Include="Assets\Standard Assets\EZ Camera Shake\Demo\Sample Scripts\ShakeOnKeyPress.cs" />
     <Compile Include="Assets\Standard Assets\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
@@ -721,6 +762,7 @@
     <Compile Include="Assets\Standard Assets\Virtual Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\GameJolt\readme.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />

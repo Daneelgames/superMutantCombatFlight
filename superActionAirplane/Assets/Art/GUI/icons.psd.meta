@@ -10,6 +10,7 @@ TextureImporter:
     21300010: slide_2
     21300012: settings
     21300014: ok
+    21300016: leaderboard
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -269,6 +270,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6956f09c197d1b4498e6e16e21809e34
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaderboard
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 3
+        width: 262
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56aa9ef40fd38464ca951e510deab636
       vertices: []
       indices: 
       edges: []

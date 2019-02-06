@@ -2179,8 +2179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 79}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchoredPosition: {x: -168, y: 104.6}
+  m_SizeDelta: {x: 339.13, y: 132.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1988866292
 CanvasRenderer:
@@ -3118,6 +3118,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c802dd8e6667b0e4aa80a97185f2c121, type: 3}
   - {fileID: 8300000, guid: 07e379e79fa2ebb42b4658b6e44faf58, type: 3}
   - {fileID: 8300000, guid: 83ff84f01df98664394c38c9fbaf7e71, type: 3}
+  playButton: {fileID: 0}
+  gjApi: {fileID: 0}
 --- !u!95 &2525781316310237864
 Animator:
   serializedVersion: 3

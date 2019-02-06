@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1667e67c5d49d1d4c96116433d857684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.5
+  damage: 10
   explosion: {fileID: 1479900517559180053, guid: c6d2f71be17a23f4981b45d2de3f333e,
     type: 3}
   enemyBulletController: {fileID: 0}
