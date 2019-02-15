@@ -155,6 +155,9 @@ public class SpawnerController : MonoBehaviour
                     case 3:
                         currentDelay = 0.75f;
                         break;
+                    case 0:
+                        currentDelay = 5;
+                        break;
                 }
             }
             Invoke("SpawnSolids", currentDelay);

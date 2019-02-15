@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public bool playerAlive = false;
 
     bool canStartGame = false;
+    bool settings = false;
     public bool inputScore = false;
     bool leaderboard = false;
     bool canPause = false;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && canStartGame)
+        if (Input.GetButtonDown("Jump") && canStartGame && !leaderboard && !settings)
         {
             menuController.playButton.GameStart();
         }
@@ -76,14 +77,21 @@ public class GameManager : MonoBehaviour
             }
             else if (leaderboard)
                 HideLeaderboard();
+            else if (settings)
+                MainMenu();
         }
         else if (Input.GetButtonDown("Submit") && inputScore)
         {
-            if (menuController.GetInputText().Length > 0)
-                SetScore(false);
-            else
-                SetScore(true);
+            InputScoreOk();
         }
+    }
+
+    public void InputScoreOk()
+    {
+        if (menuController.GetInputText().Length > 0)
+            SetScore(false);
+        else
+            SetScore(true);
     }
 
     void CanPause()
@@ -102,6 +110,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         canPause = true;
+        CancelInvoke();
         canStartGame = false;
         pc.transform.position = Vector3.zero;
         pc.gameObject.SetActive(true);
@@ -141,7 +150,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     gjApiManager.SaveScore(coins, "");
-                    ShowLeaderboard();
+                    Invoke("ShowLeaderboardDelayed", 1);
                 }
             }
             else
@@ -164,13 +173,14 @@ public class GameManager : MonoBehaviour
     void MainMenu()
     {
         inputScore = false;
+        settings = false;
         leaderboard = false;
         menuController.MainMenu();
         Invoke("SetCanStart", 1);
         leaderboardsWindow.Dismiss(false);
     }
 
-    void ShowLeaderboard()
+    public void ShowLeaderboard()
     {
         inputScore = false;
         leaderboard = true;
@@ -185,13 +195,13 @@ public class GameManager : MonoBehaviour
 
     void SetScore(bool anonim)
     {
+        inputScore = false;
         menuController.ShowLeaderboard();
         if (anonim)
             gjApiManager.SaveScore(coins, "Unknown");
         else
             gjApiManager.SaveScore(coins, menuController.GetInputText());
 
-        inputScore = false;
         Invoke("ShowLeaderboardDelayed", 1);
     }
 
@@ -220,5 +230,6 @@ public class GameManager : MonoBehaviour
     public void SetCanStartGame(bool active)
     {
         canStartGame = active;
+        settings = !active;
     }
 }

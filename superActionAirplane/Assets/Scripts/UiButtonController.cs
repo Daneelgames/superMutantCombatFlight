@@ -55,6 +55,16 @@ public class UiButtonController : MonoBehaviour, IPointerDownHandler
                 canPress = false;
                 menuController.DisclamerAnswer(false);
             }
+            else if (buttonName == "Leaderboard")
+            {
+                canPress = false;
+                Invoke("CanPress", 1);
+                GameManager.instance.ShowLeaderboard();
+            }
+            else if (buttonName == "InputFieldOk")
+            {
+                GameManager.instance.InputScoreOk();
+            }
         }
     }
 
